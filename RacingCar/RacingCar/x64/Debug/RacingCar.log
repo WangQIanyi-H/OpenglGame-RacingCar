@@ -1,0 +1,17 @@
+﻿  glad.c
+  main.cpp
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\includes\learnopengl\shader_m.h(44,40): warning C4101: “e”: 未引用的局部变量
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\includes\learnopengl\filesystem.h(3,1): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp : message : 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\includes\learnopengl\mesh.h(84,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(370,21): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(572,12): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(573,12): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(577,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(578,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(580,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(581,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\RacingCar\main.cpp(590,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  stb_image.cpp
+  正在生成代码...
+  RacingCar.vcxproj -> C:\Users\14696\Desktop\CG\OpenglGameRacingCar\RacingCar\x64\Debug\RacingCar.exe
