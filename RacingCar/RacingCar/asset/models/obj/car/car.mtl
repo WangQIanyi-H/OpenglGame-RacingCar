@@ -1,0 +1,198 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:06.12.2020 17:05:56
+
+newmtl car_1203_black_motor_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8529 0.8529 0.8529
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_motor mat_MainTex.tga
+	map_Kd maps\car 1203 black_motor mat_MainTex.tga
+
+newmtl car_1203_black_BodyMat_black
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.0882 0.0882 0.0882
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_black
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.1397 0.1397 0.1397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_ChromeMat_1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_dashboard_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_dashboard mat_MainTex.tga
+	map_Kd maps\car 1203 black_dashboard mat_MainTex.tga
+	map_bump maps\car_1203_black_dashboard_mat_法线凹凸.tga
+	bump maps\car_1203_black_dashboard_mat_法线凹凸.tga
+
+newmtl car_1203_black_Glass_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_details_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_details mat_MainTex.tga
+	map_Kd maps\car 1203 black_details mat_MainTex.tga
+	map_bump maps\car_1203_black_details_mat_法线凹凸.tga
+	bump maps\car_1203_black_details_mat_法线凹凸.tga
+
+newmtl car_1203_black_bottom_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_bottom mat_MainTex.tga
+	map_Kd maps\car 1203 black_bottom mat_MainTex.tga
+	map_bump maps\car_1203_black_bottom_mat_法线凹凸.tga
+	bump maps\car_1203_black_bottom_mat_法线凹凸.tga
+
+newmtl car_1203_black_plate_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_plate mat_MainTex.tga
+	map_Kd maps\car 1203 black_plate mat_MainTex.tga
+
+newmtl car_1203_black_tire_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.0956 0.0956 0.0956
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_tire mat_MainTex.tga
+	map_Kd maps\car 1203 black_tire mat_MainTex.tga
+	map_bump maps\car_1203_black_tire_mat_法线凹凸.tga
+	bump maps\car_1203_black_tire_mat_法线凹凸.tga
+
+newmtl car_1203_black_brake_disk
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_brake disk_MainTex.tga
+	map_Kd maps\car 1203 black_brake disk_MainTex.tga
+	map_bump maps\car_1203_black_brake_disk_法线凹凸.tga
+	bump maps\car_1203_black_brake_disk_法线凹凸.tga
+
+newmtl car_1203_black_Rim_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_brake
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5515 0.0000 0.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl car_1203_black_tire_border_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\car 1203 black_tire border mat_MainTex.tga
+	map_Kd maps\car 1203 black_tire border mat_MainTex.tga
+	map_bump maps\car_1203_black_tire_border_mat_法线凹凸.tga
+	bump maps\car_1203_black_tire_border_mat_法线凹凸.tga
