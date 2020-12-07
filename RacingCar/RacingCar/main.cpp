@@ -12,6 +12,7 @@
 #include <learnopengl/filesystem.h>
 #include <learnopengl/model.h>
 
+#include"config.h"
 #include"FixedCamera.h"
 #include"Car.h"
 
