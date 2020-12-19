@@ -1,0 +1,25 @@
+﻿  main.cpp
+C:\Users\14696\Desktop\CG\CGUI\include\learnopengl\shader.h(56,40): warning C4101: “e”: 未引用的局部变量
+C:\Users\14696\Desktop\CG\CGUI\include\learnopengl\mesh.h(84,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(48,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(49,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(53,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(54,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(56,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(57,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(66,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\functional.h(71,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\CGUI\main.cpp(103,31): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+C:\Users\14696\Desktop\CG\CGUI\main.cpp(104,52): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+C:\Users\14696\Desktop\CG\CGUI\functional.h(194): warning C4172: 返回局部变量或临时变量的地址: param
+C:\Users\14696\Desktop\CG\CGUI\functional.h(270): warning C4172: 返回局部变量或临时变量的地址: param
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  CGUI.vcxproj -> C:\Users\14696\Desktop\CG\CGUI\x64\Debug\CGUI.exe
