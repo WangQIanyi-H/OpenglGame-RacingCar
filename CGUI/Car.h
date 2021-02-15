@@ -23,9 +23,6 @@ public:
     glm::vec3 Front;
     float Yaw;
 
-    //是否缓停
-    bool speeddelta = false;
-
     // 存储旧Yaw信息，实现漂移
     queue<float> HistoryYaw;
     int DelayFrameNum = 20;
@@ -36,11 +33,11 @@ public:
     queue<glm::vec3> HistoryPosition;
     glm::vec3 DelayPosition;
 
-    float movementSpeed;
+    float MovementSpeed;
     float TurningSpeed;
 
     Car(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f))
-        : movementSpeed(0.0f)
+        : MovementSpeed(5.0f)
         , TurningSpeed(90.0f)
         , Yaw(0.0f)
         , DelayYaw(0.0f)
@@ -88,37 +85,15 @@ public:
     // 接受键盘输入
     void ProcessKeyboard(Direction direction, float deltaTime)
     {
-        if (direction == CAR_FORWARD) {
-            if (movementSpeed <= 30)//如果车速小于五，则加速
-            {
-                movementSpeed += 0.1;
-                Position += Front * movementSpeed * deltaTime;
-            }
-            else if (movementSpeed > 30.0)//如果车速大于30，则匀速
-            {
-                Position += Front * movementSpeed * deltaTime;
-            }
-        }
+        if (direction == CAR_FORWARD)
+            Position += Front * MovementSpeed * deltaTime;
         if (direction == CAR_BACKWARD)
-            Position -= Front * movementSpeed * deltaTime;
+            Position -= Front * MovementSpeed * deltaTime;
         if (direction == CAR_LEFT)
             Yaw += TurningSpeed * deltaTime;
         if (direction == CAR_RIGHT)
             Yaw -= TurningSpeed * deltaTime;
         updateFront();
-    }
-
-    void updateSpeed(float deltaTime) {
-        if (speeddelta) {
-            if (movementSpeed > 0.1) {
-                movementSpeed -= 0.1;
-                Position += Front * movementSpeed * deltaTime;
-            }
-            if (movementSpeed <= 0.1) {
-                movementSpeed = 0;
-                speeddelta = false;
-            }
-        }
     }
 
     // 更新DalayYaw

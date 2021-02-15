@@ -36,6 +36,12 @@
     <ClInclude Include="functional.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +72,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,8 +19,8 @@ enum Camera_Movement {
 
 // 默认值
 const float YAW = 0.0f;
-const float PITCH = 65.0f;
-const float SPEED = 20.0f;
+const float PITCH = -60.0f;
+const float SPEED = 5.0f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
 const float ZOOM_RANGE = 20.0f;
@@ -86,18 +86,18 @@ public:
         float velocity = MovementSpeed * deltaTime;
         if (direction == FORWARD)
         {
-            //Position += glm::vec3(0.0f, 1.0f, 0.0f) * velocity;
-            Position += Front * velocity;
+            Position += glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
+            //Position += Front * velocity;
         }
         if (direction == BACKWARD)
         {
-            //Position -= glm::vec3(0.0f, 1.0f, 0.0f) * velocity;
-            Position -= Front * velocity;
+            Position -= glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
+            //Position -= Front * velocity;
         }
         if (direction == LEFT)
-            Position -= Right * velocity;
+            //Position -= Right * velocity;
         if (direction == RIGHT)
-            Position += Right * velocity;
+            //Position += Right * velocity;
         if (direction == UP)
             Position += WorldUp * velocity;
         if (direction == DOWN)
@@ -110,8 +110,8 @@ public:
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
 
-        Yaw   += xoffset;
-        Pitch += yoffset;
+        Yaw   -= xoffset;
+        //Pitch += yoffset;
 
         // 限制角度以避免翻转问题
         if (constrainPitch)
