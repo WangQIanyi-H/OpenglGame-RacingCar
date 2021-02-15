@@ -1,2 +1,4 @@
 C:\Users\14696\Desktop\CG\CGUI\x64\Debug\CGUI.exe
 C:\Users\14696\Desktop\CG\CGUI\x64\Debug\CGUI.pdb
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.exe
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.pdb
