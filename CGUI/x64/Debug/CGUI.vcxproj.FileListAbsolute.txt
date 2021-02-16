@@ -4,3 +4,5 @@ C:\Users\14696\Desktop\CG\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.exe
 C:\Users\14696\Desktop\CG\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.pdb
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.exe
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.pdb
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.exe
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.pdb
