@@ -84,7 +84,22 @@ int main(int, char**)
     camera.Pitch = -18.9f;
     camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
 
+    //ÌùÍ¼
+    Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param_image = imageLoader(1);
+    unsigned int VAO_image = param_image[0];
+    unsigned int texture_image = param_image[2];
 
+    Shader shaderImage2("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param_image2 = imageLoader(2);
+    unsigned int VAO_image2 = param_image2[0];
+    unsigned int texture_image2 = param_image2[2];
+
+    //±³¾°½çÃæ
+    Shader shaderGround("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param = textureLoader();
+    unsigned int VAO = param[0];
+    unsigned int texture1 = param[3];
 
     //Main loop
     while (!glfwWindowShouldClose(window))
@@ -107,23 +122,6 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        
-        //ÌùÍ¼
-        Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
-        unsigned int* param_image = imageLoader(1);
-        unsigned int VAO_image = param_image[0];
-        unsigned int texture_image = param_image[2];
-
-        Shader shaderImage2("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
-        unsigned int* param_image2 = imageLoader(2);
-        unsigned int VAO_image2 = param_image2[0];
-        unsigned int texture_image2 = param_image2[2];
-
-        //±³¾°½çÃæ
-        Shader shaderGround("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
-        unsigned int* param = textureLoader();
-        unsigned int VAO = param[0];
-        unsigned int texture1 = param[3];
 
         shaderImage.use();
         //ÌùÍ¼1
