@@ -26,6 +26,8 @@
 #include "functional.h"
 
 
+
+
 int main(int, char**)
 {
     GLFWwindow* window = windowInit();
@@ -82,6 +84,8 @@ int main(int, char**)
     camera.Pitch = -18.9f;
     camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
 
+
+
     //Main loop
     while (!glfwWindowShouldClose(window))
     {
@@ -103,30 +107,60 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        
+        //贴图
+        Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+        unsigned int* param_image = imageLoader(1);
+        unsigned int VAO_image = param_image[0];
+        unsigned int texture_image = param_image[2];
+
+        Shader shaderImage2("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+        unsigned int* param_image2 = imageLoader(2);
+        unsigned int VAO_image2 = param_image2[0];
+        unsigned int texture_image2 = param_image2[2];
+
         //背景界面
-        Shader shaderGround("shader/vertexShaderSource.vs", "shader/fragmentShaderSource.fs");
+        Shader shaderGround("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
         unsigned int* param = textureLoader();
         unsigned int VAO = param[0];
         unsigned int texture1 = param[3];
-        shaderGround.use();
-        glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
 
-        //贴图
+        shaderImage.use();
+        //贴图1
         glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture1);
+        glBindTexture(GL_TEXTURE_2D, texture_image);
+        glUniform1i(glGetUniformLocation(shaderImage.ID, "texture2"), 1);
+
+        shaderImage2.use();
+        //贴图2
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, texture_image2);
+        glUniform1i(glGetUniformLocation(shaderImage2.ID, "texture2"), 2);
+
+        shaderGround.use();
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1); 
+        glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
+        
+
+        //图标
+      
+    
+    /*  Shader shadeIcon1("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource2.fs");
+        unsigned int* param1 = iconLoader1();
+        unsigned int VAO1 = param1[0];
+        unsigned int VAO2 = param1[1];
+        shadeIcon1.use()*/;
+
+       
+
+
         //开始界面
         if (show_window)
-        {
+        {  
+            //背景图片
             shaderGround.use();
-            glm::mat4 view = camera.GetViewMatrix();
-            glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, glm::vec3(0.0f, -7.0f, -15.0f));
-            model = glm::rotate(model, glm::radians(-60.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-            model = glm::scale(model, glm::vec3(1.0f, 0.57f, 0.0f));
-            shaderGround.setMat4("projection", projection);
-            shaderGround.setMat4("view", view);
-            shaderGround.setMat4("model", model);
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
@@ -142,6 +176,28 @@ int main(int, char**)
 
         //游戏界面
         if (game_window) {
+
+            //ICON1
+            shaderImage.use();
+            glBindVertexArray(VAO_image);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+            //ICON2
+            shaderImage2.use();
+            glBindVertexArray(VAO_image2);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+           
+
+            /*shadeIcon1.use();
+            glBindVertexArray(VAO1); 
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            glBindVertexArray(VAO2);
+            glDrawArrays(GL_TRIANGLES, 0, 3);*/
+
+            //鼠标点击位置判断
+            glfwSetMouseButtonCallback(window, mouse_button_callback);
+
 
             /*camera.Pitch = -18.9f;
             camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);*/
@@ -251,9 +307,9 @@ int main(int, char**)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-    }
 
-    // Cleanup
+    }
+        // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
