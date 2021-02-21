@@ -186,12 +186,15 @@ int main(int, char**)
 
 
             ImGui::Begin("Another Window", &show_window, window_flags);
-            if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87))) {
+            if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
+            {
                 game_window = true;
                 show_window = false;
+
             }
             ImGui::Text("\n\n");
-            if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(271, 87))) {
+            if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
+            {
 
             }
             ImGui::End();
