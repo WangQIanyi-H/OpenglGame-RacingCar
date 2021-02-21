@@ -150,6 +150,7 @@
     <ClInclude Include="imgui_impl_opengl3.h" />
     <ClInclude Include="imgui_internal.h" />
     <ClInclude Include="include\stb_image.h" />
+    <ClInclude Include="menu_icon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />

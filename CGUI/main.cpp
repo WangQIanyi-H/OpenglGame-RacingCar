@@ -24,6 +24,7 @@
 
 #include"Car.h"
 #include "functional.h"
+#include "menu_icon.h"
 
 
 
@@ -84,6 +85,12 @@ int main(int, char**)
     camera.Pitch = -18.9f;
     camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
 
+    //菜单——开始按钮
+    Shader shader_Icon_Begin("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param_Icon_Begin = menu_Loader(1);
+    unsigned int VAO_Icon_Begin = param_Icon_Begin[0];
+    unsigned int texture_Icon_Begin = param_Icon_Begin[2];
+
     //贴图
     Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image = imageLoader(1);
@@ -122,15 +129,21 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        //菜单——开始按钮
+        shader_Icon_Begin.use();
+        glActiveTexture(GL_TEXTURE3);
+        glBindTexture(GL_TEXTURE_2D, texture_Icon_Begin);
+        glUniform1i(glGetUniformLocation(shader_Icon_Begin.ID, "texture2"), 3);
+        shader_Icon_Begin.setMat4("transform",trans_button);
 
-        shaderImage.use();
         //贴图1
+        shaderImage.use();
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture_image);
         glUniform1i(glGetUniformLocation(shaderImage.ID, "texture2"), 1);
 
-        shaderImage2.use();
         //贴图2
+        shaderImage2.use();
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, texture_image2);
         glUniform1i(glGetUniformLocation(shaderImage2.ID, "texture2"), 2);
@@ -139,11 +152,7 @@ int main(int, char**)
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1); 
-        glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
-        
-
-        //图标
-      
+        glUniform1i(glGetUniformLocation(shaderGround.ID, "texture2"), 0);
     
     /*  Shader shadeIcon1("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource2.fs");
         unsigned int* param1 = iconLoader1();
@@ -151,16 +160,22 @@ int main(int, char**)
         unsigned int VAO2 = param1[1];
         shadeIcon1.use()*/;
 
-       
-
-
         //开始界面
         if (show_window)
         {  
+            ////菜单——开始按钮
+            //shader_Icon_Begin.use();
+            //glBindVertexArray(VAO_Icon_Begin);
+            //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            
             //背景图片
             shaderGround.use();
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+            
+            //鼠标点击位置判断
+            //glfwSetMouseButtonCallback(window, mouse_button_callback_menu);
 
             ImGui::Begin("Another Window", &show_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
             ImGui::Text("Hello from another window!");
@@ -169,12 +184,16 @@ int main(int, char**)
                 show_window = false;
             }
             ImGui::End();
+            if (IS_BEGIN) {
+                game_window = true;
+                show_window = false;
+            }
             
         }
 
         //游戏界面
         if (game_window) {
-
+            
             //ICON1
             shaderImage.use();
             glBindVertexArray(VAO_image);
@@ -194,7 +213,7 @@ int main(int, char**)
             glDrawArrays(GL_TRIANGLES, 0, 3);*/
 
             //鼠标点击位置判断
-            glfwSetMouseButtonCallback(window, mouse_button_callback);
+            //glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 
             /*camera.Pitch = -18.9f;
@@ -297,6 +316,8 @@ int main(int, char**)
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
             renderSkyBox(skyboxShader);
+            glEnable(GL_BLEND); //开混合模式贴图
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);// 指定混合模式算法
             // 复原深度测试
             glDepthFunc(GL_LESS);
         }
@@ -308,9 +329,9 @@ int main(int, char**)
 
     }
         // Cleanup
-    ImGui_ImplOpenGL3_Shutdown();
+  /*  ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
+    ImGui::DestroyContext();*/
     glfwDestroyWindow(window);
     glfwTerminate();
 

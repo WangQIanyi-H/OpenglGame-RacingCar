@@ -2,19 +2,9 @@
 
 #include<glad\glad.h>
 #include<iostream>
+#include "menu_icon.h"
 
-struct point_f {
-    float x;
-    float y;
-    point_f() {
-        x = 0.0f;
-        y = 0.0f;
-    }
-    point_f(float a, float b) {
-        x = a;
-        y = b;
-    }
-};
+
 
 //全局变量——鼠标按下时的位置
 point_f mouse_pos;
@@ -31,6 +21,47 @@ point_f ICON_RECT_2[4] = {
     point_f(0.3f, 0.1f),
     point_f(0.3f, 0.4f),
 };
+
+
+
+
+//开始界面的四个按钮坐标
+bool IS_BEGIN = false;
+bool IS_RULE = false;
+bool IS_SET = false;
+bool IS_EXIT = false;
+//
+////开始
+//point_f ICON_RULE[4] = {
+//    point_f(-0.2f, 0.63f),
+//    point_f(0.2f, 0.63f),
+//    point_f(0.2f, 0.4f),
+//    point_f(-0.2f, 0.4f),
+//};
+////游戏规则
+//point_f ICON_RULE[4] = {
+//    point_f(-0.2f, 0.27f),
+//    point_f(0.2f, 0.27f),
+//    point_f(0.2f, 0.04f),
+//    point_f(-0.2f, 0.04f),
+//};
+////设置
+//point_f ICON_SET[4] = {
+//    point_f(-0.2f, -0.09f),
+//    point_f(0.2f, -0.09f),
+//    point_f(0.2f,  -0.32f),
+//    point_f(-0.2f, -0.32f),
+//};
+////退出
+//point_f ICON_EXIT[4] = {
+//    point_f(0.6f, -0.45f),
+//    point_f(0.6f, -0.45f),
+//    point_f(0.3f, -0.68f),
+//    point_f(0.3f, -0.68f),
+//};
+
+
+
 //全局变量
 //窗口分辨率
 const unsigned int SCR_WIDTH = 1280;
@@ -256,6 +287,38 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
     }
 }
 
+void mouse_button_callback_menu(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+    {
+        double xpos, ypos;
+        //getting cursor position 
+        glfwGetCursorPos(window, &xpos, &ypos);
+        turn_to_view(xpos, ypos);
+
+        //给鼠标点击位置赋值
+        mouse_pos.x = xpos;
+        mouse_pos.y = ypos;
+        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
+        if (IS_IN_AREA(mouse_pos, ICON_BEGIN)) {
+            IS_BEGIN = true;
+            //std::cout << "ICON_BEGIN:" << IS_IN_AREA(mouse_pos, ICON_BEGIN) << std::endl;
+        }
+        if (IS_IN_AREA(mouse_pos, ICON_RULE)) {
+            IS_RULE = true;
+            //std::cout << "ICON_RULE:" << IS_IN_AREA(mouse_pos, ICON_RULE) << std::endl;
+        }
+        if (IS_IN_AREA(mouse_pos, ICON_SET)) {
+            IS_SET = true;
+            //std::cout << "ICON_SET:" << IS_IN_AREA(mouse_pos, ICON_SET) << std::endl;
+        }
+        if (IS_IN_AREA(mouse_pos, ICON_EXIT)) {
+            IS_EXIT = true;
+            //std::cout << "ICON_SET:" << IS_IN_AREA(mouse_pos, ICON_EXIT) << std::endl;
+        }        
+    }
+}
+
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     if (firstMouse)
@@ -387,10 +450,10 @@ unsigned int* textureLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/background.png", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("asset/image/menu/背景.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     stbi_image_free(data);
