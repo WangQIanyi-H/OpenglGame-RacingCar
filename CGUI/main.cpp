@@ -156,20 +156,47 @@ int main(int, char**)
 
         //开始界面
         if (show_window)
-        {  
+        {
+            glDepthFunc(GL_LEQUAL);
             //背景图片
             shaderGround.use();
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-            ImGui::Begin("Another Window", &show_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-            ImGui::Text("Hello from another window!");
-            if (ImGui::Button("Game")) {
+            static bool no_titlebar = true;
+            static bool no_scrollbar = true;
+            static bool no_menu = true;
+            static bool no_move = true;
+            static bool no_resize = true;
+            static bool no_collapse = false;
+            static bool no_close = true;
+            static bool no_nav = false;
+            static bool no_background = true;
+            static bool no_bring_to_front = false;
+            ImGuiWindowFlags window_flags = 0;
+            if (no_titlebar)        window_flags |= ImGuiWindowFlags_NoTitleBar;
+            if (no_scrollbar)       window_flags |= ImGuiWindowFlags_NoScrollbar;
+            if (!no_menu)           window_flags |= ImGuiWindowFlags_MenuBar;
+            if (no_move)            window_flags |= ImGuiWindowFlags_NoMove;
+            if (no_resize)          window_flags |= ImGuiWindowFlags_NoResize;
+            if (no_collapse)        window_flags |= ImGuiWindowFlags_NoCollapse;
+            if (no_nav)             window_flags |= ImGuiWindowFlags_NoNav;
+            if (no_background)      window_flags |= ImGuiWindowFlags_NoBackground;
+            if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
+
+
+            ImGui::Begin("Another Window", &show_window, window_flags);
+            if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87))) {
                 game_window = true;
                 show_window = false;
             }
+            ImGui::Text("\n\n");
+            if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(271, 87))) {
+
+            }
             ImGui::End();
             
+            glDepthFunc(GL_LESS);
         }
 
         //游戏界面

@@ -346,13 +346,13 @@ unsigned int* textureLoader()
 {
       //背景视图不使用坐标变换
     float vertices[] = {
-        //     ---- 位置 ----    - 纹理坐标 -
-           -1.0f, -1.0f, 0.0f,  0.0f, 0.0f,
-            1.0f, -1.0f, 0.0f,  1.0f, 0.0f,
-            1.0f,  1.0f, 0.0f,  1.0f, 1.0f,
-            1.0f,  1.0f, 0.0f,  1.0f, 1.0f,
-           -1.0f,  1.0f, 0.0f,  0.0f, 1.0f,
-           -1.0f, -1.0f, 0.0f,  0.0f, 0.0f,
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
     };
 
     int indices[] = {
@@ -373,10 +373,15 @@ unsigned int* textureLoader()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
 
 
     unsigned int texture1;
@@ -387,7 +392,7 @@ unsigned int* textureLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/background.png", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("asset/image/main/background.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -398,96 +403,6 @@ unsigned int* textureLoader()
     unsigned int param[] = { VAO, VBO, EBO, texture1};
     return param;
 }
-//unsigned int* iconTexLoader()
-//{
-//    float vertices[] = {
-//        //     ---- 位置 ----    - 纹理坐标 -
-//           -2.0f, -2.0f, 1.0f,  0.0f, 0.0f,
-//            2.0f, -2.0f, 1.0f,  1.0f, 0.0f,
-//            2.0f,  2.0f, 1.0f,  1.0f, 1.0f,
-//            2.0f,  2.0f, 1.0f,  1.0f, 1.0f,
-//           -2.0f,  2.0f, 1.0f,  0.0f, 1.0f,
-//           -2.0f, -2.0f, 1.0f,  0.0f, 0.0f,
-//    };
-//
-//    int indices[] = {
-//        0,1,2,3,4,5
-//    };
-//
-//    unsigned int VBO, VAO, EBO;
-//    glGenVertexArrays(1, &VAO);
-//    glGenBuffers(1, &VBO);
-//    glGenBuffers(1, &EBO);
-//
-//    glBindVertexArray(VAO);
-//
-//    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-//
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-//    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-//
-//
-//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-//    glEnableVertexAttribArray(0);
-//    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-//    glEnableVertexAttribArray(1);
-//
-//
-//    unsigned int texture1;
-//    glGenTextures(1, &texture1);
-//    glBindTexture(GL_TEXTURE_2D, texture1);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//    int width, height, nrChannels;
-//    unsigned char* data = stbi_load("asset/image/icons/test.jpg", &width, &height, &nrChannels, 0);
-//    if (data)
-//    {
-//        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-//        glGenerateMipmap(GL_TEXTURE_2D);
-//    }
-//    stbi_image_free(data);
-//    unsigned int param[] = { VAO, VBO, EBO, texture1 };
-//    return param;
-//}
-//
-//unsigned int* iconLoader1()
-//{
-//    float firstTriangle[] = {
-//        -0.9f, -0.5f, 0.0f,  // left 
-//        -0.0f, -0.5f, 0.0f,  // right
-//        -0.45f, 0.5f, 0.0f,  // top 
-//    };
-//    float secondTriangle[] = {
-//        0.0f, -0.5f, 0.0f,  // left
-//        0.9f, -0.5f, 0.0f,  // right
-//        0.45f, 0.5f, 0.0f   // top 
-//    };
-//
-//    unsigned int VBOo[2];
-//    unsigned int VAOo[2];
-//
-//    glGenBuffers(2, VBOo);
-//    glGenVertexArrays(2, VAOo);
-//
-//    glBindVertexArray(VAOo[0]);
-//    glBindBuffer(GL_ARRAY_BUFFER, VBOo[0]);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(firstTriangle), firstTriangle, GL_STATIC_DRAW);
-//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-//    glEnableVertexAttribArray(0);
-//
-//    glBindVertexArray(VAOo[1]);
-//    glBindBuffer(GL_ARRAY_BUFFER, VBOo[1]);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(secondTriangle), secondTriangle, GL_STATIC_DRAW);
-//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-//    glEnableVertexAttribArray(0);
-//
-//
-//    unsigned int param[] = { VAOo[0], VAOo[1],VBOo[0], VBOo[1] };
-//    return param;
-//}
 
 
 
@@ -495,19 +410,19 @@ unsigned int* textureLoader()
 unsigned int* imageLoader(int index)
 {
     float vertices1[] = {
-        // positions                   // texture coords
-         0.2f,  0.2f, 0.0f,1.0f, 1.0f, // top right
-         0.2f, -0.2f, 0.0f,1.0f, 0.0f, // bottom right
-        -0.2f, -0.2f, 0.0f,0.0f, 0.0f, // bottom left
-        -0.2f,  0.2f, 0.0f,0.0f, 1.0f  // top left 
+        // positions        //color               // texture coords
+         0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+        -0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+        -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
     };
 
     float vertices2[] = {
-        // positions                   // texture coords
-         0.6f,  0.4f, 0.0f,1.0f, 1.0f, // top right
-         0.6f,  0.1f, 0.0f,1.0f, 0.0f, // bottom right
-         0.3f, 0.1f, 0.0f,0.0f, 0.0f, // bottom left
-         0.3f, 0.4f, 0.0f,0.0f, 1.0f  // top left 
+        // positions       //color              // texture coords
+         0.6f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.6f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+         0.3f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+         0.3f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
     };
 
     unsigned int indices[] = {
@@ -537,12 +452,14 @@ unsigned int* imageLoader(int index)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,5 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-
-    // texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
 
 
     unsigned int texture;
@@ -561,10 +478,10 @@ unsigned int* imageLoader(int index)
     unsigned char* data = 0;
     switch (index) {
     case 1:
-        data = stbi_load("asset/image/icons/test.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/main/begin.png", &width, &height, &nrChannels, 0);
         break;
     case 2:
-        data = stbi_load("asset/image/icons/left.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
         break;
     case 3:
         ;
