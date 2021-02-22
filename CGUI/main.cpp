@@ -185,37 +185,16 @@ int main(int, char**)
         //游戏界面
         if (game_window) {
 
-            //ICON1
-            shaderImage.use();
-            glBindVertexArray(VAO_image);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-            //ICON2
-            shaderImage2.use();
-            glBindVertexArray(VAO_image2);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-           
-
-            /*shadeIcon1.use();
-            glBindVertexArray(VAO1); 
-            glDrawArrays(GL_TRIANGLES, 0, 3);
-
-            glBindVertexArray(VAO2);
-            glDrawArrays(GL_TRIANGLES, 0, 3);*/
-
             //鼠标点击位置判断
             glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 
-            /*camera.Pitch = -18.9f;
-            camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);*/
             camera.updateCameraVectors();
 
             // 监听按键
             handleKeyInput(window);
             glfwSetScrollCallback(window, scroll_callback);
             glfwSetCursorPosCallback(window, mouse_callback);
-            //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
             // 观察空间
             glm::mat4 view = glm::mat4(1.0f);
@@ -231,20 +210,6 @@ int main(int, char**)
             glm::vec3 ambient = glm::vec3(1.0f);
             glm::vec3 diffuse = glm::vec3(1.0f);
             glm::vec3 specular = glm::vec3(1.0f);
-
-            /*ImGui::Begin("Window", &game_window);
-            ImGui::SliderFloat("环境光r", &transx, 0.0f, 0.2);
-            ImGui::SliderFloat("环境光g", &transy, 0.0f, 0.2);
-            ImGui::SliderFloat("环境光b", &transz, 0.0f, 0.2);
-            ImGui::SliderFloat("漫反射r", &transx1, 0.0f, 0.2);
-            ImGui::SliderFloat("漫反射g", &transy1, 0.0f, 0.2);
-            ImGui::SliderFloat("漫反射b", &transz1, 0.0f, 0.2);
-            ImGui::SliderFloat("镜面r", &transx2, 0.0f, 0.2);
-            ImGui::SliderFloat("镜面g", &transy2, 0.0f, 0.2);
-            ImGui::SliderFloat("镜面b", &transz2, 0.0f, 0.2);
-
-
-            ImGui::End();*/
 
             //模型渲染
             shaderM.use();
@@ -301,6 +266,7 @@ int main(int, char**)
             model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
             model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
             model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
             shaderM.setMat4("model", model);
             carModel.Draw(shaderM);
 
