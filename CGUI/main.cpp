@@ -190,12 +190,6 @@ int main(int, char**)
             {
 
             }
-            ImGui::Text("\n\n");
-            if (ImGui::ImageButton((ImTextureID*)texture_image3, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
-            {
-
-            }
-            ImGui::End();
             
             glDepthFunc(GL_LESS);
         }
