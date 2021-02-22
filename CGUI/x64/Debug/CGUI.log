@@ -7,21 +7,18 @@ C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(221,17): warning
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(222,30): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(251,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(252,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(269,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(270,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(281,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(282,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(286,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(287,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(289,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(290,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(304,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(309,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(168,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(175,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(581): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(422): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(510): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(657): warning C4172: 返回局部变量或临时变量的地址: param
-LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(263,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(264,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(268,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(269,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(271,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(272,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(286,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(291,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(170,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(177,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(404): warning C4172: 返回局部变量或临时变量的地址: param
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(563): warning C4172: 返回局部变量或临时变量的地址: param
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(492): warning C4172: 返回局部变量或临时变量的地址: param
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(639): warning C4172: 返回局部变量或临时变量的地址: param
   CGUI.vcxproj -> C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.exe

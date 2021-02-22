@@ -189,9 +189,9 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         camera.ProcessKeyboard(BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS )
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
         camera.ProcessKeyboard(LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
 
 
@@ -199,10 +199,10 @@ void handleKeyInput(GLFWwindow* window)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        car.ProcessKeyboard(CAR_LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        car.ProcessKeyboard(CAR_RIGHT, deltaTime);
+    /*if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        camera.ProcessKeyboard(LEFT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        camera.ProcessKeyboard(RIGHT, deltaTime);*/
 }
 
 
@@ -256,24 +256,6 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
     }
 }
 
-void mouse_button_callback_menu(GLFWwindow* window, int button, int action, int mods)
-{
-    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
-    {
-        double xpos, ypos;
-        //getting cursor position 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        turn_to_view(xpos, ypos);
-
-        //¸øÊó±êµã»÷Î»ÖÃ¸³Öµ
-        mouse_pos.x = xpos;
-        mouse_pos.y = ypos;
-        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
-        std::cout << "ICON_1:" << IS_IN_AREA(mouse_pos, ICON_RECT_1) << std::endl;
-        std::cout << "ICON_2:" << IS_IN_AREA(mouse_pos, ICON_RECT_2) << std::endl;
-    }
-}
-
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     if (firstMouse)
@@ -289,7 +271,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     lastX = xpos;
     lastY = ypos;
 
-    //camera.ProcessMouseMovement(xoffset, yoffset);
+    camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 
@@ -349,13 +331,13 @@ GLFWwindow* windowInit() {
     // tell GLFW to capture our mouse
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-    //// ÅäÖÃImGui
-    //IMGUI_CHECKVERSION();
-    //ImGui::CreateContext();
-    //ImGuiIO& io = ImGui::GetIO(); (void)io;
-    //ImGui::StyleColorsDark();
-    //ImGui_ImplGlfw_InitForOpenGL(window, true);
-    //ImGui_ImplOpenGL3_Init(glsl_version);
+    // ÅäÖÃImGui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGui::StyleColorsDark();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
 
     return window;
 }
@@ -413,7 +395,7 @@ unsigned int* textureLoader()
     unsigned char* data = stbi_load("asset/image/main/background.png", &width, &height, &nrChannels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     stbi_image_free(data);

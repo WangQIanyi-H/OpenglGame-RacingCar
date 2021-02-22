@@ -123,9 +123,9 @@ int main(int, char**)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Start the Dear ImGui frame
-   /*     ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();*/
+        ImGui::NewFrame();
 
 
         shaderGround.use();
@@ -134,6 +134,8 @@ int main(int, char**)
         glBindTexture(GL_TEXTURE_2D, texture1); 
         glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
         
+
+
         //开始界面
         if (show_window)
         {
@@ -164,7 +166,7 @@ int main(int, char**)
             if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
 
 
-            ImGui::Begin("d", &show_window, window_flags);
+            ImGui::Begin("Another Window", &show_window, window_flags);
             if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
             {
                 game_window = true;
@@ -176,6 +178,7 @@ int main(int, char**)
             {
 
             }
+            
             ImGui::End();
         }
 
@@ -207,11 +210,6 @@ int main(int, char**)
             /*camera.Pitch = -18.9f;
             camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);*/
             camera.updateCameraVectors();
-            car.UpdateDelayYaw();
-            car.UpdateDelayPosition();
-            // 自动逐渐复原Zoom为默认值
-            camera.ZoomRecover();
-            // 处理相机相对于车坐标系下的向量坐标转换为世界坐标系下的向量
 
             // 监听按键
             handleKeyInput(window);
@@ -303,7 +301,6 @@ int main(int, char**)
             model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
             model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
             model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
             shaderM.setMat4("model", model);
             carModel.Draw(shaderM);
 
@@ -314,16 +311,16 @@ int main(int, char**)
             glDepthFunc(GL_LESS);
         }
 
-     /*   ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());*/
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
 
     }
         // Cleanup
-  /*  ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();*/
+    ImGui::DestroyContext();
     glfwDestroyWindow(window);
     glfwTerminate();
 

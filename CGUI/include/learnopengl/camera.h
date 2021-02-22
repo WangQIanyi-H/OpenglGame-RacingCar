@@ -80,16 +80,6 @@ public:
         return glm::perspective(glm::radians(Zoom), aspect, 0.1f, STADIA);
     }
 
-    glm::vec3 getPosition()
-    {
-        return Position;
-    }
-
-    float getYaw()
-    {
-        return Yaw;
-    }
-
     // Ω” ‹º¸≈Ã ‰»Î
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
@@ -105,15 +95,9 @@ public:
             //Position -= Front * velocity;
         }
         if (direction == LEFT)
-        {
             //Position -= Right * velocity;
-            Yaw += 90.0f * deltaTime;
-        }
         if (direction == RIGHT)
-        {
             //Position += Right * velocity;
-            Yaw -= 90.0f * deltaTime;
-        }
         if (direction == UP)
             Position += WorldUp * velocity;
         if (direction == DOWN)
