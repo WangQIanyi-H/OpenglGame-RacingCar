@@ -210,6 +210,11 @@ int main(int, char**)
             /*camera.Pitch = -18.9f;
             camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);*/
             camera.updateCameraVectors();
+            car.UpdateDelayYaw();
+            car.UpdateDelayPosition();
+            // 自动逐渐复原Zoom为默认值
+            camera.ZoomRecover();
+            // 处理相机相对于车坐标系下的向量坐标转换为世界坐标系下的向量
 
             // 监听按键
             handleKeyInput(window);
@@ -301,6 +306,7 @@ int main(int, char**)
             model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
             model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
             model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
             shaderM.setMat4("model", model);
             carModel.Draw(shaderM);
 

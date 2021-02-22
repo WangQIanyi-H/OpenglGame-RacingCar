@@ -18,7 +18,7 @@ C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(291,24): warning
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(170,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(177,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(404): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(563): warning C4172: 返回局部变量或临时变量的地址: param
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(492): warning C4172: 返回局部变量或临时变量的地址: param
+C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(563): warning C4172: 返回局部变量或临时变量的地址: param
 C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(639): warning C4172: 返回局部变量或临时变量的地址: param
   CGUI.vcxproj -> C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.exe
