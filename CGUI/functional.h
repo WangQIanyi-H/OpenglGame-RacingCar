@@ -410,11 +410,7 @@ unsigned int* textureLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-<<<<<<< Updated upstream
     unsigned char* data = stbi_load("asset/image/main/background.png", &width, &height, &nrChannels, 0);
-=======
-    unsigned char* data = stbi_load("asset/image/main.jpg", &width, &height, &nrChannels, 0);
->>>>>>> Stashed changes
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

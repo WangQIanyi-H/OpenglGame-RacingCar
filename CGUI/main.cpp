@@ -133,21 +133,7 @@ int main(int, char**)
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1); 
         glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
-<<<<<<< Updated upstream
         
-
-<<<<<<< HEAD
-=======
-=======
-    
-    /*  Shader shadeIcon1("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource2.fs");
-        unsigned int* param1 = iconLoader1();
-        unsigned int VAO1 = param1[0];
-        unsigned int VAO2 = param1[1];
-        shadeIcon1.use()*/;
->>>>>>> Stashed changes
->>>>>>> bfe8f6ee2798689e522d98aaf0b55c92a2926622
-
         //开始界面
         if (show_window)
         {
@@ -156,10 +142,6 @@ int main(int, char**)
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
->>>>>>> bfe8f6ee2798689e522d98aaf0b55c92a2926622
             static bool no_titlebar = true;
             static bool no_scrollbar = true;
             static bool no_menu = true;
@@ -182,7 +164,7 @@ int main(int, char**)
             if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
 
 
-            ImGui::Begin("Another Window", &show_window, window_flags);
+            ImGui::Begin("d", &show_window, window_flags);
             if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
             {
                 game_window = true;
@@ -194,19 +176,6 @@ int main(int, char**)
             {
 
             }
-=======
-            //鼠标点击位置判断
-            glfwSetMouseButtonCallback(window, mouse_button_callback);
-
-            //ImGui::Begin("Another Window", &show_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-            //ImGui::Text("Hello from another window!");
-            //if (ImGui::Button("Game")) {
-            //    game_window = true;
-            //    show_window = false;
-            //}
-            //ImGui::End();
->>>>>>> Stashed changes
-            
             ImGui::End();
         }
 
