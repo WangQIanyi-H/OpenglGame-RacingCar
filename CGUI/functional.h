@@ -1,5 +1,39 @@
 #pragma once
 
+<<<<<<< Updated upstream
+=======
+#include<glad\glad.h>
+#include<iostream>
+
+struct point_f {
+    float x;
+    float y;
+    point_f() {
+        x = 0.0f;
+        y = 0.0f;
+    }
+    point_f(float a, float b) {
+        x = a;
+        y = b;
+    }
+};
+
+//全局变量——鼠标按下时的位置
+point_f mouse_pos;
+//优化——用许多个points[4]来表示矩形区域（也就是图标区域）
+point_f ICON_RECT_1[4] = {
+    point_f(0.2f, 0.2f),
+    point_f(0.2f, -0.2f),
+    point_f(-0.2f, -0.2f),
+    point_f(-0.2f, 0.2f),
+};
+point_f ICON_RECT_2[4] = {
+    point_f(0.6f, 0.4f),
+    point_f(0.6f, 0.1f),
+    point_f(0.3f, 0.1f),
+    point_f(0.3f, 0.4f),
+};
+>>>>>>> Stashed changes
 //全局变量
 //窗口分辨率
 const unsigned int SCR_WIDTH = 1280;
@@ -174,6 +208,60 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(RIGHT, deltaTime);*/
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+
+
+
+//转换鼠标点击时的二维坐标系
+void turn_to_view(double& a, double& b) {
+    point_f point;
+
+    point.x = a - SCR_WIDTH / 2;
+    point.y = SCR_HEIGHT / 2 - b;
+    a = point.x / (SCR_WIDTH / 2);
+    b = point.y / (SCR_HEIGHT / 2);
+}
+
+//计算 | p1 p2 | X | p1 p3 |
+float GetCross(point_f p1, point_f p3, point_f p2) {
+    return (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
+}
+//判断点p是否在p1p2p3p4的正方形内
+//判断p点是否在矩形区域内部
+bool IS_IN_AREA(point_f click, point_f rect[4]) {
+    if (GetCross(rect[0], rect[1], click) * GetCross(rect[2], rect[3], click) >= 0
+        && GetCross(rect[1], rect[2], click) * GetCross(rect[3], rect[0], click) >= 0)
+        return true;
+    else {
+        return false;
+    }
+}
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+    {
+        double xpos, ypos;
+        //getting cursor position 
+        glfwGetCursorPos(window, &xpos, &ypos);
+        turn_to_view(xpos, ypos);
+
+        //给鼠标点击位置赋值
+        mouse_pos.x = xpos;
+        mouse_pos.y = ypos;
+        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
+        std::cout << "ICON_1:" << IS_IN_AREA(mouse_pos, ICON_RECT_1) << std::endl;
+        std::cout << "ICON_2:" << IS_IN_AREA(mouse_pos, ICON_RECT_2) << std::endl;
+    }
+}
+
+>>>>>>> Stashed changes
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     if (firstMouse)
@@ -258,6 +346,7 @@ GLFWwindow* windowInit() {
 unsigned int* textureLoader() 
 {
     float vertices[] = {
+<<<<<<< Updated upstream
         //     ---- 位置 ----    - 纹理坐标 -
            -25.0f, -25.0f, 0.0f,  0.0f, 0.0f,
             25.0f, -25.0f, 0.0f,  1.0f, 0.0f,
@@ -265,6 +354,15 @@ unsigned int* textureLoader()
             25.0f,  25.0f, 0.0f,  1.0f, 1.0f,
            -25.0f,  25.0f, 0.0f,  0.0f, 1.0f,
            -25.0f, -25.0f, 0.0f,  0.0f, 0.0f,
+=======
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+>>>>>>> Stashed changes
     };
 
     int indices[] = {
@@ -285,10 +383,15 @@ unsigned int* textureLoader()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
 
 
     unsigned int texture1;
@@ -299,7 +402,11 @@ unsigned int* textureLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
+<<<<<<< Updated upstream
     unsigned char* data = stbi_load("asset/image/background.png", &width, &height, &nrChannels, 0);
+=======
+    unsigned char* data = stbi_load("asset/image/main/background.png", &width, &height, &nrChannels, 0);
+>>>>>>> Stashed changes
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -307,15 +414,110 @@ unsigned int* textureLoader()
     }
     stbi_image_free(data);
 
+<<<<<<< Updated upstream
 
     /*unsigned int texture2;
     glGenTextures(1, &texture2);
     glBindTexture(GL_TEXTURE_2D, texture2);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+=======
+    unsigned int param[] = { VAO, VBO, EBO, texture1};
+    return param;
+}
+
+
+
+
+unsigned int* imageLoader(int index)
+{
+    float vertices1[] = {
+        // positions        //color               // texture coords
+         0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+        -0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+        -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
+    };
+
+    float vertices2[] = {
+        // positions       //color              // texture coords
+         0.6f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.6f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+         0.3f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+         0.3f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
+    };
+
+    unsigned int indices[] = {
+        0, 1, 3, // first triangle
+        1, 2, 3  // second triangle
+    };
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+
+    if (index == 1) {
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+
+    }
+    if (index == 2) {
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+
+    }
+
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+>>>>>>> Stashed changes
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+<<<<<<< Updated upstream
     data = stbi_load("asset/image/awesomeface.png", &width, &height, &nrChannels, 0);
+=======
+    // load image, create texture and generate mipmaps
+    int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(true);
+    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    unsigned char* data = 0;
+    switch (index) {
+    case 1:
+        data = stbi_load("asset/image/main/begin.png", &width, &height, &nrChannels, 0);
+        break;
+    case 2:
+        data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
+        break;
+    case 3:
+        ;
+        break;
+    case 4:
+        ;
+        break;
+    }
+
+
+    
+>>>>>>> Stashed changes
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);

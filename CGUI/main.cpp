@@ -24,6 +24,11 @@
 
 #include"Car.h"
 #include "functional.h"
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 
 
 int main(int, char**)
@@ -82,6 +87,26 @@ int main(int, char**)
     camera.Pitch = -18.9f;
     camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
 
+<<<<<<< Updated upstream
+=======
+    //贴图
+    Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param_image = imageLoader(1);
+    unsigned int VAO_image = param_image[0];
+    unsigned int texture_image = param_image[2];
+
+    Shader shaderImage2("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param_image2 = imageLoader(2);
+    unsigned int VAO_image2 = param_image2[0];
+    unsigned int texture_image2 = param_image2[2];
+
+    //背景界面
+    Shader shaderGround("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
+    unsigned int* param = textureLoader();
+    unsigned int VAO = param[0];
+    unsigned int texture1 = param[3];
+
+>>>>>>> Stashed changes
     //Main loop
     while (!glfwWindowShouldClose(window))
     {
@@ -103,20 +128,61 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+<<<<<<< Updated upstream
         //背景界面
         Shader shaderGround("shader/vertexShaderSource.vs", "shader/fragmentShaderSource.fs");
         unsigned int* param = textureLoader();
         unsigned int VAO = param[0];
         unsigned int texture1 = param[3];
+=======
+
+        shaderImage.use();
+        //贴图1
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture_image);
+        glUniform1i(glGetUniformLocation(shaderImage.ID, "texture2"), 1);
+
+        shaderImage2.use();
+        //贴图2
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, texture_image2);
+        glUniform1i(glGetUniformLocation(shaderImage2.ID, "texture2"), 2);
+
+>>>>>>> Stashed changes
         shaderGround.use();
         glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
 
+<<<<<<< Updated upstream
         //贴图
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture1);
         //开始界面
         if (show_window)
         {
+=======
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1); 
+        glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
+        
+
+        //图标
+      
+    
+    /*  Shader shadeIcon1("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource2.fs");
+        unsigned int* param1 = iconLoader1();
+        unsigned int VAO1 = param1[0];
+        unsigned int VAO2 = param1[1];
+        shadeIcon1.use()*/;
+
+       
+
+
+        //开始界面
+        if (show_window)
+        {
+            glDepthFunc(GL_LEQUAL);
+            //背景图片
+>>>>>>> Stashed changes
             shaderGround.use();
             glm::mat4 view = camera.GetViewMatrix();
             glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -130,18 +196,81 @@ int main(int, char**)
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
+<<<<<<< Updated upstream
             ImGui::Begin("Another Window", &show_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Game")) {
+=======
+            static bool no_titlebar = true;
+            static bool no_scrollbar = true;
+            static bool no_menu = true;
+            static bool no_move = true;
+            static bool no_resize = true;
+            static bool no_collapse = false;
+            static bool no_close = true;
+            static bool no_nav = false;
+            static bool no_background = true;
+            static bool no_bring_to_front = false;
+            ImGuiWindowFlags window_flags = 0;
+            if (no_titlebar)        window_flags |= ImGuiWindowFlags_NoTitleBar;
+            if (no_scrollbar)       window_flags |= ImGuiWindowFlags_NoScrollbar;
+            if (!no_menu)           window_flags |= ImGuiWindowFlags_MenuBar;
+            if (no_move)            window_flags |= ImGuiWindowFlags_NoMove;
+            if (no_resize)          window_flags |= ImGuiWindowFlags_NoResize;
+            if (no_collapse)        window_flags |= ImGuiWindowFlags_NoCollapse;
+            if (no_nav)             window_flags |= ImGuiWindowFlags_NoNav;
+            if (no_background)      window_flags |= ImGuiWindowFlags_NoBackground;
+            if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
+
+
+            ImGui::Begin("Another Window", &show_window, window_flags);
+            if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
+            {
+>>>>>>> Stashed changes
                 game_window = true;
                 show_window = false;
+
             }
+<<<<<<< Updated upstream
+=======
+            ImGui::Text("\n\n");
+            if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
+            {
+
+            }
+>>>>>>> Stashed changes
             ImGui::End();
             
+            glDepthFunc(GL_LESS);
         }
 
         //游戏界面
         if (game_window) {
+<<<<<<< Updated upstream
+=======
+
+            //ICON1
+            shaderImage.use();
+            glBindVertexArray(VAO_image);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+            //ICON2
+            shaderImage2.use();
+            glBindVertexArray(VAO_image2);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+           
+
+            /*shadeIcon1.use();
+            glBindVertexArray(VAO1); 
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            glBindVertexArray(VAO2);
+            glDrawArrays(GL_TRIANGLES, 0, 3);*/
+
+            //鼠标点击位置判断
+            glfwSetMouseButtonCallback(window, mouse_button_callback);
+
+>>>>>>> Stashed changes
 
             /*camera.Pitch = -18.9f;
             camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);*/
@@ -252,8 +381,12 @@ int main(int, char**)
 
         glfwSwapBuffers(window);
     }
+<<<<<<< Updated upstream
 
     // Cleanup
+=======
+        // Cleanup
+>>>>>>> Stashed changes
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
