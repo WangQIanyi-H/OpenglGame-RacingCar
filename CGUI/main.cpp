@@ -25,7 +25,8 @@
 #include"Car.h"
 #include "functional.h"
 
-
+#include <irrklang/irrKlang.h>
+using namespace irrklang;
 
 
 int main(int, char**)
@@ -84,7 +85,7 @@ int main(int, char**)
     camera.Pitch = -18.9f;
     camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
 
-    //ÌùÍ¼
+    //------------------------------ÌùÍ¼------------------------------
     Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image = imageLoader(1);
     unsigned int VAO_image = param_image[0];
@@ -95,11 +96,15 @@ int main(int, char**)
     unsigned int VAO_image2 = param_image2[0];
     unsigned int texture_image2 = param_image2[2];
 
-    //±³¾°½çÃæ
+    //-------------------------------±³¾°½çÃæ---------------------------------
     Shader shaderGround("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param = textureLoader();
     unsigned int VAO = param[0];
     unsigned int texture1 = param[3];
+
+    //-----------------------------±³¾°ÒôÀÖ--------------------------------------
+    ISoundEngine* SoundEngine = createIrrKlangDevice();
+    SoundEngine->play2D("asset/music/1.mp3", GL_TRUE);
 
     //Main loop
     while (!glfwWindowShouldClose(window))
@@ -122,18 +127,6 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-
-        shaderImage.use();
-        //ÌùÍ¼1
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture_image);
-        glUniform1i(glGetUniformLocation(shaderImage.ID, "texture2"), 1);
-
-        shaderImage2.use();
-        //ÌùÍ¼2
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, texture_image2);
-        glUniform1i(glGetUniformLocation(shaderImage2.ID, "texture2"), 2);
 
         shaderGround.use();
 
@@ -163,11 +156,11 @@ int main(int, char**)
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-            static bool no_titlebar = true;
-            static bool no_scrollbar = true;
+            static bool no_titlebar = false;
+            static bool no_scrollbar = false;
             static bool no_menu = true;
             static bool no_move = true;
-            static bool no_resize = true;
+            static bool no_resize = false;
             static bool no_collapse = false;
             static bool no_close = true;
             static bool no_nav = false;
@@ -194,6 +187,11 @@ int main(int, char**)
             }
             ImGui::Text("\n\n");
             if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
+            {
+
+            }
+            ImGui::Text("\n\n");
+            if (ImGui::ImageButton((ImTextureID*)texture_image3, ImVec2(271, 87), ImVec2(0, 0), ImVec2(1, 1), 0))
             {
 
             }

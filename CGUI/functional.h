@@ -417,13 +417,6 @@ unsigned int* imageLoader(int index)
         -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
     };
 
-    float vertices2[] = {
-        // positions       //color              // texture coords
-         0.6f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
-         0.6f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
-         0.3f, 0.1f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
-         0.3f, 0.4f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
-    };
 
     unsigned int indices[] = {
         0, 1, 3, // first triangle
@@ -436,16 +429,8 @@ unsigned int* imageLoader(int index)
 
     glBindVertexArray(VAO);
 
-    if (index == 1) {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
-
-    }
-    if (index == 2) {
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
-
-    }
 
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -475,6 +460,9 @@ unsigned int* imageLoader(int index)
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    
+    
+    
     unsigned char* data = 0;
     switch (index) {
     case 1:
@@ -484,7 +472,7 @@ unsigned int* imageLoader(int index)
         data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
         break;
     case 3:
-        ;
+        //data = stbi_load("asset/image/main/begin.png", &width, &height, &nrChannels, 0);
         break;
     case 4:
         ;
