@@ -135,35 +135,23 @@ int main(int, char**)
         glUniform1i(glGetUniformLocation(shaderGround.ID, "texture1"), 0);
         
 
-        //图标
-      
-    
-    /*  Shader shadeIcon1("shader/vertexShaderSource2.vs", "shader/fragmentShaderSource2.fs");
-        unsigned int* param1 = iconLoader1();
-        unsigned int VAO1 = param1[0];
-        unsigned int VAO2 = param1[1];
-        shadeIcon1.use()*/;
-
-       
-
 
         //开始界面
         if (show_window)
         {
-            glDepthFunc(GL_LEQUAL);
             //背景图片
             shaderGround.use();
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-            static bool no_titlebar = false;
-            static bool no_scrollbar = false;
+            static bool no_titlebar = true;
+            static bool no_scrollbar = true;
             static bool no_menu = true;
             static bool no_move = true;
-            static bool no_resize = false;
-            static bool no_collapse = false;
+            static bool no_resize = true;
+            static bool no_collapse = true;
             static bool no_close = true;
-            static bool no_nav = false;
+            static bool no_nav = true;
             static bool no_background = true;
             static bool no_bring_to_front = false;
             ImGuiWindowFlags window_flags = 0;
@@ -191,7 +179,7 @@ int main(int, char**)
 
             }
             
-            glDepthFunc(GL_LESS);
+            ImGui::End();
         }
 
         //游戏界面

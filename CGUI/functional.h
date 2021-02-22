@@ -417,7 +417,6 @@ unsigned int* imageLoader(int index)
         -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
     };
 
-
     unsigned int indices[] = {
         0, 1, 3, // first triangle
         1, 2, 3  // second triangle
@@ -460,9 +459,6 @@ unsigned int* imageLoader(int index)
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-    
-    
-    
     unsigned char* data = 0;
     switch (index) {
     case 1:
@@ -472,7 +468,7 @@ unsigned int* imageLoader(int index)
         data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
         break;
     case 3:
-        //data = stbi_load("asset/image/main/begin.png", &width, &height, &nrChannels, 0);
+        ;
         break;
     case 4:
         ;
