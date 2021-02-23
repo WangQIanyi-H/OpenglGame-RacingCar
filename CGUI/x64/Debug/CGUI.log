@@ -45,8 +45,8 @@ d:\cgcd\code2.23\openglgame-racingcar\cgui\main.cpp(474): warning C4312: “类�
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(396): warning C4172: 返回局部变量或临时变量的地址: param
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(457): warning C4172: 返回局部变量或临时变量的地址: param
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(538): warning C4172: 返回局部变量或临时变量的地址: param
-d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(735): warning C4172: 返回局部变量或临时变量的地址: param
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(611): warning C4172: 返回局部变量或临时变量的地址: param
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(807): warning C4172: 返回局部变量或临时变量的地址: param
+d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(735): warning C4172: 返回局部变量或临时变量的地址: param
 d:\cgcd\code2.23\openglgame-racingcar\cgui\functional.h(883): warning C4172: 返回局部变量或临时变量的地址: param
   CGUI.vcxproj -> D:\CGCD\code2.23\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.exe
