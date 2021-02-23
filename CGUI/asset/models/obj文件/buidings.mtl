@@ -1,0 +1,2030 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:22.02.2021 12:36:53
+
+newmtl _house14Building_u_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house14Building_u_J1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.6615 0.5028
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house14Building_u_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house14Building_u_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+
+newmtl _house14Building_u_C3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6749 0.5621 0.6765
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_1.png
+
+newmtl _house14Building_u_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house14Building_u_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+
+newmtl _house14Building_u_J2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5147 0.4703 0.3255
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_2.png
+
+newmtl _house14Building_u_k5
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6452 0.6618 0.5693
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house14Building_u_B3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6985 0.2619 0.2619
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_2.png
+
+newmtl _house15Building_W_k5
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6452 0.6618 0.5693
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_1.png
+
+newmtl _house15Building_W_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_2.png
+
+newmtl _house15Building_W_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_3.png
+
+newmtl _house15Building_W_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+
+newmtl _house15Building_W_k12
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6471 0.5686 0.3997
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_5.png
+
+newmtl _house15Building_W_H3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6103 0.5462 0.2782
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_6.png
+
+newmtl _house15Building_W_F2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2379 0.5882 0.2983
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_7.png
+
+newmtl _house15Building_W_J2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5147 0.4703 0.3255
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house1Building_A1_prefab_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+
+newmtl _house1Building_A1_prefab_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house1Building_A1_prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+
+newmtl _house1Building_A1_prefab_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_6.png
+
+newmtl _house1Building_A1_prefab_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl _house4Building_M_prefab_k11
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5662 0.5057 0.3081
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_1.png
+
+newmtl _house4Building_M_prefab_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_2.png
+
+newmtl _house4Building_M_prefab_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+
+newmtl _house4Building_M_prefab_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_4.png
+
+newmtl _house4Building_M_prefab_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+
+newmtl _house4Building_M_prefab_K9
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.5020 0.4866
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_6.png
+
+newmtl _house4Building_M_prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+
+newmtl _house16Building_Z_K2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.1176 0.5000 0.3892
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_1.png
+
+newmtl _house16Building_Z_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_2.png
+
+newmtl _house16Building_Z_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_3.png
+
+newmtl _house16Building_Z_K8
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6237 0.6251 0.8235
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_4.png
+
+newmtl _house16Building_Z_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_5.png
+
+newmtl _house16Building_Z_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_6.png
+
+newmtl _house16Building_Z_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_7.png
+
+newmtl _house12Fire_department_I3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7132 0.3042 0.3042
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+
+newmtl _house12Fire_department_K1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2500 0.2500 0.2500
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+
+newmtl _house12Fire_department_K6
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7721 0.7656 0.5393
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house12Fire_department_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house12Fire_department_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_7.png
+
+newmtl _house12Fire_department_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_7.png
+
+newmtl _house12Fire_department_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_4.png
+
+newmtl _house12Fire_department_Fire_department
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Fire_department_Fire_department_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Fire_department_Fire_department_MainTex.png
+
+newmtl _house9Building_p_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+
+newmtl _house9Building_p_J1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.6615 0.5028
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\8_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\8_1.png
+
+newmtl _house9Building_p_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+
+newmtl _house9Building_p_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house9Building_p_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house9Building_p_k11
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5662 0.5057 0.3081
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house9Building_p_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house9Building_p_B1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6838 0.4374 0.4374
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_6.png
+
+newmtl _house6Shop_B_prefab_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house6Shop_B_prefab_H1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 0.8320 0.4706
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\13_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\13_1.png
+
+newmtl _house6Shop_B_prefab_K2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.1176 0.5000 0.3892
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\3_1.png
+
+newmtl _house6Shop_B_prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house6Shop_B_prefab_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+
+newmtl _house6Shop_B_prefab_shop_b
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_B_prefab_shop b_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_B_prefab_shop b_MainTex.png
+
+newmtl _house6Shop_B_prefab_K1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2500 0.2500 0.2500
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+
+newmtl _house6Shop_B_prefab_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_4.png
+
+newmtl _house13Shop_C_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house13Shop_C_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house13Shop_C_G1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.9453 1.0000 0.4338
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+
+newmtl _house13Shop_C_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house13Shop_C_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png
+
+newmtl _house13Shop_C_K1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2500 0.2500 0.2500
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+
+newmtl _house13Shop_C_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+
+newmtl _house13Shop_C_G2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7397 0.7500 0.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_3.png
+
+newmtl _house13Shop_C_grass
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_C_Shop_c_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_C_Shop_c_MainTex.png
+
+newmtl _house13Shop_C_Shop_c
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_C_Shop_c_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Shop_C_Shop_c_MainTex.png
+
+newmtl _house7Build_G_Middle_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_1.png
+
+newmtl _house7Build_G_Middle_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_2.png
+
+newmtl _house7Build_G_Middle_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png
+
+newmtl _house7Build_G_Middle_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_4.png
+
+newmtl _house7Build_G_Middle_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+
+newmtl _house7Build_G_Middle_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_6.png
+
+newmtl _house3Building_I_2_Prefab_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house3Building_I_2_Prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+
+newmtl _house3Building_I_2_Prefab_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house3Building_I_2_Prefab_B1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6838 0.4374 0.4374
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+
+newmtl _house3Building_I_2_Prefab_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house3Building_I_2_Prefab_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+
+newmtl _house3Building_I_2_Prefab_J1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.6615 0.5028
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house3Building_I_2_Prefab_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_9.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_9.png
+
+newmtl _house3Building_I_2_Prefab_G2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7397 0.7500 0.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_3.png
+
+newmtl _house17Building_O_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house17Building_O_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+
+newmtl _house17Building_O_J1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.6615 0.5028
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\11_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\11_1.png
+
+newmtl _house17Building_O_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house17Building_O_B1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6838 0.4374 0.4374
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+
+newmtl _house17Building_O_J2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5147 0.4703 0.3255
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\12_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\12_1.png
+
+newmtl _house17Building_O_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house17Building_O_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house17Building_O_grass
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Building_O_grass_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Building_O_grass_MainTex.png
+
+newmtl _house8Building_B_G1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.9453 1.0000 0.4338
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+
+newmtl _house8Building_B_I3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7132 0.3042 0.3042
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+
+newmtl _house8Building_B_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house8Building_B_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house8Building_B_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house8Building_B_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house8Building_B_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_2.png
+
+newmtl _house8Building_B_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+
+newmtl _house11Supermaket_D1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4926 0.5591 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_1.png
+
+newmtl _house11Supermaket_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_2.png
+
+newmtl _house11Supermaket_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_3.png
+
+newmtl _house11Supermaket_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_4.png
+
+newmtl _house11Supermaket_supermarket
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Supermaket_supermarket_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Supermaket_supermarket_MainTex.png
+
+newmtl _house11Supermaket_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\6_5.png
+
+newmtl _house18building_X_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_5.png
+
+newmtl _house18building_X_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\2_3.png
+
+newmtl _house18building_X_J2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5147 0.4703 0.3255
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_1.png
+
+newmtl _house18building_X_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house18building_X_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house18building_X_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house18building_X_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house18building_X_k5
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6452 0.6618 0.5693
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_2.png
+
+newmtl _house18building_X_B3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6985 0.2619 0.2619
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\7_2.png
+
+newmtl _house18building_X_K4
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4375 0.5000 0.5000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+
+newmtl _house18building_X_K1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2500 0.2500 0.2500
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+
+newmtl _house5Gas_station_A_PREFAB_K6
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7721 0.7656 0.5393
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_1.png
+
+newmtl _house5Gas_station_A_PREFAB_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house5Gas_station_A_PREFAB_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+
+newmtl _house5Gas_station_A_PREFAB_I1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 0.4706 0.4706
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_4.png
+
+newmtl _house5Gas_station_A_PREFAB_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+
+newmtl _house5Gas_station_A_PREFAB_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house5Gas_station_A_PREFAB_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+
+newmtl _house5Gas_station_A_PREFAB_k5
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6452 0.6618 0.5693
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_8.png
+
+newmtl _house5Gas_station_A_PREFAB_gas_pump
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Gas_station_A_PREFAB_gas pump_MainTex.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\Gas_station_A_PREFAB_gas pump_MainTex.png
+
+newmtl _house5Gas_station_A_PREFAB_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_9.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_9.png
+
+newmtl _house10Hospital_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house10Hospital_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house10Hospital_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_3.png
+
+newmtl _house10Hospital_K6
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7721 0.7656 0.5393
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_2.png
+
+newmtl _house10Hospital_K1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.2500 0.2500 0.2500
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\9_2.png
+
+newmtl _house10Hospital_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+
+newmtl _house10Hospital_B1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6838 0.4374 0.4374
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+
+newmtl _house2Building_I_1_prefab_A
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_2.png
+
+newmtl _house2Building_I_1_prefab_A2
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5588 0.5588 0.5588
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_5.png
+
+newmtl _house2Building_I_1_prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_6.png
+
+newmtl _house2Building_I_1_prefab_A1
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6397 0.6397 0.6397
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\1_7.png
+
+newmtl _house2Building_I_1_prefab_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_5.png
+
+newmtl _house2Building_I_1_prefab_K10
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6176 0.6544 0.2935
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\5_8.png
+
+newmtl _house2Building_I_1_prefab_K9
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.7353 0.5020 0.4866
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\10_1.png
+
+newmtl _house2Building_I_1_prefab_K7
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8824 0.8824 0.8824
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png
+	map_Kd D:\CGCD\Ccode\OpenglGame-RacingCar\CGUI\asset\models\buildings\4_3.png

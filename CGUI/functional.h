@@ -334,7 +334,7 @@ GLFWwindow* windowInit() {
     return window;
 }
 
-unsigned int* textureLoader()
+unsigned int* mainBackgroundLoader()
 {
       //背景视图不使用坐标变换
     float vertices[] = {
@@ -384,7 +384,7 @@ unsigned int* textureLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/main/background.png", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("asset/image/main/background_menu.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -395,11 +395,68 @@ unsigned int* textureLoader()
     unsigned int param[] = { VAO, VBO, EBO, texture1};
     return param;
 }
+unsigned int* ruleBackgroundLoader()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
 
 
-unsigned int* imageLoader(int index)
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data =  stbi_load("asset/image/rule/rule.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
+unsigned int* main_icon_Loader(int index)
 {
     float vertices1[] = {
         // positions        //color               // texture coords
@@ -457,18 +514,15 @@ unsigned int* imageLoader(int index)
         data = stbi_load("asset/image/main/begin.png", &width, &height, &nrChannels, 0);
         break;
     case 2:
-        data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/main/rule.png", &width, &height, &nrChannels, 0);
         break;
     case 3:
-        ;
+        data = stbi_load("asset/image/main/set.png", &width, &height, &nrChannels, 0);
         break;
     case 4:
-        ;
+        data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
         break;
-    }
-
-
-    
+    }    
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -483,6 +537,204 @@ unsigned int* imageLoader(int index)
     unsigned int param[] = { VAO, VBO, texture };
     return param;
 }
+unsigned int* rule_icon_Loader(int index)
+{
+    float vertices1[] = {
+        // positions        //color               // texture coords
+         0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+        -0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+        -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
+    };
+
+    unsigned int indices[] = {
+        0, 1, 3, // first triangle
+        1, 2, 3  // second triangle
+    };
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set texture filtering parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load image, create texture and generate mipmaps
+    int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(true);
+    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    unsigned char* data = 0;
+    switch (index) {
+    case 1:
+        data = stbi_load("asset/image/rule/back.png", &width, &height, &nrChannels, 0);
+        break;
+    case 2:
+        data = stbi_load("asset/image/rule/rule.png", &width, &height, &nrChannels, 0);
+        break;
+    }
+    if (data){
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data);
+    unsigned int param[] = { VAO, VBO, texture };
+    return param;
+}
+unsigned int* game_icon_Loader(int index)
+{
+    float vertices1[] = {
+        // positions        //color               // texture coords
+         0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 1.0f, // top right
+         0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 1.0f, 0.0f, // bottom right
+        -0.2f, -0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f, // bottom left
+        -0.2f,  0.2f, 0.0f, 1.0f,1.0f,1.0f, 0.0f, 1.0f  // top left 
+    };
+
+    unsigned int indices[] = {
+        0, 1, 3, // first triangle
+        1, 2, 3  // second triangle
+    };
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set texture filtering parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load image, create texture and generate mipmaps
+    int width, height, nrChannels;
+    //stbi_set_flip_vertically_on_load(true);
+    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    unsigned char* data = 0;
+    switch (index) {
+    case 1:
+        data = stbi_load("asset/image/game/安全带.png", &width, &height, &nrChannels, 0);
+        break;
+    case 2:
+        data = stbi_load("asset/image/game/地图.png", &width, &height, &nrChannels, 0);
+        break;
+    case 3:
+        data = stbi_load("asset/image/game/视角.png", &width, &height, &nrChannels, 0);
+        break;
+    case 4:
+        data = stbi_load("asset/image/game/暂停.png", &width, &height, &nrChannels, 0);
+        break;
+    case 5:
+        data = stbi_load("asset/image/game/油门.png", &width, &height, &nrChannels, 0);
+        break;
+    case 6:
+        data = stbi_load("asset/image/game/刹车.png", &width, &height, &nrChannels, 0);
+        break;
+    case 7:
+        data = stbi_load("asset/image/game/手刹.png", &width, &height, &nrChannels, 0);
+        break;
+    case 8:
+        data = stbi_load("asset/image/game/危险警示灯.png", &width, &height, &nrChannels, 0);
+        break;
+    case 9:
+        data = stbi_load("asset/image/game/方向盘.png", &width, &height, &nrChannels, 0);
+        break;
+    case 10:
+        data = stbi_load("asset/image/game/速度显示框.png", &width, &height, &nrChannels, 0);
+        break;
+    case 11:
+        data = stbi_load("asset/image/game/自动挡p.png", &width, &height, &nrChannels, 0);
+        break;
+    case 12:
+        data = stbi_load("asset/image/game/自动挡r.png", &width, &height, &nrChannels, 0);
+        break;  
+    case 13:
+        data = stbi_load("asset/image/game/自动挡n.png", &width, &height, &nrChannels, 0);
+        break;
+    case 14:
+        data = stbi_load("asset/image/game/自动挡d.png", &width, &height, &nrChannels, 0);
+        break;
+    case 15:
+        data = stbi_load("asset/image/game/左转弯灯.png", &width, &height, &nrChannels, 0);
+        break;
+    case 16:
+        data = stbi_load("asset/image/game/右转弯灯.png", &width, &height, &nrChannels, 0);
+        break;
+    case 17:
+        data = stbi_load("asset/image/game/左后视镜.png", &width, &height, &nrChannels, 0);
+        break;
+    case 18:
+        data = stbi_load("asset/image/game/右后视镜.png", &width, &height, &nrChannels, 0);
+        break;
+   
+    }
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, texture };
+    return param;
+}
+
 unsigned int* groundLoader()
 {
     float vertices[] = {
