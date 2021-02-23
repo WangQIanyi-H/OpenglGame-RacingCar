@@ -82,19 +82,22 @@ int main(int, char**)
     Shader shaderM("shader/lightModel.vs", "shader/lightModel.fs");
 
     std::cout << "读取tree模型中......" << endl;
-    Model treeModel("asset/models/trees/trees.obj");
+    Model treeModel("asset/models/trees/treesnew.obj");
 
     std::cout << "读取street模型中......" << endl;
-    Model streetModel("asset/models/street/street.obj");
+    Model streetModel("asset/models/street/streetnew.obj");
 
     std::cout << "读取buildings模型中......" << endl;
-    Model houseModel("asset/models/buildings/buildings.obj");
+    Model houseModel("asset/models/buildings/buildingsnew.obj");
 
     std::cout << "读取others模型中......" << endl;
-    Model othersModel("asset/models/others/others.obj");
+    Model othersModel("asset/models/others/othersnew.obj");
 
+	std::cout << "读取crosswalk模型中......" << endl;
+	Model crosswalkModel("asset/models/crosswalk/crosswalk.obj");
+	
     std::cout << "读取car模型中......" << endl;
-    Model carModel("asset/models/car1/car1.obj");
+    Model carModel("asset/models/car1/carnew.obj");
 
 
     std::cout << "模型读取完毕" << endl;
@@ -206,7 +209,7 @@ int main(int, char**)
     
     //==========================背景音乐==========================
     ISoundEngine* SoundEngine = createIrrKlangDevice();
-    //SoundEngine->play2D("asset/music/1.mp3", GL_TRUE);
+    SoundEngine->play2D("asset/music/bensound-littleidea.mp3", GL_TRUE);
 
     //Main loop
     while (!glfwWindowShouldClose(window))
@@ -260,6 +263,7 @@ int main(int, char**)
             //主菜单的四个按钮实现跳转
 
             if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)){
+				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
                 show_window = false;
                 set_windoe = false;
                 rule_window = false;
@@ -268,20 +272,25 @@ int main(int, char**)
             ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)){
-                show_window = false;
+				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
+				show_window = false;
                 set_windoe = false;
                 rule_window = true;
                 game_window = false;
             }ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image3, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)) {
-                show_window = false;
+				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
+
+				show_window = false;
                 set_windoe = true;
                 rule_window = false;
                 game_window = false;
             }ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image4, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)) {
+				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
+
             }
             
             ImGui::End();
@@ -498,9 +507,9 @@ int main(int, char**)
             shaderM.use();
             //shaderM
             shaderM.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-            shaderM.setVec3("dirLight.ambient", 0.1f, 0.1f, 0.1f);
-            shaderM.setVec3("dirLight.diffuse", 0.3f, 0.3f, 0.3f);
-            shaderM.setVec3("dirLight.specular", 0.2f, 0.2f, 0.2f);
+			shaderM.setVec3("dirLight.ambient", 0.7f, 0.7f, 0.6f);
+			shaderM.setVec3("dirLight.diffuse", 0.1f, 0.1f, 0.2f);
+			shaderM.setVec3("dirLight.specular", 0.4f, 0.2f, 0.4f);
             shaderM.setVec3("spotLight.position", camera.Position);
             shaderM.setVec3("spotLight.direction", camera.Front);
             shaderM.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
@@ -543,6 +552,12 @@ int main(int, char**)
             shaderM.setMat4("model", model);
             othersModel.Draw(shaderM);
 
+			//crosswalk
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+			model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));	// it's a bit too big for our scene, so scale it down
+			shaderM.setMat4("model", model);
+			crosswalkModel.Draw(shaderM);
 
             //car1
             model = glm::mat4(1.0f);
