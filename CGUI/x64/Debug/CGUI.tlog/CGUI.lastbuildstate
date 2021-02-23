@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.17763.0
-Debug|x64|D:\CGCD\code2.23\OpenglGame-RacingCar\CGUI\|
+=======
+PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.25.28610:TargetPlatformVersion=10.0.18362.0:
+>>>>>>> parent of 9f60ff3 (2.23模型导入)
+Debug|x64|D:\Opengl_shader\OpenglGame-RacingCar\CGUI\|
