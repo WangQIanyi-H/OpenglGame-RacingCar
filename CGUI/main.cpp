@@ -337,14 +337,10 @@ int main(int, char**)
             if (no_background)      window_flags |= ImGuiWindowFlags_NoBackground;
             if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
 
-<<<<<<< Updated upstream
             //Êó±êµã»÷Î»ÖÃÅÐ¶Ï
             glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 
-=======
-            
-            
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
             ImGui::Text("\n");
@@ -476,9 +472,6 @@ int main(int, char**)
             ImGui::End();
 
 
-            //Êó±êµã»÷Î»ÖÃÅÐ¶Ï
-            glfwSetMouseButtonCallback(window, mouse_button_callback);
->>>>>>> Stashed changes
             camera.updateCameraVectors();
 
             // ¼àÌý°´¼ü

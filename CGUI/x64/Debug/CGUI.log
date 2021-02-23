@@ -1,46 +1,20 @@
 ﻿  main.cpp
-<<<<<<< Updated upstream
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\include\learnopengl\shader.h(56,40): warning C4101: “e”: 未引用的局部变量
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\include\learnopengl\filesystem.h(3,1): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp : message : 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\include\learnopengl\mesh.h(84,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(213,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(214,30): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(243,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(244,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(255,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(256,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(260,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(261,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(263,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(264,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(278,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(283,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(170,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\main.cpp(177,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(555): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(396): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(484): warning C4172: 返回局部变量或临时变量的地址: param
-C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\functional.h(631): warning C4172: 返回局部变量或临时变量的地址: param
-LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
-  CGUI.vcxproj -> C:\Users\14696\Desktop\CG\OpenglGameRacingCar\CGUI\x64\Debug\CGUI.exe
-=======
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\include\learnopengl\shader.h(56,40): warning C4101: “e”: 未引用的局部变量
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\include\learnopengl\filesystem.h(3,1): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp : message : 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\include\learnopengl\mesh.h(84,1): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(221,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(222,30): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(251,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(252,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(263,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(264,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(268,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(269,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(271,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(272,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(286,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(291,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(213,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(214,30): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(243,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(244,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(255,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(256,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(260,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(261,19): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(263,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(264,13): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(278,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(283,24): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(262,16): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(262,89): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(262,72): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
@@ -58,28 +32,27 @@ D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(314,90): warning C4244: “�
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(314,73): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(318,74): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(318,57): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(343,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(345,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(347,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(349,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(375,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(384,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(393,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(402,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(411,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(420,65): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(431,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(434,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(437,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(440,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(453,59): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(463,59): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(404): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(465): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(546): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(619): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(743): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(815): warning C4172: 返回局部变量或临时变量的地址: param
-D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(891): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(351,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(377,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(386,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(395,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(404,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(413,58): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(422,65): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(433,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(436,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(439,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(442,63): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(455,59): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\main.cpp(465,59): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(396): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(457): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(538): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(611): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(735): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(807): warning C4172: 返回局部变量或临时变量的地址: param
+D:\Opengl_shader\OpenglGame-RacingCar\CGUI\functional.h(883): warning C4172: 返回局部变量或临时变量的地址: param
   CGUI.vcxproj -> D:\Opengl_shader\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.exe
->>>>>>> Stashed changes
