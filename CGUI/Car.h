@@ -116,14 +116,13 @@ public:
         DelayPosition = HistoryPosition.front();
     }
 
-private:
     // 计算新的 Front 向量
     void updateFront()
     {
         glm::vec3 front;
-        front.x = -sin(glm::radians(getMidValYaw()));
+        front.x = -sin(glm::radians(getYaw()));
         front.y = 0.0f;
-        front.z = -cos(glm::radians(getMidValYaw()));
+        front.z = -cos(glm::radians(getYaw()));
         Front = glm::normalize(front);
     }
 };

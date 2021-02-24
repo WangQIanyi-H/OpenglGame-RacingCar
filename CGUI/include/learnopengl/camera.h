@@ -70,10 +70,9 @@ public:
     }
 
     // 计算视图矩阵
-    glm::mat4 GetViewMatrix(glm::vec3 pos)
+    glm::mat4 GetViewMatrix()
     {
-        return glm::lookAt(pos, pos + Front, Up);
-        //return glm::lookAt(Position, Position + Front, Up);
+        return glm::lookAt(Position, Position + Front, Up);
     }
     // 计算投影矩阵
     glm::mat4 GetProjMatrix(float aspect)
@@ -88,21 +87,21 @@ public:
         if (direction == FORWARD)
         {
             //Position -= glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
-            Position += Front * velocity;
+            //Position += Front * velocity;
         }
         if (direction == BACKWARD)
         {
             //Position += glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
-            Position -= Front * velocity;
+            //Position -= Front * velocity;
         }
         if (direction == LEFT)
         {
-            Yaw += 90.0f * deltaTime;
+            //Yaw += 90.0f * deltaTime;
         }
             //Position -= Right * velocity;
         if (direction == RIGHT)
         {
-            Yaw -= 90.0f * deltaTime;
+            //Yaw -= 90.0f * deltaTime;
         }
             //Position += Right * velocity;
         if (direction == UP)

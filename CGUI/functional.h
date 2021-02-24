@@ -163,7 +163,7 @@ void skyboxInit()
 void renderSkyBox(Shader& shader)
 {
     // viewMatrix 通过构造，移除相机的移动
-    glm::mat4 viewMatrix = glm::mat4(glm::mat3(camera.GetViewMatrix(glm::vec3(car.Position.x, car.Position.y+0.5, car.Position.z))));
+    glm::mat4 viewMatrix = glm::mat4(glm::mat3(camera.GetViewMatrix()));
     // 投影
     glm::mat4 projMatrix = camera.GetProjMatrix((float)SCR_WIDTH / (float)SCR_HEIGHT);
 
@@ -189,10 +189,14 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         camera.ProcessKeyboard(BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)// && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    {
         camera.ProcessKeyboard(LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)// && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    {
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    }
 
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)

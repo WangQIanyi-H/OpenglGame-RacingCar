@@ -99,7 +99,7 @@ int main(int, char**)
 
     std::cout << "模型读取完毕" << endl;
 
-    float x = 0.0f;
+    /*float x = 0.0f;
     float y = 0.5f;
     float z = -2.0f;
     float p = 2.032f;
@@ -112,7 +112,7 @@ int main(int, char**)
     float transz1 = 1.0f;
     float transx2 = 0.1f;
     float transy2 = 0.1f;
-    float transz2 = 0.1f;
+    float transz2 = 0.1f;*/
 
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
@@ -487,7 +487,7 @@ int main(int, char**)
             // 观察空间
             glm::mat4 view = glm::mat4(1.0f);
             //view = camera.GetViewMatrix(glm::vec3(car.Position.x, car.Position.y + 0.5f , car.Position.z));
-            view = camera.GetViewMatrix(camera.Position);
+            view = camera.GetViewMatrix();
 
             //投影
             glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -549,35 +549,23 @@ int main(int, char**)
             shaderM.setMat4("model", model);
             othersModel.Draw(shaderM);
 
-            //car1
-            //model = glm::mat4(1.0f);
-            //model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
-            //model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
-            //model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            //model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
-            //shaderM.setMat4("model", model);
-            //carModel.Draw(shaderM);
-
+            //car
 			model = glm::mat4(1.0f);
 			model = glm::translate(model, car.Position); // translate it down so it's at the center of the scene
 			model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));	// it's a bit too big for our scene, so scale it down
             model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
-            car.UpdateDelayPosition();
-            car.UpdateDelayYaw();
-            //camera.ZoomRecover();
-            //// 处理相机相对于车坐标系下的向量坐标转换为世界坐标系下的向量
-            //float angle = glm::radians(-car.getMidValYaw());
-            //glm::mat4 rotateMatrix(
-            //    cos(angle), 0.0, sin(angle), 0.0,
-            //    0.0, 1.0, 0.0, 0.0,
-            //    -sin(angle), 0.0, cos(angle), 0.0,
-            //    0.0, 0.0, 0.0, 1.0);
-            //glm::vec3 rotatedPosition = glm::vec3(rotateMatrix * glm::vec4(camera.Position, 1.0));
-
-            //camera.FixView(rotatedPosition + car.getMidValPosition(), camera.Yaw + car.getMidValYaw());
-
+            car.updateFront();
+            float r = 1.93f;//sqrtf(powf(camera.Position.x - car.Position.x, 2) + powf(camera.Position.z - car.Position.z, 2));
+            float angle = glm::radians(-car.getYaw()-90.0f);
+            float s = sinf(angle);
+            float c = cosf(angle);
+            camera.Position.x = r * c + car.Position.x;
+            camera.Position.z = r * s + car.Position.z;
+            camera.updateCameraVectors();
+            cout << car.Yaw << " " << s << " " << c << endl;
+            camera.Yaw = car.Yaw + 180.0f;
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
             renderSkyBox(skyboxShader);
