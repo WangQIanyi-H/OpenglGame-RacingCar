@@ -70,9 +70,10 @@ public:
     }
 
     // 计算视图矩阵
-    glm::mat4 GetViewMatrix()
+    glm::mat4 GetViewMatrix(glm::vec3 pos)
     {
-        return glm::lookAt(Position, Position + Front, Up);
+        return glm::lookAt(pos, pos + Front, Up);
+        //return glm::lookAt(Position, Position + Front, Up);
     }
     // 计算投影矩阵
     glm::mat4 GetProjMatrix(float aspect)
@@ -86,17 +87,23 @@ public:
         float velocity = MovementSpeed * deltaTime;
         if (direction == FORWARD)
         {
-            Position += glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
-            //Position += Front * velocity;
+            //Position -= glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
+            Position += Front * velocity;
         }
         if (direction == BACKWARD)
         {
-            Position -= glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
-            //Position -= Front * velocity;
+            //Position += glm::vec3(0.0f, 0.0f, -1.0f) * velocity;
+            Position -= Front * velocity;
         }
         if (direction == LEFT)
+        {
+            Yaw += 90.0f * deltaTime;
+        }
             //Position -= Right * velocity;
         if (direction == RIGHT)
+        {
+            Yaw -= 90.0f * deltaTime;
+        }
             //Position += Right * velocity;
         if (direction == UP)
             Position += WorldUp * velocity;
@@ -173,6 +180,7 @@ public:
         front.y = sin(glm::radians(Pitch));
         front.z = -cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         Front = glm::normalize(front);
+        Front.y = 0.0f;
         // 重新计算 Right 和 Up 向量
         Right = glm::normalize(glm::cross(Front, WorldUp));
         Up = glm::normalize(glm::cross(Right, Front));

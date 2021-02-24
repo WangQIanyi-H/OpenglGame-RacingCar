@@ -86,9 +86,9 @@ public:
     void ProcessKeyboard(Direction direction, float deltaTime)
     {
         if (direction == CAR_FORWARD)
-            Position += Front * MovementSpeed * deltaTime;
-        if (direction == CAR_BACKWARD)
             Position -= Front * MovementSpeed * deltaTime;
+        if (direction == CAR_BACKWARD)
+            Position += Front * MovementSpeed * deltaTime;
         if (direction == CAR_LEFT)
             Yaw += TurningSpeed * deltaTime;
         if (direction == CAR_RIGHT)

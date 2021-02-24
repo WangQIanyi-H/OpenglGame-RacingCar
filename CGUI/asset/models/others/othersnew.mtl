@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:23.02.2021 19:55:40
+# 创建的文件:24.02.2021 15:48:07
 
 newmtl _traffic_light5TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY
 	Ns 43.2193
@@ -104,17 +104,3 @@ newmtl _fencefence_2_gray
 	Ke 0.0000 0.0000 0.0000
 	map_Ka maps\fence_1.png
 	map_Kd maps\fence_1.png
-
-newmtl _busstoproad_sign_bus_stop_road_signs
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 1.0000 1.0000 1.0000
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\road_sign_bus_stop_road_signs_MainTex.png
-	map_Kd maps\road_sign_bus_stop_road_signs_MainTex.png

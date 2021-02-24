@@ -53,7 +53,7 @@ float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
 //car
-glm::vec3 carPos = glm::vec3(4.5f, 0.2f, 0.0f);
+glm::vec3 carPos = glm::vec3(0.0f, 0.0f, 0.0f);
 Car car(carPos);
 
 //灯光
@@ -163,7 +163,7 @@ void skyboxInit()
 void renderSkyBox(Shader& shader)
 {
     // viewMatrix 通过构造，移除相机的移动
-    glm::mat4 viewMatrix = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+    glm::mat4 viewMatrix = glm::mat4(glm::mat3(camera.GetViewMatrix(glm::vec3(car.Position.x, car.Position.y+0.5, car.Position.z))));
     // 投影
     glm::mat4 projMatrix = camera.GetProjMatrix((float)SCR_WIDTH / (float)SCR_HEIGHT);
 
@@ -263,7 +263,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    //camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 
