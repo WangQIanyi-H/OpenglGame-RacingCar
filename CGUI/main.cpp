@@ -94,7 +94,7 @@ int main(int, char**)
     Model othersModel("asset/models/others/othersnew.obj");
 	
     std::cout << "读取car模型中......" << endl;
-    Model carModel("asset/models/car1/carnew.obj");
+    Model carModel("asset/models/car1/newcar.obj");
 
 
     std::cout << "模型读取完毕" << endl;
@@ -550,13 +550,19 @@ int main(int, char**)
             othersModel.Draw(shaderM);
 
             //car1
-            model = glm::mat4(1.0f);
-            model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
-            model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
-            model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
-            shaderM.setMat4("model", model);
-            carModel.Draw(shaderM);
+            //model = glm::mat4(1.0f);
+            //model = glm::translate(model, car.getPosition()); // translate it down so it's at the center of the scene
+            //model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));	// it's a bit too big for our scene, so scale it down
+            //model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            //model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
+            //shaderM.setMat4("model", model);
+            //carModel.Draw(shaderM);
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+			model = glm::scale(model, glm::vec3(0.001f, 0.0015f, 0.001f));	// it's a bit too big for our scene, so scale it down
+			shaderM.setMat4("model", model);
+			carModel.Draw(shaderM);
+
 
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
