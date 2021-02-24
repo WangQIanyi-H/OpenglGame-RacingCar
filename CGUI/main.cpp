@@ -186,7 +186,46 @@ int main(int, char**)
     //右转弯灯
     unsigned int* param_icon_game_16 = game_icon_Loader(16);
     unsigned int texture_game_icon16 = param_icon_game_16[2];
-    
+
+    //--------图标--------
+    //变更车道
+    unsigned int* tips_1 = tips_Loader(1);
+    unsigned int texture_tips_1 = tips_1[2];
+    //超车
+    unsigned int* tips_2 = tips_Loader(2);
+    unsigned int texture_tips_2 = tips_2[2];
+    //掉头
+    unsigned int* tips_3 = tips_Loader(3);
+    unsigned int texture_tips_3 = tips_3[2];
+    //公交车站
+    unsigned int* tips_4 = tips_Loader(4);
+    unsigned int texture_tips_4 = tips_4[2];
+    //会车
+    unsigned int* tips_5 = tips_Loader(5);
+    unsigned int texture_tips_5 = tips_5[2];
+    //靠边停车
+    unsigned int* tips_6 = tips_Loader(6);
+    unsigned int texture_tips_6 = tips_6[2];
+    //路口直行
+    unsigned int* tips_7 = tips_Loader(7);
+    unsigned int texture_tips_7 = tips_7[2];
+    //上车准备
+    unsigned int* tips_8 = tips_Loader(8);
+    unsigned int texture_tips_8 = tips_8[2];
+    //学校
+    unsigned int* tips_9 = tips_Loader(9);
+    unsigned int texture_tips_9 = tips_9[2];
+    //右转弯
+    unsigned int* tips_10 = tips_Loader(10);
+    unsigned int texture_tips_10 = tips_10[2];
+    //直线行驶
+    unsigned int* tips_11 = tips_Loader(11);
+    unsigned int texture_tips_11 = tips_11[2];
+    //左转弯
+    unsigned int* tips_12 = tips_Loader(12);
+    unsigned int texture_tips_12 = tips_12[2];
+
+
     //==========================背景音乐==========================
     ISoundEngine* SoundEngine = createIrrKlangDevice();
     //SoundEngine->play2D("asset/music/bensound-littleidea.mp3", GL_TRUE);
@@ -328,8 +367,6 @@ int main(int, char**)
 
             //鼠标点击位置判断
             glfwSetMouseButtonCallback(window, mouse_button_callback);
-            
-            
 
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
@@ -552,6 +589,9 @@ int main(int, char**)
             camera.Position.z = r * s + car.Position.z;
             camera.updateCameraVectors();
             camera.Yaw = car.Yaw + 180.0f;
+
+
+            //车的位置判断，相应地弹出提示
 
 
             glDepthFunc(GL_LEQUAL);
