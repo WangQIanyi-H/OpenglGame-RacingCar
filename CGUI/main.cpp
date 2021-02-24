@@ -104,7 +104,7 @@ int main(int, char**)
 
     camera.Pitch = 2.0f;
     camera.Yaw = 180.0f;
-    camera.Position = glm::vec3(0.0f, 0.5f, -1.93f);
+    camera.Position = glm::vec3(0.0f, 0.6f, -1.93f);
 
     //==========================主菜单页面==========================
     //--------按钮--------

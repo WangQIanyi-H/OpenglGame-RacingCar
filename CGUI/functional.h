@@ -107,13 +107,29 @@ const float skyboxVertices[] = {
     1.0f, -1.0f, 1.0f
 };
 // 天空盒的面数据
+//const vector<std::string> faces{
+//    "asset/textures/skybox/right.tga",
+//    "asset/textures/skybox/left.tga",
+//    "asset/textures/skybox/top.tga",
+//    "asset/textures/skybox/bottom.tga",
+//    "asset/textures/skybox/front.tga",
+//    "asset/textures/skybox/back.tga"
+//};
+//const vector<std::string> faces{
+//    "asset/textures/5/rainbow_rt.png",
+//    "asset/textures/5/rainbow_lf.png",
+//    "asset/textures/5/rainbow_up.png",
+//    "asset/textures/5/rainbow_dn.png",
+//    "asset/textures/5/rainbow_ft.png",
+//    "asset/textures/5/rainbow_bk.png"
+//};
 const vector<std::string> faces{
-    "asset/textures/skybox/right.tga",
-    "asset/textures/skybox/left.tga",
-    "asset/textures/skybox/top.tga",
-    "asset/textures/skybox/bottom.tga",
-    "asset/textures/skybox/front.tga",
-    "asset/textures/skybox/back.tga"
+    "asset/textures/14/right.tga",
+    "asset/textures/14/left.tga",
+    "asset/textures/14/top.tga",
+    "asset/textures/14/bottom.tga",
+    "asset/textures/14/front.tga",
+    "asset/textures/14/back.tga"
 };
 
 
