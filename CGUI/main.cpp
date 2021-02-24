@@ -99,21 +99,6 @@ int main(int, char**)
 
     std::cout << "模型读取完毕" << endl;
 
-    /*float x = 0.0f;
-    float y = 0.5f;
-    float z = -2.0f;
-    float p = 2.032f;
-    float yaw = 0.0f;
-    float transx = 0.1f;
-    float transy = 0.1f;
-    float transz = 0.1f;
-    float transx1 = 1.0f;
-    float transy1 = 1.0f;
-    float transz1 = 1.0f;
-    float transx2 = 0.1f;
-    float transy2 = 0.1f;
-    float transz2 = 0.1f;*/
-
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
@@ -556,16 +541,19 @@ int main(int, char**)
             model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
+
+            //摄像机跟随
             car.updateFront();
-            float r = 1.93f;//sqrtf(powf(camera.Position.x - car.Position.x, 2) + powf(camera.Position.z - car.Position.z, 2));
+            float r = 1.93f;
             float angle = glm::radians(-car.getYaw()-90.0f);
             float s = sinf(angle);
             float c = cosf(angle);
             camera.Position.x = r * c + car.Position.x;
             camera.Position.z = r * s + car.Position.z;
             camera.updateCameraVectors();
-            cout << car.Yaw << " " << s << " " << c << endl;
             camera.Yaw = car.Yaw + 180.0f;
+
+
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
             renderSkyBox(skyboxShader);
