@@ -1,12 +1,4 @@
-﻿  Car.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  main.cpp
+﻿  main.cpp
 d:\opengl_shader\openglgame-racingcar\cgui\include\learnopengl\shader.h(56): warning C4101: “e”: 未引用的局部变量
 d:\opengl_shader\openglgame-racingcar\cgui\include\learnopengl\filesystem.h(3): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
   d:\opengl_shader\openglgame-racingcar\cgui\main.cpp: note: 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
@@ -50,15 +42,12 @@ d:\opengl_shader\openglgame-racingcar\cgui\main.cpp(445): warning C4312: “类�
 d:\opengl_shader\openglgame-racingcar\cgui\main.cpp(448): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 d:\opengl_shader\openglgame-racingcar\cgui\main.cpp(461): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
 d:\opengl_shader\openglgame-racingcar\cgui\main.cpp(471): warning C4312: “类型强制转换”: 从“unsigned int”转换到更大的“ImTextureID *”
-  stb_image.cpp
-  正在生成代码...
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(396): warning C4172: 返回局部变量或临时变量的地址: param
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(457): warning C4172: 返回局部变量或临时变量的地址: param
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(538): warning C4172: 返回局部变量或临时变量的地址: param
-d:\opengl_shader\openglgame-racingcar\cgui\functional.h(807): warning C4172: 返回局部变量或临时变量的地址: param
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(611): warning C4172: 返回局部变量或临时变量的地址: param
+d:\opengl_shader\openglgame-racingcar\cgui\functional.h(807): warning C4172: 返回局部变量或临时变量的地址: param
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(735): warning C4172: 返回局部变量或临时变量的地址: param
 d:\opengl_shader\openglgame-racingcar\cgui\functional.h(883): warning C4172: 返回局部变量或临时变量的地址: param
-  glad.c
 LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   CGUI.vcxproj -> D:\Opengl_shader\OpenglGame-RacingCar\CGUI\x64\Debug\CGUI.exe
