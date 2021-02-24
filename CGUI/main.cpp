@@ -99,6 +99,11 @@ int main(int, char**)
 
     std::cout << "模型读取完毕" << endl;
 
+    float x = 0.0f;
+    float y = 0.5f;
+    float z = -2.0f;
+    float p = 2.032f;
+    float yaw = 0.0f;
     float transx = 0.1f;
     float transy = 0.1f;
     float transz = 0.1f;
@@ -112,29 +117,22 @@ int main(int, char**)
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
-    camera.Pitch = -18.9f;
-    camera.Position = glm::vec3(5.2f, 0.7f, 0.33f);
+    camera.Pitch = 2.0f;
+    camera.Yaw = 180.0f;
+    camera.Position = glm::vec3(0.0f, 0.5f, -1.93f);
 
     //==========================主菜单页面==========================
     //--------按钮--------
-   // Shader shaderImage("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image = main_icon_Loader(1);
-    //unsigned int VAO_image = param_image[0];
     unsigned int texture_image = param_image[2];
 
-   // Shader shaderImage2("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image2 = main_icon_Loader(2);
-   // unsigned int VAO_image2 = param_image2[0];
     unsigned int texture_image2 = param_image2[2];
 
-   // Shader shaderImage3("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image3 = main_icon_Loader(3);
-    //unsigned int VAO_image3 = param_image3[0];
     unsigned int texture_image3 = param_image3[2];
 
-    //Shader shaderImage4("shader/vertexShaderSource1.vs", "shader/fragmentShaderSource1.fs");
     unsigned int* param_image4 = main_icon_Loader(4);
-    //unsigned int VAO_image4 = param_image4[0];
     unsigned int texture_image4 = param_image4[2];
 
     //---------背景--------
@@ -206,7 +204,7 @@ int main(int, char**)
     
     //==========================背景音乐==========================
     ISoundEngine* SoundEngine = createIrrKlangDevice();
-    SoundEngine->play2D("asset/music/bensound-littleidea.mp3", GL_TRUE);
+    //SoundEngine->play2D("asset/music/bensound-littleidea.mp3", GL_TRUE);
 
     //Main loop
     while (!glfwWindowShouldClose(window))
@@ -345,7 +343,8 @@ int main(int, char**)
 
             //鼠标点击位置判断
             glfwSetMouseButtonCallback(window, mouse_button_callback);
-
+            
+            
 
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
@@ -487,7 +486,8 @@ int main(int, char**)
 
             // 观察空间
             glm::mat4 view = glm::mat4(1.0f);
-            view = camera.GetViewMatrix();
+            //view = camera.GetViewMatrix(glm::vec3(car.Position.x, car.Position.y + 0.5f , car.Position.z));
+            view = camera.GetViewMatrix(camera.Position);
 
             //投影
             glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -557,12 +557,26 @@ int main(int, char**)
             //model = glm::rotate(model, glm::radians(car.getYaw() - car.getDelayYaw() / 2), WORLD_UP);
             //shaderM.setMat4("model", model);
             //carModel.Draw(shaderM);
+
 			model = glm::mat4(1.0f);
-			model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-			model = glm::scale(model, glm::vec3(0.001f, 0.0015f, 0.001f));	// it's a bit too big for our scene, so scale it down
+			model = glm::translate(model, car.Position); // translate it down so it's at the center of the scene
+			model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));	// it's a bit too big for our scene, so scale it down
+            model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
+            car.UpdateDelayPosition();
+            car.UpdateDelayYaw();
+            //camera.ZoomRecover();
+            //// 处理相机相对于车坐标系下的向量坐标转换为世界坐标系下的向量
+            //float angle = glm::radians(-car.getMidValYaw());
+            //glm::mat4 rotateMatrix(
+            //    cos(angle), 0.0, sin(angle), 0.0,
+            //    0.0, 1.0, 0.0, 0.0,
+            //    -sin(angle), 0.0, cos(angle), 0.0,
+            //    0.0, 0.0, 0.0, 1.0);
+            //glm::vec3 rotatedPosition = glm::vec3(rotateMatrix * glm::vec4(camera.Position, 1.0));
 
+            //camera.FixView(rotatedPosition + car.getMidValPosition(), camera.Yaw + car.getMidValYaw());
 
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
