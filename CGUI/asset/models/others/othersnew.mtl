@@ -1,81 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:24.02.2021 15:48:07
-
-newmtl _traffic_light5TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 1.0000 1.0000 1.0000
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY_MainTex.png
-	map_Kd maps\TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY_MainTex.png
-
-newmtl _stoproad_sign_stop_1_road_signs
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 1.0000 1.0000 1.0000
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\road_sign_stop_1_road_signs_MainTex.png
-	map_Kd maps\road_sign_stop_1_road_signs_MainTex.png
-
-newmtl wire_115115115
-	Ns 32
-	d 1
-	Tr 0
-	Tf 1 1 1
-	illum 2
-	Ka 0.4510 0.4510 0.4510
-	Kd 0.4510 0.4510 0.4510
-	Ks 0.3500 0.3500 0.3500
-
-newmtl _schoolroad_sign_child_stop_road_signs
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 1.0000 1.0000 1.0000
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\road_sign_child_stop_road_signs_MainTex.png
-	map_Kd maps\road_sign_child_stop_road_signs_MainTex.png
-
-newmtl _lamp2street_lamp_1_prefab_A3
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 0.5693 0.6465 0.6618
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
-
-newmtl _lamp2street_lamp_1_prefab_Windows_no_light
-	Ns 43.2193
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.2000 0.2000 0.2000
-	Kd 0.6481 0.7466 0.8162
-	Ks 0.2000 0.2000 0.2000
-	Ke 0.0000 0.0000 0.0000
+# 创建的文件:25.02.2021 16:31:44
 
 newmtl _fencefence_2_brown
 	Ns 43.2193
@@ -104,3 +28,153 @@ newmtl _fencefence_2_gray
 	Ke 0.0000 0.0000 0.0000
 	map_Ka maps\fence_1.png
 	map_Kd maps\fence_1.png
+
+newmtl _lamp2street_lamp_1_prefab_A3
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.5693 0.6465 0.6618
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl _lamp2street_lamp_1_prefab_Windows_no_light
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.6481 0.7466 0.8162
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl _traffic_light5TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY_MainTex.png
+	map_Kd maps\TB_CITY_Prop_TrafficLight_4Set_Black_Tarbo_CITY_MainTex.png
+
+newmtl _school04___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\black.png
+	map_Kd maps\black.png
+
+newmtl _school03___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9529 0.9765 0.9804
+	Kd 0.9529 0.9765 0.9804
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\white.png
+	map_Kd maps\white.png
+
+newmtl _school06___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\red.png
+	map_Kd maps\red.png
+
+newmtl _school07___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\grey2.png
+	map_Kd maps\grey2.png
+
+newmtl _bus04___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\black.png
+	map_Kd maps\black.png
+
+newmtl _bus02___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2627 0.6235 0.7569
+	Kd 0.2627 0.6235 0.7569
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\blue.png
+	map_Kd maps\blue.png
+
+newmtl _bus03___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9529 0.9765 0.9804
+	Kd 0.9529 0.9765 0.9804
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\white.png
+	map_Kd maps\white.png
+
+newmtl _bus05___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\grey.png
+	map_Kd maps\grey.png

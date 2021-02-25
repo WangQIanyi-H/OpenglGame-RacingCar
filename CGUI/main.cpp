@@ -344,7 +344,8 @@ int main(int, char**)
 
             ImGui::Begin("Rule Window_1", &rule_window, window_flags);
             if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
-                std::cout << "规则";
+				SoundEngine->play2D("asset/music/3.wav", GL_FALSE);
+                std::cout << "规则（返回）";
                 show_window = true;
                 set_windoe = false;
                 rule_window = false;
@@ -380,20 +381,24 @@ int main(int, char**)
 
             ImGui::Begin("game Window1_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("安全带", ImVec2(50, 50))) {
+				SoundEngine->play2D("asset/music/4.wav", GL_FALSE);
                 std::cout << "安全带";
             };
             ImGui::Text("\n");
 
             if (ImGui::InvisibleButton("地图", ImVec2(50, 50))) {
+				SoundEngine->play2D("asset/music/4.wav", GL_FALSE);
                 std::cout << "地图";
             };
             ImGui::Text("\n");
 
             if (ImGui::InvisibleButton("视角", ImVec2(50, 50))) {
+				SoundEngine->play2D("asset/music/4.wav", GL_FALSE);
                 std::cout << "视角";
             };
             ImGui::Text("\n");
             if (ImGui::InvisibleButton("暂停", ImVec2(50, 50))) {
+				SoundEngine->play2D("asset/music/4.wav", GL_FALSE);
                 std::cout << "暂停";
             };
             ImGui::Text("\n");
@@ -405,6 +410,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window2_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("油门", ImVec2(100, 150))) {
+				SoundEngine->play2D("asset/music/8.wav", GL_FALSE);
                 std::cout << "油门";
             };
             ImGui::End();
@@ -414,6 +420,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window3_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("刹车", ImVec2(120, 90))) {
+				SoundEngine->play2D("asset/music/7.wav", GL_FALSE);
                 std::cout << "刹车";
             };
             ImGui::End();
@@ -423,6 +430,8 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window4_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("手刹", ImVec2(190, 90))) {
+				//
+				//
                 std::cout << "手刹";
             };
             ImGui::End();
@@ -432,6 +441,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window5_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("危险警示灯", ImVec2(70, 70))) {
+				SoundEngine->play2D("asset/music/4.mp3", GL_FALSE);
                 std::cout << "危险警示灯";
             };
             ImGui::End();
@@ -473,6 +483,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window9_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("自动挡", ImVec2(120, 180))) {
+				SoundEngine->play2D("asset/music/5.mp3", GL_FALSE);
                 std::cout << "自动挡";
                 automatic++;
             };
@@ -483,6 +494,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window10_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("左转弯灯", ImVec2(60, 36))) {
+				SoundEngine->play2D("asset/music/6.wav", GL_FALSE);
                 std::cout << "左转弯灯";
                 automatic++;
             };
@@ -493,6 +505,7 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window11_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("右转弯灯", ImVec2(60, 36))) {
+				SoundEngine->play2D("asset/music/6.wav", GL_FALSE);
                 std::cout << "右转弯灯";
                 automatic++;
             };

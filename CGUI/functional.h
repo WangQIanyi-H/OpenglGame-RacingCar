@@ -123,13 +123,14 @@ const float skyboxVertices[] = {
 //    "asset/textures/5/rainbow_ft.png",
 //    "asset/textures/5/rainbow_bk.png"
 //};
-const vector<std::string> faces{
-    "asset/textures/14/right.tga",
-    "asset/textures/14/left.tga",
-    "asset/textures/14/top.tga",
-    "asset/textures/14/bottom.tga",
-    "asset/textures/14/front.tga",
-    "asset/textures/14/back.tga"
+const vector<std::string> faces
+{
+    "asset/textures/13/right.tga",
+    "asset/textures/13/left.tga",
+    "asset/textures/13/top.tga",
+    "asset/textures/13/bottom.tga",
+    "asset/textures/13/front.tga",
+    "asset/textures/13/back.tga"
 };
 
 
@@ -851,7 +852,7 @@ unsigned int* tips_Loader(int index)
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
+        //glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
     {
