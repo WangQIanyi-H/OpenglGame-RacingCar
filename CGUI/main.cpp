@@ -33,6 +33,18 @@ int menu_icon_height = 70;
 int menu_icon_width = 200;
 //自动挡挡位
 int automatic = 1;
+//默认安全带是断开的
+bool safety_belt = false;
+//默认车没有在行驶
+bool isMoving = false;
+
+bool parkBrake = false;
+
+
+
+
+
+
 //imgui窗口参数预设
 //static bool no_titlebar = false;
 //static bool no_scrollbar = false;
@@ -55,6 +67,7 @@ static bool no_nav = true;
 static bool no_background = true;
 static bool no_bring_to_front = false;
 ImGuiWindowFlags window_flags = 0;
+
 
 
 int main(int, char**)
@@ -102,7 +115,7 @@ int main(int, char**)
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
-    camera.Pitch = 2.0f;
+    camera.Pitch = 5.0f;
     camera.Yaw = 180.0f;
     camera.Position = glm::vec3(0.0f, 0.6f, -1.93f);
 
@@ -186,6 +199,12 @@ int main(int, char**)
     //右转弯灯
     unsigned int* param_icon_game_16 = game_icon_Loader(16);
     unsigned int texture_game_icon16 = param_icon_game_16[2];
+    //安全带1
+    unsigned int* param_icon_game_17 = game_icon_Loader(17);
+    unsigned int texture_game_icon17 = param_icon_game_17[2];
+    //手刹1
+    unsigned int* param_icon_game_18 = game_icon_Loader(18);
+    unsigned int texture_game_icon18 = param_icon_game_18[2];
 
     //--------图标--------
     //变更车道
@@ -369,18 +388,38 @@ int main(int, char**)
             glfwSetMouseButtonCallback(window, mouse_button_callback);
 
             ImGui::Begin("game Window1", &game_window, window_flags);
-            ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
+            ImGui::Image((ImTextureID*)texture_game_icon4, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//暂停
             ImGui::Text("\n");
-            ImGui::Image((ImTextureID*)texture_game_icon2, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
+            if (!safety_belt) {
+                ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//安全带
+            }
+            else {
+                ImGui::Image((ImTextureID*)texture_game_icon17, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//安全带1
+            }
             ImGui::Text("\n");
-            ImGui::Image((ImTextureID*)texture_game_icon3, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1)); 
+            ImGui::Image((ImTextureID*)texture_game_icon2, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//地图
             ImGui::Text("\n");
-            ImGui::Image((ImTextureID*)texture_game_icon4, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));
+            ImGui::Image((ImTextureID*)texture_game_icon3, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1)); //视角
+            ImGui::Text("\n");
             ImGui::End();
 
+
+
             ImGui::Begin("game Window1_1", &game_window, window_flags);
+            if (ImGui::InvisibleButton("暂停", ImVec2(50, 50))) {
+                std::cout << "暂停";
+            };
             if (ImGui::InvisibleButton("安全带", ImVec2(50, 50))) {
-                std::cout << "安全带";
+                safety_belt = !safety_belt;
+                if (safety_belt) {
+                    ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
+                     std::cout << "安全带已经系好，可以出发啦！";
+                }
+                else {
+                    ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
+                    std::cout << "请系好安全带！";
+
+                }
             };
             ImGui::Text("\n");
 
@@ -393,9 +432,7 @@ int main(int, char**)
                 std::cout << "视角";
             };
             ImGui::Text("\n");
-            if (ImGui::InvisibleButton("暂停", ImVec2(50, 50))) {
-                std::cout << "暂停";
-            };
+            
             ImGui::Text("\n");
             ImGui::End();
 
@@ -419,11 +456,24 @@ int main(int, char**)
             ImGui::End();
             //手刹
             ImGui::Begin("game Window4", &game_window, window_flags);
-            ImGui::Image((ImTextureID*)texture_game_icon7, ImVec2(190, 90), ImVec2(0, 0), ImVec2(1, 1));
+            if (parkBrake) {
+                ImGui::Image((ImTextureID*)texture_game_icon7, ImVec2(190, 90), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            else {
+                ImGui::Image((ImTextureID*)texture_game_icon18, ImVec2(190, 90), ImVec2(0, 0), ImVec2(1, 1));
+            }
             ImGui::End();
             ImGui::Begin("game Window4_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("手刹", ImVec2(190, 90))) {
-                std::cout << "手刹";
+                parkBrake = !parkBrake;
+                if (parkBrake) {
+                    ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
+                    std::cout << "手刹已刹好！";
+                }
+                else {
+                    ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
+                    std::cout << "未拉上手刹！";
+                }
             };
             ImGui::End();
             //危险警示灯
@@ -578,7 +628,7 @@ int main(int, char**)
             model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
-
+            cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
             //摄像机跟随
             car.updateFront();
             float r = 1.93f;
@@ -589,10 +639,13 @@ int main(int, char**)
             camera.Position.z = r * s + car.Position.z;
             camera.updateCameraVectors();
             camera.Yaw = car.Yaw + 180.0f;
-
+           
 
             //车的位置判断，相应地弹出提示
 
+            if (isMoving) {
+                
+            }
 
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();

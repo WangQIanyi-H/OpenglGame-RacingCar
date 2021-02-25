@@ -214,7 +214,6 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
 
-
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -733,10 +732,10 @@ unsigned int* game_icon_Loader(int index)
         data = stbi_load("asset/image/game/右转弯灯.png", &width, &height, &nrChannels, 0);
         break;
     case 17:
-        data = stbi_load("asset/image/game/左后视镜.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/game/安全带1.png", &width, &height, &nrChannels, 0);
         break;
     case 18:
-        data = stbi_load("asset/image/game/右后视镜.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/game/手刹1.png", &width, &height, &nrChannels, 0);
         break;
    
     }
