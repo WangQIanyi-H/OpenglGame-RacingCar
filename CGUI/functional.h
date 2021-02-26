@@ -16,21 +16,103 @@ struct point_f {
     }
 };
 
+
+//===============记录每个具体操作=================
+
+bool isMoving = false;            //--------默认车没有在行驶
+int automatic = 1;                //--------自动挡挡位
+bool safety_belt = false;         //--------安全带
+bool brake = false;               //--------刹车
+bool parkBrake = false;           //--------手刹
+bool leftLight = false;           //--------左转向灯
+bool rightLight = false;          //--------右转向灯
+
+//===============记录每个环节的完成与否==============
+
+bool CrossingStraight = false;    //路口直行
+bool GoStraight = false;          //直线行驶
+bool GiveWay = false;             //会车
+bool TurnLeft = false;            //左转弯
+bool PassingSchool = false;       //路过学校
+bool UTurn = false;               //掉头
+bool Overtake = false;            //超车
+bool MoveLane = false;            //变更车道
+bool PassingBusStop = false;      //路过公交车站
+bool PullOver = false;            //靠边停车
+
+
+
 //全局变量——鼠标按下时的位置
 point_f mouse_pos;
-//优化——用许多个points[4]来表示矩形区域（也就是图标区域）
-point_f ICON_RECT_1[4] = {
-    point_f(0.2f, 0.2f),
-    point_f(0.2f, -0.2f),
-    point_f(-0.2f, -0.2f),
-    point_f(-0.2f, 0.2f),
+point_f car_pos;
+//优化——用许多个points[4]来表示10个矩形区域
+point_f Area1_1[4] = {
+    point_f(-0.6f, 6.2f),
+    point_f(-0.6f, 1.2f),
+    point_f(1.2f, 1.2f),
+    point_f(1.2f, 6.2f),
 };
-point_f ICON_RECT_2[4] = {
-    point_f(0.6f, 0.4f),
-    point_f(0.6f, 0.1f),
-    point_f(0.3f, 0.1f),
-    point_f(0.3f, 0.4f),
+point_f Area1_2[4] = {
+    point_f(-0.6f, 22.0f),
+    point_f(-0.6f, 18.0f),
+    point_f(1.2f, 18.0f),
+    point_f(1.2f, 22.0f),
 };
+point_f Area1_3[4] = {
+    point_f(-0.6f, 34.0f),
+    point_f(-0.6f, 30.0f),
+    point_f(1.2f, 30.0f),
+    point_f(1.2f, 34.0f),
+};
+point_f Area1_4[4] = {
+    point_f(-0.6f, 56.0f),
+    point_f(-0.6f, 48.0f),
+    point_f(1.2f, 48.0f),
+    point_f(1.2f, 56.0f),
+};
+point_f Area2_1[4] = {
+    point_f(6.4f, 66.9f),
+    point_f(6.4f, 65.1f),
+    point_f(9.0f, 65.1f),
+    point_f(9.0f, 66.9f),
+};
+point_f Area2_2[4] = {
+    point_f(19.0f, 66.9f),
+    point_f(19.0f, 65.1f),
+    point_f(25.0f, 65.1f),
+    point_f(25.0f, 66.9f),
+};
+point_f Area2_3[4] = {
+    point_f(19.0f, 64.5f),
+    point_f(19.0f, 62.7f),
+    point_f(26.0f, 62.7f),
+    point_f(26.0f, 64.5f),
+};
+point_f Area2_4[4] = {
+    point_f(15.0f, 64.5f),
+    point_f(15.0f, 62.7f),
+    point_f(10.0f, 62.7f),
+    point_f(10.0f, 64.5f),
+};
+point_f Area3_1[4] = {
+    point_f(1.8f, 56.0f),
+    point_f(1.8f, 46.0f),
+    point_f(3.6f, 46.0f),
+    point_f(3.6f, 56.0f),
+};
+point_f Area3_2[4] = {
+    point_f(1.8f, 35.0f),
+    point_f(1.8f, 30.0f),
+    point_f(3.6f, 30.0f),
+    point_f(3.6f, 35.0f),
+};
+point_f Area3_3[4] = {
+    point_f(1.8f, 6.0f),
+    point_f(1.8f, 0.0f),
+    point_f(3.6f, 0.0f),
+    point_f(3.6f, 6.0f),
+};
+
 //全局变量
 //窗口分辨率
 const unsigned int SCR_WIDTH = 1280;
@@ -200,7 +282,6 @@ void handleKeyInput(GLFWwindow* window)
     // esc退出
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-
     //控制摄像机
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
@@ -250,23 +331,26 @@ bool IS_IN_AREA(point_f click, point_f rect[4]) {
         return false;
     }
 }
-void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
-{
-    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
-    {
-        double xpos, ypos;
-        //getting cursor position 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        turn_to_view(xpos, ypos);
+//void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+//{
+//    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+//    {
+//        double xpos, ypos;
+//        //getting cursor position 
+//        glfwGetCursorPos(window, &xpos, &ypos);
+//        turn_to_view(xpos, ypos);
+//
+//        //给鼠标点击位置赋值
+//        mouse_pos.x = xpos;
+//        mouse_pos.y = ypos;
+//        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
+//        std::cout << "ICON_1:" << IS_IN_AREA(mouse_pos, ICON_RECT_1) << std::endl;
+//        std::cout << "ICON_2:" << IS_IN_AREA(mouse_pos, ICON_RECT_2) << std::endl;
+//    }
+//}
 
-        //给鼠标点击位置赋值
-        mouse_pos.x = xpos;
-        mouse_pos.y = ypos;
-        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
-        std::cout << "ICON_1:" << IS_IN_AREA(mouse_pos, ICON_RECT_1) << std::endl;
-        std::cout << "ICON_2:" << IS_IN_AREA(mouse_pos, ICON_RECT_2) << std::endl;
-    }
-}
+
+
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {

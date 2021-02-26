@@ -31,18 +31,11 @@ using namespace irrklang;
 //主菜单四个按钮的长宽
 int menu_icon_height = 70;
 int menu_icon_width = 200;
-//自动挡挡位
-int automatic = 1;
-//默认安全带是断开的
-bool safety_belt = false;
-//默认车没有在行驶
-bool isMoving = false;
-
-bool parkBrake = false;
-
-
-
-
+//提示的大小
+float tip_height = 220.0;
+float tip_width = 390.0;
+//车的实时速度
+float CAR_SPEED;
 
 
 //imgui窗口参数预设
@@ -206,7 +199,7 @@ int main(int, char**)
     unsigned int* param_icon_game_18 = game_icon_Loader(18);
     unsigned int texture_game_icon18 = param_icon_game_18[2];
 
-    //--------图标--------
+    //--------贴士--------
     //变更车道
     unsigned int* tips_1 = tips_Loader(1);
     unsigned int texture_tips_1 = tips_1[2];
@@ -385,7 +378,7 @@ int main(int, char**)
             if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
 
             //鼠标点击位置判断
-            glfwSetMouseButtonCallback(window, mouse_button_callback);
+            //glfwSetMouseButtonCallback(window, mouse_button_callback);
 
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon4, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//暂停
@@ -496,7 +489,7 @@ int main(int, char**)
             ImGui::End();
             //速度显示框
             ImGui::Begin("game Window7", &game_window, window_flags);
-            ImGui::ImageButton((ImTextureID*)texture_game_icon10, ImVec2(120, 60), ImVec2(0, 0), ImVec2(1, 1));
+            ImGui::Image((ImTextureID*)texture_game_icon10, ImVec2(120, 60), ImVec2(0, 0), ImVec2(1, 1));
             ImGui::End();
             ImGui::Begin("game Window7_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("速度显示框", ImVec2(120, 60))) {
@@ -642,10 +635,54 @@ int main(int, char**)
            
 
             //车的位置判断，相应地弹出提示
-
-            if (isMoving) {
-                
+            car_pos.x = car.Position.x;
+            car_pos.y = car.Position.z;
+            ImGui::Begin("TIPS1", &game_window, window_flags);
+            if (IS_IN_AREA(car_pos, Area1_1)) {
+                //////////////////////////////////////////////////路口直行提示 
+                ImGui::Image((ImTextureID*)texture_tips_7, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
             }
+            if (IS_IN_AREA(car_pos, Area1_2)) {
+                //////////////////////////////////////////////////直线行驶提示 
+                ImGui::Image((ImTextureID*)texture_tips_11, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area1_3)) {
+                //////////////////////////////////////////////////会车 
+                ImGui::Image((ImTextureID*)texture_tips_5, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area1_4)) {
+                //////////////////////////////////////////////////左转弯 
+                ImGui::Image((ImTextureID*)texture_tips_12, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area2_1)) {
+                //////////////////////////////////////////////////路过学校
+                ImGui::Image((ImTextureID*)texture_tips_9, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area2_2)) {
+                //////////////////////////////////////////////////掉头
+                ImGui::Image((ImTextureID*)texture_tips_3, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area2_3)) {
+                //////////////////////////////////////////////////超车
+                ImGui::Image((ImTextureID*)texture_tips_2, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area2_4)) {
+                //////////////////////////////////////////////////右转弯
+                ImGui::Image((ImTextureID*)texture_tips_10, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area3_1)) {
+                //////////////////////////////////////////////////变更车道
+                ImGui::Image((ImTextureID*)texture_tips_1, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area3_2)) {
+                //////////////////////////////////////////////////公交车站
+                ImGui::Image((ImTextureID*)texture_tips_4, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            if (IS_IN_AREA(car_pos, Area3_3)) {
+                //////////////////////////////////////////////////靠边停车
+                ImGui::Image((ImTextureID*)texture_tips_6, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
+            }
+            ImGui::End();
 
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
