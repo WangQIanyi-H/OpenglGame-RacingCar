@@ -139,7 +139,7 @@ public:
         {
             if (MovementSpeed <= DSpeed && !brake)
             {
-                MovementSpeed += 0.1f;
+                MovementSpeed += 0.11f;
             }
             Position -= Front * MovementSpeed * deltaTime;
         }
@@ -152,7 +152,7 @@ public:
         {
             if (direction == CAR_FORWARD)
             {
-                MovementSpeed += 0.1f;
+                MovementSpeed += 0.11f;
             }
             if (direction == CAR_BACKWARD)
             {
@@ -161,11 +161,11 @@ public:
                 {
                     MovementSpeed = 0;
                 }
-                else if(MovementSpeed >= 0.8f)
+                else if(MovementSpeed >= 0.62f)
                 {
-                    MovementSpeed -= 0.8f;
+                    MovementSpeed -= 0.62f;
                 }
-                else if (MovementSpeed <= 0.8f)
+                else if (MovementSpeed <= 0.62f)
                 {
                     MovementSpeed -= MovementSpeed;
                 }
@@ -177,7 +177,7 @@ public:
         {
             if (direction == CAR_FORWARD)
             {
-                MovementSpeed += 0.1;
+                MovementSpeed += 0.09;
             }
             if (direction == CAR_BACKWARD)
             {

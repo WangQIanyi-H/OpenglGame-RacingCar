@@ -21,6 +21,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
+#include<string>
 
 #include"Car.h"
 #include "functional.h"
@@ -640,7 +641,16 @@ int main(int, char**)
 
             //车的加减速
             car.run(deltaTime);
-           
+
+            ImGuiIO& io = ImGui::GetIO();
+            ImFontAtlas* atlas = io.Fonts;
+            ImFont* font= atlas->Fonts[0];
+            //ImGui::DragFloat("Font scale", &font->Scale, 0.005f, 0.3f, 2.0f, "%.1f");
+            font->Scale = 2;
+            //显示车的速度
+            ImGui::Begin("speed", &game_window, window_flags);
+            ImGui::Text("%.1f",car.MovementSpeed*10);
+            ImGui::End();
 
             //车的位置判断，相应地弹出提示
             car_pos.x = car.Position.x;
