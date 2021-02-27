@@ -21,11 +21,7 @@ struct point_f {
 
 bool isMoving = false;            //--------默认车没有在行驶
 int automatic = 1;                //--------自动挡挡位
-bool safety_belt = false;         //--------安全带
-bool brake = false;               //--------刹车
-bool parkBrake = false;           //--------手刹
-bool leftLight = false;           //--------左转向灯
-bool rightLight = false;          //--------右转向灯
+
 
 //===============记录每个环节的完成与否==============
 
@@ -222,7 +218,6 @@ unsigned int loadCubemap(vector<std::string> faces)
     unsigned int textureID;
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-
     int width, height, nrChannels;
     for (unsigned int i = 0; i < faces.size(); i++) {
         unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
@@ -296,13 +291,19 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
 
+    //加油
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
+    //刹车
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    //松开刹车
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE)
+        car.ProcessKeyboard(CAR_BRAKE, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_RIGHT, deltaTime);
 }
 

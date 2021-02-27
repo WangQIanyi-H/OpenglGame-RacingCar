@@ -383,7 +383,7 @@ int main(int, char**)
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon4, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//暂停
             ImGui::Text("\n");
-            if (!safety_belt) {
+            if (!car.safety_belt) {
                 ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//安全带
             }
             else {
@@ -403,8 +403,8 @@ int main(int, char**)
                 std::cout << "暂停";
             };
             if (ImGui::InvisibleButton("安全带", ImVec2(50, 50))) {
-                safety_belt = !safety_belt;
-                if (safety_belt) {
+                car.safety_belt = !car.safety_belt;
+                if (car.safety_belt) {
                     ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
                      std::cout << "安全带已经系好，可以出发啦！";
                 }
@@ -449,7 +449,7 @@ int main(int, char**)
             ImGui::End();
             //手刹
             ImGui::Begin("game Window4", &game_window, window_flags);
-            if (parkBrake) {
+            if (car.parkBrake) {
                 ImGui::Image((ImTextureID*)texture_game_icon7, ImVec2(190, 90), ImVec2(0, 0), ImVec2(1, 1));
             }
             else {
@@ -458,8 +458,8 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window4_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("手刹", ImVec2(190, 90))) {
-                parkBrake = !parkBrake;
-                if (parkBrake) {
+                car.parkBrake = !car.parkBrake;
+                if (car.parkBrake) {
                     ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
                     std::cout << "手刹已刹好！";
                 }
@@ -500,16 +500,20 @@ int main(int, char**)
             ImGui::Begin("game Window9", &game_window, window_flags);
             switch (automatic) {
             case 1:
-                ImGui::Image((ImTextureID*)texture_game_icon11, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));
+                ImGui::Image((ImTextureID*)texture_game_icon11, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));//P
+                car.switchTo("P");
                 break;
             case 2:
-                ImGui::Image((ImTextureID*)texture_game_icon12, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));
+                ImGui::Image((ImTextureID*)texture_game_icon12, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));//R
+                car.switchTo("R");
                 break;
             case 3:
-                ImGui::Image((ImTextureID*)texture_game_icon13, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));
+                ImGui::Image((ImTextureID*)texture_game_icon13, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));//N
+                car.switchTo("N");
                 break;
             case 4:
-                ImGui::Image((ImTextureID*)texture_game_icon14, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));
+                ImGui::Image((ImTextureID*)texture_game_icon14, ImVec2(120, 180), ImVec2(0, 0), ImVec2(1, 1));//D
+                car.switchTo("D");
                 break;
             }
             if (automatic > 4)automatic = 1;
@@ -551,7 +555,6 @@ int main(int, char**)
 
             // 观察空间
             glm::mat4 view = glm::mat4(1.0f);
-            //view = camera.GetViewMatrix(glm::vec3(car.Position.x, car.Position.y + 0.5f , car.Position.z));
             view = camera.GetViewMatrix();
 
             //投影
@@ -621,7 +624,7 @@ int main(int, char**)
             model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
-            cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
+            //cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
             //摄像机跟随
             car.updateFront();
             float r = 1.93f;
@@ -630,9 +633,10 @@ int main(int, char**)
             float c = cosf(angle);
             camera.Position.x = r * c + car.Position.x;
             camera.Position.z = r * s + car.Position.z;
-            camera.updateCameraVectors();
+            //camera.updateCameraVectors();
             camera.Yaw = car.Yaw + 180.0f;
-           
+           //车的行驶
+            car.run(deltaTime);
 
             //车的位置判断，相应地弹出提示
             car_pos.x = car.Position.x;
