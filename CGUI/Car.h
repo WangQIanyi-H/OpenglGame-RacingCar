@@ -135,7 +135,7 @@ public:
 
     void run(float deltaTime)
     {
-        if (D == true)
+        if (D == true && parkBrake == false)
         {
             if (MovementSpeed <= DSpeed && !brake)
             {
@@ -148,7 +148,7 @@ public:
     // 接受键盘输入
     void ProcessKeyboard(Direction direction, float deltaTime)
     {
-        if (D == true)
+        if (D == true && parkBrake == false)
         {
             if (direction == CAR_FORWARD)
             {
@@ -161,11 +161,11 @@ public:
                 {
                     MovementSpeed = 0;
                 }
-                else if(MovementSpeed >= 0.62f)
+                else if(MovementSpeed >= 0.42f)
                 {
-                    MovementSpeed -= 0.62f;
+                    MovementSpeed -= 0.42f;
                 }
-                else if (MovementSpeed <= 0.62f)
+                else if (MovementSpeed <= 0.42f)
                 {
                     MovementSpeed -= MovementSpeed;
                 }
