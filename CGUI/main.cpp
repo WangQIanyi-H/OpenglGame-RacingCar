@@ -383,7 +383,7 @@ int main(int, char**)
             ImGui::Begin("game Window1", &game_window, window_flags);
             ImGui::Image((ImTextureID*)texture_game_icon4, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//暂停
             ImGui::Text("\n");
-            if (!safety_belt) {
+            if (!car.safety_belt) {
                 ImGui::Image((ImTextureID*)texture_game_icon1, ImVec2(50, 50), ImVec2(0, 0), ImVec2(1, 1));//安全带
             }
             else {
@@ -403,8 +403,8 @@ int main(int, char**)
                 std::cout << "暂停";
             };
             if (ImGui::InvisibleButton("安全带", ImVec2(50, 50))) {
-                safety_belt = !safety_belt;
-                if (safety_belt) {
+                car.safety_belt = car.safety_belt;
+                if (car.safety_belt) {
                     ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
                      std::cout << "安全带已经系好，可以出发啦！";
                 }
@@ -445,11 +445,12 @@ int main(int, char**)
             ImGui::Begin("game Window3_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("刹车", ImVec2(120, 90))) {
                 std::cout << "刹车";
+                //brake = !brake;
             };
             ImGui::End();
             //手刹
             ImGui::Begin("game Window4", &game_window, window_flags);
-            if (parkBrake) {
+            if (car.parkBrake) {
                 ImGui::Image((ImTextureID*)texture_game_icon7, ImVec2(190, 90), ImVec2(0, 0), ImVec2(1, 1));
             }
             else {
@@ -458,8 +459,8 @@ int main(int, char**)
             ImGui::End();
             ImGui::Begin("game Window4_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("手刹", ImVec2(190, 90))) {
-                parkBrake = !parkBrake;
-                if (parkBrake) {
+                car.parkBrake = !car.parkBrake;
+                if (car.parkBrake) {
                     ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
                     std::cout << "手刹已刹好！";
                 }
@@ -527,7 +528,7 @@ int main(int, char**)
             ImGui::Begin("game Window10_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("左转弯灯", ImVec2(60, 36))) {
                 std::cout << "左转弯灯";
-                automatic++;
+                car.leftLight = !car.leftLight;
             };
             ImGui::End();
             //右转弯灯
@@ -537,7 +538,7 @@ int main(int, char**)
             ImGui::Begin("game Window11_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("右转弯灯", ImVec2(60, 36))) {
                 std::cout << "右转弯灯";
-                automatic++;
+                car.rightLight = !car.rightLight;
             };
             ImGui::End();
 
@@ -621,7 +622,7 @@ int main(int, char**)
             model = glm::rotate(model, glm::radians(car.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
-            cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
+            //cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
             //摄像机跟随
             car.updateFront();
             float r = 1.93f;
@@ -683,6 +684,129 @@ int main(int, char**)
                 ImGui::Image((ImTextureID*)texture_tips_6, ImVec2(tip_width, tip_height), ImVec2(0, 0), ImVec2(1, 1));
             }
             ImGui::End();
+            //起步
+            if ((car_pos.x==0&&car_pos.y==0)) {
+                if (car.leftLight == true) {
+                    start.Session1 = true;
+                    //std::cout << start.Session1 << endl;
+                }
+                if ((start.Session1 == true) && (automatic == 4)) {
+                    start.Session2 = true;
+                    //std::cout << start.Session2 << endl;
+                }
+                if ((start.Session2 == true) && (car.parkBrake == false)) {
+                    start.Session3 = true;
+                    std::cout << "起步：" <<start.Score() << endl;
+                }
+            }
+            //路口直行
+            if (crossingStraight.Session1 == false) {
+                if (IS_IN_AREA(car_pos, crossingStraight.Area1)&& car.brake == true) {
+                    crossingStraight.Session1 = true;
+                    car.brake = false;
+                }
+            }
+            if (IS_IN_AREA(car_pos, crossingStraight.Area2) && car_pos.x == 0) {
+                crossingStraight.Session2 = true;
+                std::cout << "路口直行：" << crossingStraight.Score() << endl;
+            }else crossingStraight.Session2 = false;
+            //直线行驶
+            if (IS_IN_AREA(car_pos, goStraight.Area) && car_pos.x == 0) {
+                goStraight.Session = true;
+            }
+            else goStraight.Session = false;
+            //会车
+            if (giveWay.Session1 == false){
+                if (IS_IN_AREA(car_pos, giveWay.Area1) && car.brake == true){
+                    giveWay.Session1 = true;
+                    car.brake = false;
+                    cout << car.brake << "\n\n\n" << endl;
+                    cout << "会车环节得分：" << giveWay.Score() << "\n\n\n" << endl;
+
+                }
+            }
+            //左转弯
+            if (turnleft.Session1 == false && turnleft.Session2 == false && turnleft.Session3 == false){
+                if (IS_IN_AREA(car_pos, turnleft.Area1) && car.leftLight == true){
+                    turnleft.Session1 = true;
+                    car.leftLight = false;
+                }
+                if ((turnleft.Session1 == true) && IS_IN_AREA(car_pos, turnleft.Area2) && (car.brake == true)){
+                    turnleft.Session2 = true;
+                    car.brake = false;
+                }
+                if ((turnleft.Session2 == true) && IS_IN_AREA(car_pos, turnleft.Area3)){
+                    turnleft.Session3 = true;
+                    cout << "左转弯环节得分：" << turnleft.Score() << "\n\n\n" << endl;
+                }
+            }
+            //路过学校
+            if (passingSchool.Session1 == false){
+                if (IS_IN_AREA(car_pos, passingSchool.Area1) && car.brake == true){
+                    passingSchool.Session1 = true;
+                    car.brake = false;
+                    cout << "路过学校环节得分：" << passingSchool.Score() << "\n\n\n" << endl;
+                }
+            }
+            //掉头
+            //超车
+            //右转弯
+            if (turnright.Session1 == false && turnright.Session2 == false && turnright.Session3 == false){
+                if (IS_IN_AREA(car_pos, turnright.Area1) && car.rightLight == true){
+                    turnright.Session1 = true;
+                    car.rightLight = false;
+                }
+                if ((turnright.Session1 == true) && IS_IN_AREA(car_pos, turnright.Area2) && (car.brake == true)){
+                    turnright.Session2 = true;
+                    car.brake = false;
+                }
+                if ((turnright.Session2 == true) && IS_IN_AREA(car_pos, turnright.Area3)){
+                    turnright.Session3 = true;
+                    cout << "右转弯环节得分：" << turnright.Score() << "\n\n\n" << endl;
+                }
+            }
+            //变更车道
+            if (IS_IN_AREA(car_pos, Area3_1)) {
+                //还没有变道
+                if (moveLane.changeNumber == 0) {
+                    moveLane.lane1 = moveLane.detect(car_pos);
+                    /*switch (moveLane.detect(car_pos)) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }*/
+                }
+                if (moveLane.lane1 != moveLane.detect(car_pos)) {
+                    moveLane.changeNumber = 1;
+                    moveLane.lane2 = moveLane.detect(car_pos);
+                }
+                if (moveLane.lane2 != moveLane.detect(car_pos)) {
+                    moveLane.changeNumber = 2;
+                    moveLane.lane3 = moveLane.detect(car_pos);
+                    if (moveLane.lane3 == moveLane.lane1) {
+                       std::cout<< moveLane.Score();
+                    }
+                }
+               
+            }
+
+
+            //路过公交车站
+            if (passingBusStop.Session1 == false){
+                if (IS_IN_AREA(car_pos, passingBusStop.Area) && car.brake == true){
+                    passingBusStop.Session1 = true;
+                    car.brake = false;
+                    cout << "路过公交车站环节得分：" << passingBusStop.Score() << "\n\n\n" << endl;
+                }
+            }
+            //靠边停车
+
+
 
             glDepthFunc(GL_LEQUAL);
             skyboxShader.use();
@@ -890,11 +1014,13 @@ int main(int, char**)
         //    // 复原深度测试
         //    glDepthFunc(GL_LESS);
         //}
-
+        
+        //std::cout << start.Score() << endl;
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window);
     }
+    
         // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();

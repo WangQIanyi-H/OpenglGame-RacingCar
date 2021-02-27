@@ -36,6 +36,13 @@ public:
     float MovementSpeed;
     float TurningSpeed;
 
+
+    bool safety_belt = false;         //--------安全带
+    bool brake = false;               //--------刹车
+    bool parkBrake = true;           //--------手刹
+    bool leftLight = false;           //--------左转向灯
+    bool rightLight = false;          //--------右转向灯
+
     Car(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f))
         : MovementSpeed(2.0f)
         , TurningSpeed(40.0f)

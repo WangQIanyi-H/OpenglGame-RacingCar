@@ -16,29 +16,256 @@ struct point_f {
     }
 };
 
+//计算 | p1 p2 | X | p1 p3 |
+float GetCross(point_f p1, point_f p3, point_f p2) {
+    return (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
+}
+//判断点p是否在p1p2p3p4的正方形内
+//判断p点是否在矩形区域内部
+bool IS_IN_AREA(point_f click, point_f rect[4]) {
+    if (GetCross(rect[0], rect[1], click) * GetCross(rect[2], rect[3], click) >= 0
+        && GetCross(rect[1], rect[2], click) * GetCross(rect[3], rect[0], click) >= 0)
+        return true;
+    else {
+        return false;
+    }
+}
+
+//起步
+struct Start {
+    //开左转向灯，挂D挡，松手刹。
+    bool Session1 = false;
+    bool Session2 = false;
+    bool Session3 = false;
+    int Score() {
+        return (int)Session3 * 10;
+    }
+};
+Start start;
+
+//路口直行
+struct CrossingStraight {
+    //先刹车,再直行
+    bool Session1 = false;
+    bool Session2 = false;
+    point_f Area1[4] = {
+        point_f(-0.6f, 7.0f),
+        point_f(-0.6f, 2.0f),
+        point_f(1.2f, 2.0f),
+        point_f(1.2f, 7.0f),
+    }; 
+    point_f Area2[4] = {
+        point_f(-0.6f, 17.0f),
+        point_f(-0.6f, 7.0f),
+        point_f(1.2f, 7.0f),
+        point_f(1.2f, 17.0f),
+    };
+    int Score() {
+        return (int)Session1 * 5 + (int)Session2 * 5;
+    }
+};
+CrossingStraight crossingStraight;
+
+//直线行驶
+struct GoStraight {
+    bool Session;
+    point_f Area[4] = {
+        point_f(-0.6f, 27.0f),
+        point_f(-0.6f, 17.0f),
+        point_f(1.2f, 17.0f),
+        point_f(1.2f, 27.0f),
+    };
+    int Score() {
+        return (int)Session*10;
+    }
+};
+GoStraight goStraight;
+
+//会车
+struct GiveWay{
+    //刹车
+    bool Session1 = false;
+    point_f Area1[4] = {
+        point_f(-0.6f, 48.0f),
+        point_f(-0.6f, 30.0f),
+        point_f(1.2f, 30.0f),
+        point_f(1.2f, 48.0f),
+    };
+    int Score(){
+        return (int)Session1 * 5;
+    }
+};
+GiveWay giveWay;
+
+//左转弯
+struct TurnLeft{
+    //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
+
+    //开启左转向灯：
+    bool Session1 = false;
+    //斑马线前踩刹车：
+    bool Session2 = false;
+    //确定转向靠路中心的车道：
+    bool Session3 = false;
+
+    //开启左转向灯：
+    point_f Area1[4] = {
+        point_f(-0.6f, 54.0f),
+        point_f(-0.6f, 48.0f),
+        point_f(1.2f, 48.0f),
+        point_f(1.2f, 54.0f),
+    };
+    //斑马线前踩刹车：
+    point_f Area2[4] = {
+        point_f(-0.6f, 59.0f),
+        point_f(-0.6f, 54.0f),
+        point_f(1.2f, 54.0f),
+        point_f(1.2f, 59.0f),
+    };
+    //确保区域是在靠近栅栏的车道：
+    point_f Area3[4] = {
+        point_f(4.9f, 65.5f),
+        point_f(4.9f, 64.7f),
+        point_f(6.6f, 64.7f),
+        point_f(6.6f, 65.5f),
+    };
+    int Score() {
+        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5;
+    }
+};
+TurnLeft turnleft;
+
+//路过学校：
+struct PassingSchool {
+    //刹车
+    bool Session1 = false;
+    point_f Area1[4] = {
+        point_f(6.0f, 66.9f),
+        point_f(6.0f, 65.1f),
+        point_f(15.0f, 65.1f),
+        point_f(15.0f, 66.9f),
+    };
+    int Score() {
+        return (int)Session1 * 5;
+    }
+};
+PassingSchool passingSchool;
+
+//变更车道
+struct MoveLane {
+    int changeNumber = 0;
+    int lane1=0;
+    int lane2=0;
+    int lane3=0;
+    point_f Area1[4] = {
+        point_f(1.5f, 56.0f),
+        point_f(1.5f, 46.0f),
+        point_f(2.1f, 46.0f),
+        point_f(2.1f, 56.0f),
+    };
+    point_f Area2[4] = {
+        point_f(2.1f, 56.0f),
+        point_f(2.1f, 46.0f),
+        point_f(2.7f, 46.0f),
+        point_f(2.7f, 56.0f),
+    };
+    point_f Area3[4] = {
+        point_f(2.7f, 56.0f),
+        point_f(2.7f, 46.0f),
+        point_f(3.3f, 46.0f),
+        point_f(3.3f, 56.0f),
+    };
+    point_f Area4[4] = {
+        point_f(3.3f, 56.0f),
+        point_f(3.3f, 46.0f),
+        point_f(3.9f, 46.0f),
+        point_f(3.9f, 56.0f),
+    };
+    int detect(point_f p) {
+        if (IS_IN_AREA(p, Area1))return 1;
+        if (IS_IN_AREA(p, Area2))return 2;
+        if (IS_IN_AREA(p, Area3))return 3;
+        if (IS_IN_AREA(p, Area4))return 4;
+    }
+    int Score() {
+        return 10;
+    }
+};
+MoveLane moveLane;
+
+
+
+//向右转：
+struct TurnRight {
+    //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
+
+    //开启右转向灯：
+    bool Session1 = false;
+    //斑马线前踩刹车：
+    bool Session2 = false;
+    //确定转向靠路中心的车道：
+    bool Session3 = false;
+
+    //开启右转向灯：
+    point_f Area1[4] = {
+        point_f(14.7f, 64.5f),
+        point_f(14.7f, 62.7f),
+        point_f(7.0f, 62.7f),
+        point_f(7.0f, 64.5f),
+    };
+
+    //斑马线前踩刹车：
+    point_f Area2[4] = {
+        point_f(8.6f, 64.5f),
+        point_f(8.6f, 62.7f),
+        point_f(6.4f, 62.7f),
+        point_f(6.4f, 64.5f),
+    };
+    //确保区域是在靠近栅栏的车道：
+    point_f Area3[4] = {
+        point_f(3.2f, 61.5f),
+        point_f(3.2f, 56.0f),
+        point_f(4.0f, 56.0f),
+        point_f(4.0f, 61.5f),
+    };
+    int Score() {
+        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5;
+    }
+};
+TurnRight turnright;
+
+//路过公交车站：
+struct PassingBusStop {
+    //刹车
+    bool Session1 = false;
+    point_f Area[4] = {
+        point_f(1.8f,55.82f),
+        point_f(1.8f,37.0f),
+        point_f(3.6f,35.0f),
+        point_f(3.6f,25.85f),
+    };
+    int Score() {
+        return (int)Session1 * 5;
+    }
+};
+PassingBusStop passingBusStop;
+
 
 //===============记录每个具体操作=================
-
-bool isMoving = false;            //--------默认车没有在行驶
-int automatic = 1;                //--------自动挡挡位
-bool safety_belt = false;         //--------安全带
-bool brake = false;               //--------刹车
-bool parkBrake = false;           //--------手刹
-bool leftLight = false;           //--------左转向灯
-bool rightLight = false;          //--------右转向灯
-
+int automatic = 1;                  //--------自动挡挡位
+ 
 //===============记录每个环节的完成与否==============
 
-bool CrossingStraight = false;    //路口直行
-bool GoStraight = false;          //直线行驶
-bool GiveWay = false;             //会车
-bool TurnLeft = false;            //左转弯
-bool PassingSchool = false;       //路过学校
-bool UTurn = false;               //掉头
-bool Overtake = false;            //超车
-bool MoveLane = false;            //变更车道
-bool PassingBusStop = false;      //路过公交车站
-bool PullOver = false;            //靠边停车
+//bool CrossingStraight = false;    //路口直行
+//bool GoStraight = false;          //直线行驶
+//bool GiveWay = false;             //会车
+//bool TurnLeft = false;            //左转弯
+//bool PassingSchool = false;       //路过学校
+//bool UTurn = false;               //掉头
+//bool Overtake = false;            //超车
+//bool MoveLane = false;            //变更车道
+//bool PassingBusStop = false;      //路过公交车站
+//bool PullOver = false;            //靠边停车
 
 
 
@@ -53,10 +280,10 @@ point_f Area1_1[4] = {
     point_f(1.2f, 6.2f),
 };
 point_f Area1_2[4] = {
-    point_f(-0.6f, 22.0f),
-    point_f(-0.6f, 18.0f),
-    point_f(1.2f, 18.0f),
-    point_f(1.2f, 22.0f),
+    point_f(-0.6f, 24.0f),
+    point_f(-0.6f, 20.0f),
+    point_f(1.2f, 20.0f),
+    point_f(1.2f, 24.0f),
 };
 point_f Area1_3[4] = {
     point_f(-0.6f, 34.0f),
@@ -112,6 +339,9 @@ point_f Area3_3[4] = {
     point_f(3.6f, 0.0f),
     point_f(3.6f, 6.0f),
 };
+
+
+
 
 //全局变量
 //窗口分辨率
@@ -317,20 +547,7 @@ void turn_to_view(double& a, double& b) {
     b = point.y / (SCR_HEIGHT / 2);
 }
 
-//计算 | p1 p2 | X | p1 p3 |
-float GetCross(point_f p1, point_f p3, point_f p2) {
-    return (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
-}
-//判断点p是否在p1p2p3p4的正方形内
-//判断p点是否在矩形区域内部
-bool IS_IN_AREA(point_f click, point_f rect[4]) {
-    if (GetCross(rect[0], rect[1], click) * GetCross(rect[2], rect[3], click) >= 0
-        && GetCross(rect[1], rect[2], click) * GetCross(rect[3], rect[0], click) >= 0)
-        return true;
-    else {
-        return false;
-    }
-}
+
 //void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 //{
 //    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
