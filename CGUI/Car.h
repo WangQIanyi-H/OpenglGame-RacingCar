@@ -1,4 +1,4 @@
-#ifndef CAR_H
+ï»¿#ifndef CAR_H
 #define CAR_H
 
 #include <glad/glad.h>
@@ -9,12 +9,13 @@
 #include <queue>
 using namespace std;
 
-// ¶¨ÒåÆû³µÒÆ¶¯µÄ¼¸¸ö¿ÉÄÜµÄÑ¡Ïî
+// å®šä¹‰æ±½è½¦ç§»åŠ¨çš„å‡ ä¸ªå¯èƒ½çš„é€‰é¡¹
 enum Direction {
     CAR_FORWARD,
     CAR_BACKWARD,
     CAR_LEFT,
-    CAR_RIGHT
+    CAR_RIGHT,
+    CAR_BRAKE
 };
 
 class Car {
@@ -23,29 +24,40 @@ public:
     glm::vec3 Front;
     float Yaw;
 
-    // ´æ´¢¾ÉYawĞÅÏ¢£¬ÊµÏÖÆ¯ÒÆ
+    // å­˜å‚¨æ—§Yawä¿¡æ¯ï¼Œå®ç°æ¼‚ç§»
     queue<float> HistoryYaw;
     int DelayFrameNum = 20;
     float DelayYaw;
 
-    // ÊµÏÖÆû³µ»º¶¯Óë»ºÍ£
-    // TODO ÉèÖÃÒ»¸öspeedÊôĞÔ£¬½ÓÊÕ°´¼üºó¸ù¾İdeltatime²»¶ÏÔö¼Ó»ò¼õĞ¡speedÖÁãĞÖµÒÔÊµÏÖ»º¶¯¸ü¼ÓºÏÊÊ£¨¶ø²»ÊÇÊ¹ÓÃÏÖÔÚµÄÆæ¹ÖµÄ·½·¨£©£¨Ïà»úµÄYawÆ«ÒÆÒ²ÏàÍ¬£©
+    // å®ç°æ±½è½¦ç¼“åŠ¨ä¸ç¼“åœ
+    // TODO è®¾ç½®ä¸€ä¸ªspeedå±æ€§ï¼Œæ¥æ”¶æŒ‰é”®åæ ¹æ®deltatimeä¸æ–­å¢åŠ æˆ–å‡å°speedè‡³é˜ˆå€¼ä»¥å®ç°ç¼“åŠ¨æ›´åŠ åˆé€‚ï¼ˆè€Œä¸æ˜¯ä½¿ç”¨ç°åœ¨çš„å¥‡æ€ªçš„æ–¹æ³•ï¼‰ï¼ˆç›¸æœºçš„Yawåç§»ä¹Ÿç›¸åŒï¼‰
     queue<glm::vec3> HistoryPosition;
     glm::vec3 DelayPosition;
 
+    //æŒ¡ä½
+    bool D = false;//drive
+    bool P = true;
+    bool R = false;//reverse
+    bool N = false;
+
+    //åŠ æ²¹log
+    bool acceleration = false;
+    
+    //åˆ¹è½¦xÂ²
+    bool brake = false;
+    bool safety_belt = false;         //--------å®‰å…¨å¸¦
+    bool parkBrake = true;            //--------æ‰‹åˆ¹
+    bool leftLight = false;           //--------å·¦è½¬å‘ç¯
+    bool rightLight = false;          //--------å³è½¬å‘ç¯
+
     float MovementSpeed;
+    float DSpeed = 0.7f;
     float TurningSpeed;
 
 
-    bool safety_belt = false;         //--------°²È«´ø
-    bool brake = false;               //--------É²³µ
-    bool parkBrake = true;           //--------ÊÖÉ²
-    bool leftLight = false;           //--------×ó×ªÏòµÆ
-    bool rightLight = false;          //--------ÓÒ×ªÏòµÆ
-
     Car(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f))
-        : MovementSpeed(2.0f)
-        , TurningSpeed(40.0f)
+        : MovementSpeed(0.0f)
+        , TurningSpeed(90.0f)
         , Yaw(0.0f)
         , DelayYaw(0.0f)
     {
@@ -83,27 +95,108 @@ public:
         return (DelayPosition + Position) / 2.0f;
     }
 
-    // ¼ÆËãÊÓÍ¼¾ØÕó
+    // è®¡ç®—è§†å›¾çŸ©é˜µ
     glm::mat4 GetViewMatrix(glm::vec3 cameraPosition)
     {
         return glm::lookAt(cameraPosition, Position, glm::vec3(0.0f, 1.0f, 0.0f));
     }
 
-    // ½ÓÊÜ¼üÅÌÊäÈë
+    void switchTo(string gear)
+    {
+        if (gear=="P")
+        {
+            P = true;
+            R = false;
+            N = false;
+            D = false;
+        }
+        else if (gear == "R")
+        {
+            P = false;
+            R = true;
+            N = false;
+            D = false;
+        }
+        else if (gear == "N")
+        {
+            P = false;
+            R = false;
+            N = true;
+            D = false;
+        }
+        else if (gear == "D")
+        {
+            P = false;
+            R = false;
+            N = false;
+            D = true;
+        }
+    }
+
+    void run(float deltaTime)
+    {
+        if (D == true)
+        {
+            if (MovementSpeed <= DSpeed && !brake)
+            {
+                MovementSpeed += 0.1f;
+            }
+            Position -= Front * MovementSpeed * deltaTime;
+        }
+    }
+
+    // æ¥å—é”®ç›˜è¾“å…¥
     void ProcessKeyboard(Direction direction, float deltaTime)
     {
-        if (direction == CAR_FORWARD)
-            Position -= Front * MovementSpeed * deltaTime;
-        if (direction == CAR_BACKWARD)
-            Position += Front * MovementSpeed * deltaTime;
-        if (direction == CAR_LEFT)
+        if (D == true)
+        {
+            if (direction == CAR_FORWARD)
+            {
+                MovementSpeed += 0.1f;
+            }
+            if (direction == CAR_BACKWARD)
+            {
+                brake = true;
+                if (MovementSpeed <= 0)
+                {
+                    MovementSpeed = 0;
+                }
+                else if(MovementSpeed >= 0.8f)
+                {
+                    MovementSpeed -= 0.8f;
+                }
+                else if (MovementSpeed <= 0.8f)
+                {
+                    MovementSpeed -= MovementSpeed;
+                }
+            }
+            if(direction == CAR_BRAKE)
+                brake = false;
+        }
+        if (R == true)
+        {
+            if (direction == CAR_FORWARD)
+            {
+                MovementSpeed += 0.1;
+            }
+            if (direction == CAR_BACKWARD)
+            {
+                Position += Front * MovementSpeed * deltaTime;
+            }
+        }
+
+        if (direction == CAR_LEFT && (MovementSpeed < -0.05f || MovementSpeed > 0.05f))
+        {
             Yaw += TurningSpeed * deltaTime;
-        if (direction == CAR_RIGHT)
+        }
+        if (direction == CAR_RIGHT && (MovementSpeed < -0.05f || MovementSpeed > 0.05f))
+        {
             Yaw -= TurningSpeed * deltaTime;
+        }
         updateFront();
     }
 
-    // ¸üĞÂDalayYaw
+    // æ›´æ–°DalayYaw
     void UpdateDelayYaw()
     {
         HistoryYaw.push(Yaw);
@@ -113,7 +206,7 @@ public:
         DelayYaw = HistoryYaw.front();
     }
 
-    // ¸üĞÂDalayYaw
+    // æ›´æ–°DalayYaw
     void UpdateDelayPosition()
     {
         HistoryPosition.push(Position);
@@ -123,7 +216,7 @@ public:
         DelayPosition = HistoryPosition.front();
     }
 
-    // ¼ÆËãĞÂµÄ Front ÏòÁ¿
+    // è®¡ç®—æ–°çš„ Front å‘é‡
     void updateFront()
     {
         glm::vec3 front;

@@ -53,7 +53,7 @@ struct CrossingStraight {
         point_f(-0.6f, 2.0f),
         point_f(1.2f, 2.0f),
         point_f(1.2f, 7.0f),
-    }; 
+    };
     point_f Area2[4] = {
         point_f(-0.6f, 17.0f),
         point_f(-0.6f, 7.0f),
@@ -76,13 +76,13 @@ struct GoStraight {
         point_f(1.2f, 27.0f),
     };
     int Score() {
-        return (int)Session*10;
+        return (int)Session * 10;
     }
 };
 GoStraight goStraight;
 
 //会车
-struct GiveWay{
+struct GiveWay {
     //刹车
     bool Session1 = false;
     point_f Area1[4] = {
@@ -91,14 +91,14 @@ struct GiveWay{
         point_f(1.2f, 30.0f),
         point_f(1.2f, 48.0f),
     };
-    int Score(){
+    int Score() {
         return (int)Session1 * 5;
     }
 };
 GiveWay giveWay;
 
 //左转弯
-struct TurnLeft{
+struct TurnLeft {
     //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
 
     //开启左转向灯：
@@ -154,9 +154,9 @@ PassingSchool passingSchool;
 //变更车道
 struct MoveLane {
     int changeNumber = 0;
-    int lane1=0;
-    int lane2=0;
-    int lane3=0;
+    int lane1 = 0;
+    int lane2 = 0;
+    int lane3 = 0;
     point_f Area1[4] = {
         point_f(1.5f, 56.0f),
         point_f(1.5f, 46.0f),
@@ -250,10 +250,12 @@ struct PassingBusStop {
 };
 PassingBusStop passingBusStop;
 
-
 //===============记录每个具体操作=================
-int automatic = 1;                  //--------自动挡挡位
- 
+
+bool isMoving = false;            //--------默认车没有在行驶
+int automatic = 1;                //--------自动挡挡位
+
+
 //===============记录每个环节的完成与否==============
 
 //bool CrossingStraight = false;    //路口直行
@@ -280,10 +282,10 @@ point_f Area1_1[4] = {
     point_f(1.2f, 6.2f),
 };
 point_f Area1_2[4] = {
-    point_f(-0.6f, 24.0f),
-    point_f(-0.6f, 20.0f),
-    point_f(1.2f, 20.0f),
-    point_f(1.2f, 24.0f),
+    point_f(-0.6f, 22.0f),
+    point_f(-0.6f, 18.0f),
+    point_f(1.2f, 18.0f),
+    point_f(1.2f, 22.0f),
 };
 point_f Area1_3[4] = {
     point_f(-0.6f, 34.0f),
@@ -339,9 +341,6 @@ point_f Area3_3[4] = {
     point_f(3.6f, 0.0f),
     point_f(3.6f, 6.0f),
 };
-
-
-
 
 //全局变量
 //窗口分辨率
@@ -452,7 +451,6 @@ unsigned int loadCubemap(vector<std::string> faces)
     unsigned int textureID;
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-
     int width, height, nrChannels;
     for (unsigned int i = 0; i < faces.size(); i++) {
         unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
@@ -526,13 +524,19 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
 
+    //加油
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
+    //刹车
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    //松开刹车
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE)
+        car.ProcessKeyboard(CAR_BRAKE, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_RIGHT, deltaTime);
 }
 
@@ -546,27 +550,6 @@ void turn_to_view(double& a, double& b) {
     a = point.x / (SCR_WIDTH / 2);
     b = point.y / (SCR_HEIGHT / 2);
 }
-
-
-//void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
-//{
-//    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
-//    {
-//        double xpos, ypos;
-//        //getting cursor position 
-//        glfwGetCursorPos(window, &xpos, &ypos);
-//        turn_to_view(xpos, ypos);
-//
-//        //给鼠标点击位置赋值
-//        mouse_pos.x = xpos;
-//        mouse_pos.y = ypos;
-//        std::cout << "Cursor Position at (" << xpos << " : " << ypos << ")" << std::endl;
-//        std::cout << "ICON_1:" << IS_IN_AREA(mouse_pos, ICON_RECT_1) << std::endl;
-//        std::cout << "ICON_2:" << IS_IN_AREA(mouse_pos, ICON_RECT_2) << std::endl;
-//    }
-//}
-
-
 
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
