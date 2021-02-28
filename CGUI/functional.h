@@ -31,19 +31,20 @@ bool IS_IN_AREA(point_f click, point_f rect[4]) {
     }
 }
 
-//-------------------------------------------------------------------起步
+//-------------------------------------------------------------------1.起步
 struct Start {
+	bool Session = false;//系安全带
     //开左转向灯，挂D挡，松手刹。
     bool Session1 = false;
     bool Session2 = false;
     bool Session3 = false;
     int Score() {
-        return (int)Session3 * 10;
+        return (int)(Session3) * 100;
     }
 };
 Start start;
 
-//-------------------------------------------------------------------路口直行
+//-------------------------------------------------------------------2.路口直行
 struct CrossingStraight {
     //先刹车,再直行
     bool Session1 = false;
@@ -61,14 +62,14 @@ struct CrossingStraight {
         point_f(1.2f, 17.0f),
     };
     int Score() {
-        return (int)Session1 * 5 + (int)Session2 * 5;
+        return (int)(Session2) * 100;
     }
 };
 CrossingStraight crossingStraight;
 
-//-------------------------------------------------------------------直线行驶
+//-------------------------------------------------------------------3.直线行驶
 struct GoStraight {
-    bool Session;
+    bool Session=false;
     point_f Area[4] = {
         point_f(-0.6f, 27.0f),
         point_f(-0.6f, 17.0f),
@@ -76,12 +77,12 @@ struct GoStraight {
         point_f(1.2f, 27.0f),
     };
     int Score() {
-        return (int)Session * 10;
+        return (int)(Session )* 100;
     }
 };
 GoStraight goStraight;
 
-//--------------------------------------------------------------------会车
+//--------------------------------------------------------------------4.会车
 struct GiveWay {
     //刹车
     bool Session1 = false;
@@ -92,12 +93,12 @@ struct GiveWay {
         point_f(1.2f, 48.0f),
     };
     int Score() {
-        return (int)Session1 * 5;
+        return (int)(Session1) * 100;
     }
 };
 GiveWay giveWay;
 
-//--------------------------------------------------------------------左转弯
+//--------------------------------------------------------------------5.左转弯
 struct TurnLeft {
     //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
 
@@ -130,28 +131,28 @@ struct TurnLeft {
         point_f(6.6f, 65.5f),
     };
     int Score() {
-        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5;
+        return (int)(Session3) * 100;
     }
 };
 TurnLeft turnleft;
 
-//--------------------------------------------------------------------路过学校
+//--------------------------------------------------------------------6.路过学校
 struct PassingSchool {
     //刹车
     bool Session1 = false;
     point_f Area1[4] = {
         point_f(6.0f, 66.9f),
-        point_f(6.0f, 65.1f),
-        point_f(15.0f, 65.1f),
+        point_f(6.0f, 64.8f),
+        point_f(15.0f, 64.8f),
         point_f(15.0f, 66.9f),
     };
     int Score() {
-        return (int)Session1 * 5;
+        return (int)(Session1) * 100;
     }
 };
 PassingSchool passingSchool;
 
-//---------------------------------------------------------------------掉头
+//---------------------------------------------------------------------7.掉头
 struct UTurn {
     //左转向灯
     bool Session1 = false;
@@ -164,14 +165,19 @@ struct UTurn {
        point_f(25.0f, 66.9f),
     };
     point_f Area2[4] = {
-       point_f(30.0f, 64.8f),
-       point_f(30.0f, 64.0f),
-       point_f(23.0f, 64.0f),
-       point_f(23.0f, 64.8f),
+       point_f(30.0f, 63.6f),
+       point_f(30.0f, 62.4f),
+       point_f(23.0f, 62.4f),
+       point_f(23.0f, 63.6f),
     };
+	int Score() {
+		return (int)Session2 *100;
+	}
+
+
 };
 UTurn uTurn;
-//---------------------------------------------------------------------超车
+//---------------------------------------------------------------------8.超车
 struct Overtake {
 
     int changeNumber = 0;
@@ -219,12 +225,48 @@ struct Overtake {
         if (IS_IN_AREA(p, Area4))return 4;
     }
     int Score() {
-        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5 + (int)Session4 * 5;
+        return (int)Session4 * 100;
     }
 };
 Overtake overTake;
+//-------------------------------------------------------------------9.向右转
+struct TurnRight {
+	//开启右转向灯：
+	bool Session1 = false;
+	//斑马线前踩刹车：
+	bool Session2 = false;
+	//确定转向靠路中心的车道：
+	bool Session3 = false;
 
-//--------------------------------------------------------------------变更车道
+	//开启右转向灯：
+	point_f Area1[4] = {
+		point_f(14.7f, 64.5f),
+		point_f(14.7f, 62.7f),
+		point_f(7.0f, 62.7f),
+		point_f(7.0f, 64.5f),
+	};
+
+	//斑马线前踩刹车：
+	point_f Area2[4] = {
+		point_f(8.6f, 64.5f),
+		point_f(8.6f, 62.7f),
+		point_f(6.4f, 62.7f),
+		point_f(6.4f, 64.5f),
+	};
+	//确保区域是在靠近栅栏的车道：
+	point_f Area3[4] = {
+		point_f(3.2f, 61.5f),
+		point_f(3.2f, 56.0f),
+		point_f(4.0f, 56.0f),
+		point_f(4.0f, 61.5f),
+	};
+	int Score() {
+		return (int)Session3 * 100;
+	}
+};
+TurnRight turnright;
+
+//--------------------------------------------------------------------10.变更车道
 struct MoveLane {
     bool Session1 = false;
     bool Session2 = false;
@@ -261,65 +303,29 @@ struct MoveLane {
         if (IS_IN_AREA(p, Area4))return 4;
     }
     int Score() {
-        return 10;
-    }
+		return (int)Session2 * 100 ;
+	}
 };
 MoveLane moveLane;
 
-//-------------------------------------------------------------------向右转
-struct TurnRight {
-    //开启右转向灯：
-    bool Session1 = false;
-    //斑马线前踩刹车：
-    bool Session2 = false;
-    //确定转向靠路中心的车道：
-    bool Session3 = false;
 
-    //开启右转向灯：
-    point_f Area1[4] = {
-        point_f(14.7f, 64.5f),
-        point_f(14.7f, 62.7f),
-        point_f(7.0f, 62.7f),
-        point_f(7.0f, 64.5f),
-    };
-
-    //斑马线前踩刹车：
-    point_f Area2[4] = {
-        point_f(8.6f, 64.5f),
-        point_f(8.6f, 62.7f),
-        point_f(6.4f, 62.7f),
-        point_f(6.4f, 64.5f),
-    };
-    //确保区域是在靠近栅栏的车道：
-    point_f Area3[4] = {
-        point_f(3.2f, 61.5f),
-        point_f(3.2f, 56.0f),
-        point_f(4.0f, 56.0f),
-        point_f(4.0f, 61.5f),
-    };
-    int Score() {
-        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5;
-    }
-};
-TurnRight turnright;
-
-//------------------------------------------------------------------路过公交车站
+//------------------------------------------------------------------11.路过公交车站
 struct PassingBusStop {
     //刹车
     bool Session1 = false;
     point_f Area[4] = {
-         point_f(1.8f,25.85f),
-         point_f(1.8f,35.0f),
-         point_f(3.6f,35.0f),
-         point_f(3.6f,25.85f),
+         point_f(1.7f,25.85f),
+         point_f(1.7f,35.0f),
+         point_f(3.8f,35.0f),
+         point_f(3.8f,25.85f),
     };
     int Score() {
-        return (int)Session1 * 5;
+        return (int)Session1 * 100;
     }
 };
 PassingBusStop passingBusStop;
 
-//--------------------------------------------------------------------靠边停车 
+//--------------------------------------------------------------------12.靠边停车 
 struct PullOver {
     bool Session1 = false;//转向灯
     bool Session2 = false;//速度为零
@@ -327,13 +333,28 @@ struct PullOver {
     bool Session4 = false;//手刹
     bool Session = false;
     point_f Area[4] = {
-        point_f(2.4f,7.0f),
+        point_f(2.4f,10.0f),
         point_f(2.4f,-2.2f),
-        point_f(3.65f,-2.2f),
-        point_f(3.65f,7.0f),
+        point_f(3.8f,-2.2f),
+        point_f(3.8f,10.0f),
     };
+	int Score() {
+		return (int)Session4 * 100;
+	}
+
 };
 PullOver pullOver;
+
+//===============记录总分=================
+//int ScoreSum()
+//{
+//	int sum = 100;//总分设为100，扣的分数超过100了就设为0，按项目扣
+//	sum = 100-(start.Score() + crossingStraight.Score() + goStraight.Score() + giveWay.Score() + turnleft.Score() + passingSchool.Score() +
+//		uTurn.Score() + overTake.Score() + moveLane.Score() + turnright.Score() + passingBusStop.Score() + pullOver.Score());
+//	//if (sum < 0) return 0;
+//	return sum;
+//}
+
 
 //===============记录每个具体操作=================
 
@@ -397,10 +418,10 @@ point_f Area2_2[4] = {
     point_f(25.0f, 66.9f),
 };
 point_f Area2_3[4] = {//超车
-    point_f(19.0f, 64.5f),
-    point_f(19.0f, 62.7f),
-    point_f(26.0f, 62.7f),
-    point_f(26.0f, 64.5f),
+    point_f(10.0f, 64.5f),
+    point_f(10.0f, 62.7f),
+    point_f(20.0f, 62.7f),
+    point_f(20.0f, 64.5f),
 };
 point_f Area2_4[4] = {
     point_f(15.0f, 64.5f),
@@ -425,6 +446,13 @@ point_f Area3_3[4] = {
     point_f(1.8f, 0.0f),
     point_f(3.6f, 0.0f),
     point_f(3.6f, 6.0f),
+};
+//游戏结束
+point_f Area3_4[4] = {
+    point_f(2.4f,-2.2f),
+    point_f(2.4f,-0.0f),
+    point_f(3.65f,-0.0f),
+    point_f(3.65f,-2.2f),
 };
 
 //全局变量
@@ -848,6 +876,65 @@ unsigned int* ruleBackgroundLoader()
     unsigned int param[] = { VAO, VBO, EBO, texture1 };
     return param;
 }
+
+unsigned int* scoreBackgroundLoader()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("asset/image/rule/rule.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
 unsigned int* main_icon_Loader(int index)
 {
     float vertices1[] = {
@@ -1180,6 +1267,9 @@ unsigned int* tips_Loader(int index)
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
     unsigned char* data = 0;
     switch (index) {
+    case 0:
+        data = stbi_load("asset/image/tip/起步.png", &width, &height, &nrChannels, 0);
+        break;
     case 1:
         data = stbi_load("asset/image/tip/变更车道.png", &width, &height, &nrChannels, 0);
         break;
@@ -1235,77 +1325,7 @@ unsigned int* tips_Loader(int index)
     return param;
 }
 
-unsigned int* groundLoader()
-{
-    float vertices[] = {
-        //     ---- 位置 ----    - 纹理坐标 -
-           -25.0f, -25.0f, 0.0f,  0.0f, 0.0f,
-            25.0f, -25.0f, 0.0f,  1.0f, 0.0f,
-            25.0f,  25.0f, 0.0f,  1.0f, 1.0f,
-            25.0f,  25.0f, 0.0f,  1.0f, 1.0f,
-           -25.0f,  25.0f, 0.0f,  0.0f, 1.0f,
-           -25.0f, -25.0f, 0.0f,  0.0f, 0.0f,
-    };
 
-    int indices[] = {
-        0,1,2,3,4,5
-    };
-
-    unsigned int VBO, VAO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-
-    unsigned int texture1;
-    glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/ground.png", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    stbi_image_free(data);
-
-
-    /*unsigned int texture2;
-    glGenTextures(1, &texture2);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    data = stbi_load("asset/image/awesomeface.png", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    stbi_image_free(data);*/
-
-    unsigned int param[] = { VAO, VBO, EBO, texture1 };
-    return param;
-}
 
 unsigned int* lightTest()
 {

@@ -404,7 +404,7 @@ int main(int, char**)
                 std::cout << "暂停";
             };
             if (ImGui::InvisibleButton("安全带", ImVec2(50, 50))) {
-                car.safety_belt = car.safety_belt;
+                car.safety_belt = !car.safety_belt;
                 if (car.safety_belt) {
                     ////////////////////////////////////////////////////////////在这里插入相应的提示音或者提示信息
                      std::cout << "安全带已经系好，可以出发啦！";
@@ -638,6 +638,23 @@ int main(int, char**)
 			shaderM.setMat4("model", model);
 			carModel.Draw(shaderM);
             //cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
+			std::cout << "===========" << "单项目得分（有错0或完全正确100）：" <<"==========="<< endl;
+			std::cout << "起步扣分：" << start.Score() << endl;
+			std::cout << "路口直行扣分：" << crossingStraight.Score() << endl;
+			std::cout << "直线行驶扣分：" << goStraight.Score() << endl;
+			std::cout << "会车扣分：" << giveWay.Score() << endl;
+			std::cout << "左转弯扣分：" << turnleft.Score() << endl;
+			std::cout << "经过学校扣分：" << passingSchool.Score() << endl;
+			std::cout << "掉头扣分：" << uTurn.Score() << endl;
+			std::cout << "超车扣分：" << overTake.Score() << endl;
+			std::cout << "右转弯扣分：" << turnright.Score() << endl;
+			std::cout << "变更车道扣分：" << moveLane.Score() << endl;
+			std::cout << "公交车站扣分：" << passingBusStop.Score() << endl;
+			std::cout << "靠边停车扣分：" << pullOver.Score() << endl;
+
+			std::cout << "安全带：car.safety_belt:"<<car.safety_belt<<endl;
+
+
             //摄像机跟随
             car.updateFront();
             float r = 1.93f;
@@ -710,7 +727,12 @@ int main(int, char**)
             ImGui::End();
             //起步
             if ((car_pos.x==0&&car_pos.y==0)) {
-                if (car.leftLight == true) {
+				if (car.safety_belt == true) {
+					start.Session = true;
+					//car.safety_belt = false;
+					std::cout << "起步-------系安全带" << endl;
+				}
+                if ((start.Session == true) && (car.leftLight == true)) {
                     start.Session1 = true;
                     std::cout << "起步-------左转向灯" << endl;
                     car.leftLight == false;
@@ -734,13 +756,13 @@ int main(int, char**)
             if (IS_IN_AREA(car_pos, crossingStraight.Area2) && car_pos.x == 0) {
                 crossingStraight.Session2 = true;
                 std::cout << "路口直行-------直行" << endl;
-            }else crossingStraight.Session2 = false;
+            }//else crossingStraight.Session2 = false;
             //直线行驶
             if (IS_IN_AREA(car_pos, goStraight.Area) && car_pos.x == 0) {
                 goStraight.Session = true;
                 std::cout << "直线行驶" << endl;
             }
-            else goStraight.Session = false;
+            //else goStraight.Session = false;
             //会车
             if (giveWay.Session1 == false){
                 if (IS_IN_AREA(car_pos, giveWay.Area1) && car.brake == true){
@@ -749,21 +771,21 @@ int main(int, char**)
 
                 }
             }
-            //左转弯
-            if (turnleft.Session1 == false && turnleft.Session2 == false && turnleft.Session3 == false){
-                if (IS_IN_AREA(car_pos, turnleft.Area1) && car.leftLight == true){
-                    turnleft.Session1 = true;
-                    car.leftLight = false;
-                }
-                if ((turnleft.Session1 == true) && IS_IN_AREA(car_pos, turnleft.Area2) && (car.brake == true)){
-                    turnleft.Session2 = true;
-                    car.brake = false;
-                }
-                if ((turnleft.Session2 == true) && IS_IN_AREA(car_pos, turnleft.Area3)){
-                    turnleft.Session3 = true;
-                    cout << "左转弯环节得分：" << turnleft.Score() << "\n\n\n" << endl;
-                }
-            }
+			//左转弯
+			if (turnleft.Session1 == false) {
+				if (IS_IN_AREA(car_pos, turnleft.Area1) && car.leftLight == true) {
+					turnleft.Session1 = true;
+					car.leftLight = false;
+				}
+			}
+			if ((turnleft.Session1 == true) && IS_IN_AREA(car_pos, turnleft.Area2) && (car.brake == true)) {
+				turnleft.Session2 = true;
+				car.brake = false;
+			}
+			if ((turnleft.Session2 == true) && IS_IN_AREA(car_pos, turnleft.Area3)) {
+				turnleft.Session3 = true;
+				std::cout << "左转弯环节得分：" << turnleft.Score() << "\n\n\n" << endl;
+			}
             //路过学校
             if (passingSchool.Session1 == false){
                 if (IS_IN_AREA(car_pos, passingSchool.Area1) && car.brake == true){
@@ -773,28 +795,30 @@ int main(int, char**)
                 }
             }
             //掉头
-            if ((uTurn.Session1 == false) && (uTurn.Session2 == false)) {
+            if (uTurn.Session1 == false){
                 if ((IS_IN_AREA(car_pos, uTurn.Area1) && car.leftLight == true)) {
                     uTurn.Session1 = true;
                     car.leftLight == false;
                     cout << "掉头环节一得分" << endl;
                 }
+				}
                 if ((IS_IN_AREA(car_pos, uTurn.Area2) &&car.MovementSpeed<10)) {
                     uTurn.Session2 = true;
                     cout << "掉头环节二得分" << endl;
                 }
-            }
+           
             //超车
             if (IS_IN_AREA(car_pos, Area2_3)) {
-                if ((overTake.Session1 == false) && (overTake.Session2 == false) && (overTake.Session3 == false) && (overTake.Session4 == false)) {
-                    if (overTake.changeNumber == 0) {
-                        overTake.lane1 = overTake.detect(car_pos);
-                        //是否在变道前开左转向灯
-                        if (car.leftLight) {
-                            overTake.Session1 = true;
-                            std::cout << "超车--------开左转向灯" << endl;
-                        }
-                    }
+				if (overTake.Session1 == false) {
+					if (overTake.changeNumber == 0) {
+						overTake.lane1 = overTake.detect(car_pos);
+						//是否在变道前开左转向灯
+						if (car.leftLight) {
+							overTake.Session1 = true;
+							std::cout << "超车--------开左转向灯" << endl;
+						}
+					}
+				}
                     if ((overTake.changeNumber == 0) && (overTake.lane1 != overTake.detect(car_pos))) {
                         overTake.changeNumber = 1;
                         overTake.lane2 = overTake.detect(car_pos);
@@ -818,25 +842,25 @@ int main(int, char**)
                             std::cout << "超车--------向右变道" << endl;
                         }
                     }
-                }
+                
             }
             
 
-            //右转弯
-            if (turnright.Session1 == false && turnright.Session2 == false && turnright.Session3 == false){
-                if (IS_IN_AREA(car_pos, turnright.Area1) && car.rightLight == true){
-                    turnright.Session1 = true;
-                    car.rightLight = false;
-                }
-                if ((turnright.Session1 == true) && IS_IN_AREA(car_pos, turnright.Area2) && (car.brake == true)){
-                    turnright.Session2 = true;
-                    car.brake = false;
-                }
-                if ((turnright.Session2 == true) && IS_IN_AREA(car_pos, turnright.Area3)){
-                    turnright.Session3 = true;
-                    cout << "右转弯环节得分：" << turnright.Score() << "\n\n\n" << endl;
-                }
-            }
+		   //右转弯
+			if (turnright.Session1 == false) {
+				if (IS_IN_AREA(car_pos, turnright.Area1) && car.rightLight == true) {
+					turnright.Session1 = true;
+					car.rightLight = false;
+				}
+			}
+			if ((turnright.Session1 == true) && IS_IN_AREA(car_pos, turnright.Area2) && (car.brake == true)) {
+				turnright.Session2 = true;
+				car.brake = false;
+			}
+			if ((turnright.Session2 == true) && IS_IN_AREA(car_pos, turnright.Area3)) {
+				turnright.Session3 = true;
+				std::cout << "右转弯环节得分：" << turnright.Score() << "\n\n\n" << endl;
+			}
             //变更车道
             if (IS_IN_AREA(car_pos, Area3_1)) {
                 //还没有变道
@@ -866,7 +890,7 @@ int main(int, char**)
                 }
             }
             //靠边停车
-            if (pullOver.Session == false){
+         
                 if (IS_IN_AREA(car_pos, pullOver.Area) && car.leftLight == true && pullOver.Session1 == false){//leftRight要改为rightlight
                     pullOver.Session1 = true;
                     car.leftLight = false;
@@ -882,7 +906,7 @@ int main(int, char**)
                     pullOver.Session = true;
                     std::cout << "靠边停车分数：" << endl;
                 }
-            }
+            
 
 
 
