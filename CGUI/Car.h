@@ -15,7 +15,8 @@ enum Direction {
     CAR_BACKWARD,
     CAR_LEFT,
     CAR_RIGHT,
-    CAR_BRAKE
+    CAR_BRAKE,
+    CAR_ACCELERATION
 };
 
 class Car {
@@ -152,6 +153,7 @@ public:
         {
             if (direction == CAR_FORWARD)
             {
+                acceleration = true;
                 MovementSpeed += 0.11f;
             }
             if (direction == CAR_BACKWARD)
@@ -172,6 +174,8 @@ public:
             }
             if(direction == CAR_BRAKE)
                 brake = false;
+            if (direction == CAR_ACCELERATION)
+                acceleration = false;
         }
         if (R == true)
         {

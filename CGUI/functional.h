@@ -226,10 +226,10 @@ Overtake overTake;
 
 //--------------------------------------------------------------------变更车道
 struct MoveLane {
+    bool Session1 = false;
+    bool Session2 = false;
     int changeNumber = 0;
     int lane1 = 0;
-    int lane2 = 0;
-    int lane3 = 0;
     point_f Area1[4] = {
         point_f(1.5f, 56.0f),
         point_f(1.5f, 46.0f),
@@ -303,21 +303,37 @@ struct TurnRight {
 };
 TurnRight turnright;
 
-//---------------------------------------------------------------------路过公交车站
+//------------------------------------------------------------------路过公交车站
 struct PassingBusStop {
     //刹车
     bool Session1 = false;
     point_f Area[4] = {
-        point_f(1.8f,55.82f),
-        point_f(1.8f,37.0f),
-        point_f(3.6f,35.0f),
-        point_f(3.6f,25.85f),
+         point_f(1.8f,25.85f),
+         point_f(1.8f,35.0f),
+         point_f(3.6f,35.0f),
+         point_f(3.6f,25.85f),
     };
     int Score() {
         return (int)Session1 * 5;
     }
 };
 PassingBusStop passingBusStop;
+
+//--------------------------------------------------------------------靠边停车 
+struct PullOver {
+    bool Session1 = false;//转向灯
+    bool Session2 = false;//速度为零
+    bool Session3 = false;//挡位P
+    bool Session4 = false;//手刹
+    bool Session = false;
+    point_f Area[4] = {
+        point_f(2.4f,7.0f),
+        point_f(2.4f,-2.2f),
+        point_f(3.65f,-2.2f),
+        point_f(3.65f,7.0f),
+    };
+};
+PullOver pullOver;
 
 //===============记录每个具体操作=================
 
@@ -596,6 +612,9 @@ void handleKeyInput(GLFWwindow* window)
     //加油
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
+    //松开油门
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
+        car.ProcessKeyboard(CAR_ACCELERATION, deltaTime);
     //刹车
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
