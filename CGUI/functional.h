@@ -361,7 +361,7 @@ int ScoreSum()
 bool isMoving = false;            //--------默认车没有在行驶
 int automatic = 1;                //--------自动挡挡位
 bool Map = false;                 //--------地图默认不显示
-
+int switchView = 0;
 
 //===============记录每个环节的完成与否==============
 
@@ -628,6 +628,23 @@ void renderSkyBox(Shader& shader)
     glBindVertexArray(0);
 }
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_C && action == GLFW_PRESS) {
+        switchView = abs(switchView - 1);
+    }
+    if (key == GLFW_KEY_X && action == GLFW_PRESS) {
+        isPolygonMode = !isPolygonMode;
+        if (isPolygonMode) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        }
+        else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+        string info = isPolygonMode ? "切换为线框图渲染模式" : "切换为正常渲染模式";
+        std::cout << "[POLYGON_MODE]" << info << std::endl;
+    }
+}
 
 void handleKeyInput(GLFWwindow* window)
 {
@@ -665,6 +682,8 @@ void handleKeyInput(GLFWwindow* window)
         car.ProcessKeyboard(CAR_LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_RIGHT, deltaTime);
+    // 回调监听按键（一个按键只会触发一次事件）
+    glfwSetKeyCallback(window, key_callback);
 }
 
 

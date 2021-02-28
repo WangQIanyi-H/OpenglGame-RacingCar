@@ -42,26 +42,26 @@ int endSituation = 2;//1表示走完全程；2表示开出了跑道之外；
 
 
 //imgui窗口参数预设
-static bool no_titlebar = false;
-static bool no_scrollbar = false;
-static bool no_menu = false;
-static bool no_move = false;
-static bool no_resize = false;
-static bool no_collapse = false;
-static bool no_close = false;
-static bool no_nav = false;
-static bool no_background = false;
-static bool no_bring_to_front = false;
-//static bool no_titlebar = true;
-//static bool no_scrollbar = true;
-//static bool no_menu = true;
-//static bool no_move = true;
-//static bool no_resize = true;
-//static bool no_collapse = true;
-//static bool no_close = true;
-//static bool no_nav = true;
-//static bool no_background = true;
+//static bool no_titlebar = false;
+//static bool no_scrollbar = false;
+//static bool no_menu = false;
+//static bool no_move = false;
+//static bool no_resize = false;
+//static bool no_collapse = false;
+//static bool no_close = false;
+//static bool no_nav = false;
+//static bool no_background = false;
 //static bool no_bring_to_front = false;
+static bool no_titlebar = true;
+static bool no_scrollbar = true;
+static bool no_menu = true;
+static bool no_move = true;
+static bool no_resize = true;
+static bool no_collapse = true;
+static bool no_close = true;
+static bool no_nav = true;
+static bool no_background = true;
+static bool no_bring_to_front = false;
 ImGuiWindowFlags window_flags = 0;
 
 
@@ -691,6 +691,7 @@ int main(int, char**)
             
             if (ImGui::InvisibleButton("视角", ImVec2(50, 50))) {
                 std::cout << "视角";
+                switchView = abs(switchView - 1);
             };
             ImGui::Text("\n");
             
