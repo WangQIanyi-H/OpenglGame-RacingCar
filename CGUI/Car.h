@@ -58,7 +58,7 @@ public:
 
     Car(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f))
         : MovementSpeed(0.0f)
-        , TurningSpeed(90.0f)
+        , TurningSpeed(60.0f)
         , Yaw(0.0f)
         , DelayYaw(0.0f)
     {
@@ -140,7 +140,7 @@ public:
         {
             if (MovementSpeed <= DSpeed && !brake)
             {
-                MovementSpeed += 0.11f;
+                MovementSpeed += 0.09f;
             }
             Position -= Front * MovementSpeed * deltaTime;
         }
