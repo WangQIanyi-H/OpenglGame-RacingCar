@@ -29,45 +29,37 @@
 #include <irrklang/irrKlang.h>
 using namespace irrklang;
 
-//主菜单四个按钮的长宽
-int menu_icon_height = 70;
-int menu_icon_width = 200;
-//提示的大小
-float tip_height = 220.0;
-float tip_width = 390.0;
-//车的实时速度
-float CAR_SPEED;
-//默认走完全程游戏结束
-int endSituation = 2;//1表示走完全程；2表示开出了跑道之外；
 
-
-//imgui窗口参数预设
-//static bool no_titlebar = false;
-//static bool no_scrollbar = false;
-//static bool no_menu = false;
-//static bool no_move = false;
-//static bool no_resize = false;
-//static bool no_collapse = false;
-//static bool no_close = false;
-//static bool no_nav = false;
-//static bool no_background = false;
-//static bool no_bring_to_front = false;
-static bool no_titlebar = true;
-static bool no_scrollbar = true;
-static bool no_menu = true;
-static bool no_move = true;
-static bool no_resize = true;
-static bool no_collapse = true;
-static bool no_close = true;
-static bool no_nav = true;
-static bool no_background = true;
-static bool no_bring_to_front = false;
-ImGuiWindowFlags window_flags = 0;
 
 
 
 int main(int, char**)
 {
+    //主菜单四个按钮的长宽
+    int menu_icon_height = 70;
+    int menu_icon_width = 200;
+    //提示的大小
+    float tip_height = 220.0;
+    float tip_width = 390.0;
+    //车的实时速度
+    float CAR_SPEED;
+    //默认走完全程游戏结束
+    int endSituation = 2;//1表示走完全程；2表示开出了跑道之外；
+
+
+    static bool no_titlebar = true;
+    static bool no_scrollbar = true;
+    static bool no_menu = true;
+    static bool no_move = true;
+    static bool no_resize = true;
+    static bool no_collapse = true;
+    static bool no_close = true;
+    static bool no_nav = true;
+    static bool no_background = true;
+    static bool no_bring_to_front = false;
+    ImGuiWindowFlags window_flags = 0;
+
+
     GLFWwindow* window = windowInit();
 
     //初始设置
@@ -344,21 +336,32 @@ int main(int, char**)
             if (ImGui::ImageButton((ImTextureID*)texture_image, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)){
 				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
                 show_window = false;
+                set_window = false;
+                rule_window = false;
                 game_window = true;
+                score_window = false;
+                pause_window = false;
             }
             ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image2, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)){
 				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
-				show_window = false;
+                show_window = false;
+                set_window = false;
                 rule_window = true;
+                game_window = false;
+                score_window = false;
+                pause_window = false;
             }ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image3, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)) {
 				SoundEngine->play2D("asset/music/2.wav", GL_FALSE);
-
-				show_window = false;
+                show_window = false;
                 set_window = true;
+                rule_window = false;
+                game_window = false;
+                score_window = false;
+                pause_window = false;
             }ImGui::Text("\n\n");
 
             if (ImGui::ImageButton((ImTextureID*)texture_image4, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1), 0)) {
@@ -400,7 +403,11 @@ int main(int, char**)
             if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
                 std::cout << "规则";
                 show_window = true;
+                set_window = false;
                 rule_window = false;
+                game_window = false;
+                score_window = false;
+                pause_window = false;
             };
             ImGui::End();
         }
@@ -523,7 +530,11 @@ int main(int, char**)
                 if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
                     std::cout << "规则";
                     show_window = true;
+                    set_window = false;
+                    rule_window = false;
+                    game_window = false;
                     score_window = false;
+                    pause_window = false;
                 };
                 ImGui::End();
 
@@ -545,7 +556,11 @@ int main(int, char**)
                 if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
                     std::cout << "规则";
                     show_window = true;
+                    set_window = false;
+                    rule_window = false;
+                    game_window = false;
                     score_window = false;
+                    pause_window = false;
                 };
                 ImGui::End();
 
@@ -583,6 +598,10 @@ int main(int, char**)
             if (ImGui::InvisibleButton("返回主菜单", ImVec2(menu_icon_width, menu_icon_height))) {
                 std::cout << "返回主菜单";
                 show_window = true;
+                set_window = false;
+                rule_window = false;
+                game_window = false;
+                score_window = false;
                 pause_window = false;
             };
             ImGui::End();
@@ -620,6 +639,10 @@ int main(int, char**)
                 std::cout << "返回主菜单";
                 show_window = true;
                 set_window = false;
+                rule_window = false;
+                game_window = false;
+                score_window = false;
+                pause_window = false;
             };
             ImGui::End();
             
@@ -664,7 +687,11 @@ int main(int, char**)
             ImGui::Begin("game Window1_1", &game_window, window_flags);
             if (ImGui::InvisibleButton("暂停", ImVec2(50, 50))) {
                 std::cout << "暂停";
+                show_window = false;
+                set_window = false;
+                rule_window = false;
                 game_window = false;
+                score_window = false;
                 pause_window = true;
             };
             ImGui::Text("\n");
@@ -976,8 +1003,12 @@ int main(int, char**)
             //超出了赛道
             if ((!IS_IN_AREA(car_pos, Area_H))&&(!IS_IN_AREA(car_pos, Area_W))) {
                 endSituation = 2;
+                show_window = false;
+                set_window = false;
+                rule_window = false;
                 game_window = false;
                 score_window = true;
+                pause_window = false;
             }
 
 
@@ -1212,8 +1243,12 @@ int main(int, char**)
                 if (IS_IN_AREA(car_pos, pullOver.Area)) {
                     if (car.DSpeed == 0 && car.parkBrake == true && automatic == 1) {
                         endSituation = 1;
+                        show_window = false;
+                        set_window = false;
+                        rule_window = false;
                         game_window = false;
                         score_window = true;
+                        pause_window = false;
                     }
                 }
 
