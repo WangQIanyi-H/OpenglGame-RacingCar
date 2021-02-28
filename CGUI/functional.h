@@ -31,7 +31,7 @@ bool IS_IN_AREA(point_f click, point_f rect[4]) {
     }
 }
 
-//起步
+//-------------------------------------------------------------------起步
 struct Start {
     //开左转向灯，挂D挡，松手刹。
     bool Session1 = false;
@@ -43,7 +43,7 @@ struct Start {
 };
 Start start;
 
-//路口直行
+//-------------------------------------------------------------------路口直行
 struct CrossingStraight {
     //先刹车,再直行
     bool Session1 = false;
@@ -66,7 +66,7 @@ struct CrossingStraight {
 };
 CrossingStraight crossingStraight;
 
-//直线行驶
+//-------------------------------------------------------------------直线行驶
 struct GoStraight {
     bool Session;
     point_f Area[4] = {
@@ -81,7 +81,7 @@ struct GoStraight {
 };
 GoStraight goStraight;
 
-//会车
+//--------------------------------------------------------------------会车
 struct GiveWay {
     //刹车
     bool Session1 = false;
@@ -97,7 +97,7 @@ struct GiveWay {
 };
 GiveWay giveWay;
 
-//左转弯
+//--------------------------------------------------------------------左转弯
 struct TurnLeft {
     //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
 
@@ -135,7 +135,7 @@ struct TurnLeft {
 };
 TurnLeft turnleft;
 
-//路过学校：
+//--------------------------------------------------------------------路过学校
 struct PassingSchool {
     //刹车
     bool Session1 = false;
@@ -151,7 +151,80 @@ struct PassingSchool {
 };
 PassingSchool passingSchool;
 
-//变更车道
+//---------------------------------------------------------------------掉头
+struct UTurn {
+    //左转向灯
+    bool Session1 = false;
+    //速度降到十码刹车松掉
+    bool Session2 = false;
+    point_f Area1[4] = {
+       point_f(19.0f, 66.9f),
+       point_f(19.0f, 65.1f),
+       point_f(25.0f, 65.1f),
+       point_f(25.0f, 66.9f),
+    };
+    point_f Area2[4] = {
+       point_f(30.0f, 64.8f),
+       point_f(30.0f, 64.0f),
+       point_f(23.0f, 64.0f),
+       point_f(23.0f, 64.8f),
+    };
+};
+UTurn uTurn;
+//---------------------------------------------------------------------超车
+struct Overtake {
+
+    int changeNumber = 0;
+    int lane1 = 0;
+    int lane2 = 0;
+    int lane3 = 0;
+
+    //开左转向灯
+    bool Session1 = false;
+    //往左变更车道
+    bool Session2 = false;
+    //打右转向灯
+    bool Session3 = false;
+    //返回右车道
+    bool Session4 = false;
+
+    point_f Area1[4] = {
+        point_f(10.0f, 64.8f),
+        point_f(10.0f, 64.2f),
+        point_f(20.0f, 64.2f),
+        point_f(20.0f, 64.8f),
+    };
+    point_f Area2[4] = {
+        point_f(10.0f, 64.2f),
+        point_f(10.0f, 63.6f),
+        point_f(20.0f, 63.6f),
+        point_f(20.0f, 64.2f),
+    };
+    point_f Area3[4] = {
+        point_f(10.0f, 63.6f),
+        point_f(10.0f, 63.0f),
+        point_f(20.0f, 63.0f),
+        point_f(20.0f, 63.6f),
+    };
+    point_f Area4[4] = {
+        point_f(10.0f, 63.0f),
+        point_f(10.0f, 62.4f),
+        point_f(20.0f, 62.4f),
+        point_f(20.0f, 63.0f),
+    };
+    int detect(point_f p) {
+        if (IS_IN_AREA(p, Area1))return 1;
+        if (IS_IN_AREA(p, Area2))return 2;
+        if (IS_IN_AREA(p, Area3))return 3;
+        if (IS_IN_AREA(p, Area4))return 4;
+    }
+    int Score() {
+        return (int)Session1 * 5 + (int)Session2 * 5 + (int)Session3 * 5 + (int)Session4 * 5;
+    }
+};
+Overtake overTake;
+
+//--------------------------------------------------------------------变更车道
 struct MoveLane {
     int changeNumber = 0;
     int lane1 = 0;
@@ -193,12 +266,8 @@ struct MoveLane {
 };
 MoveLane moveLane;
 
-
-
-//向右转：
+//-------------------------------------------------------------------向右转
 struct TurnRight {
-    //提前开启左转向灯，路过斑马线前点一下刹车，需要转向靠路中心的那个车道。
-
     //开启右转向灯：
     bool Session1 = false;
     //斑马线前踩刹车：
@@ -234,7 +303,7 @@ struct TurnRight {
 };
 TurnRight turnright;
 
-//路过公交车站：
+//---------------------------------------------------------------------路过公交车站
 struct PassingBusStop {
     //刹车
     bool Session1 = false;
@@ -311,7 +380,7 @@ point_f Area2_2[4] = {
     point_f(25.0f, 65.1f),
     point_f(25.0f, 66.9f),
 };
-point_f Area2_3[4] = {
+point_f Area2_3[4] = {//超车
     point_f(19.0f, 64.5f),
     point_f(19.0f, 62.7f),
     point_f(26.0f, 62.7f),

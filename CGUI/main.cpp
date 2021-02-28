@@ -498,6 +498,10 @@ int main(int, char**)
                 std::cout << "速度显示框";
             };
             ImGui::End();
+            //显示车的速度
+            ImGui::Begin("speed", &game_window, window_flags);
+            ImGui::Text("%.1f", car.MovementSpeed * 10);
+            ImGui::End();
             //自动挡
             ImGui::Begin("game Window9", &game_window, window_flags);
             switch (automatic) {
@@ -647,10 +651,7 @@ int main(int, char**)
             ImFont* font= atlas->Fonts[0];
             //ImGui::DragFloat("Font scale", &font->Scale, 0.005f, 0.3f, 2.0f, "%.1f");
             font->Scale = 2;
-            //显示车的速度
-            ImGui::Begin("speed", &game_window, window_flags);
-            ImGui::Text("%.1f",car.MovementSpeed*10);
-            ImGui::End();
+
 
             //车的位置判断，相应地弹出提示
             car_pos.x = car.Position.x;
@@ -705,40 +706,39 @@ int main(int, char**)
             if ((car_pos.x==0&&car_pos.y==0)) {
                 if (car.leftLight == true) {
                     start.Session1 = true;
-                    //std::cout << start.Session1 << endl;
+                    std::cout << "起步-------左转向灯" << endl;
                 }
                 if ((start.Session1 == true) && (automatic == 4)) {
                     start.Session2 = true;
-                    //std::cout << start.Session2 << endl;
+                    std::cout << "起步-------D档" << endl;
                 }
                 if ((start.Session2 == true) && (car.parkBrake == false)) {
                     start.Session3 = true;
-                    std::cout << "起步：" <<start.Score() << endl;
+                    std::cout << "起步-------手刹" << endl;
                 }
             }
             //路口直行
             if (crossingStraight.Session1 == false) {
                 if (IS_IN_AREA(car_pos, crossingStraight.Area1)&& car.brake == true) {
                     crossingStraight.Session1 = true;
-                    car.brake = false;
+                    std::cout << "路口直行-------刹车" << endl;
                 }
             }
             if (IS_IN_AREA(car_pos, crossingStraight.Area2) && car_pos.x == 0) {
                 crossingStraight.Session2 = true;
-                std::cout << "路口直行：" << crossingStraight.Score() << endl;
+                std::cout << "路口直行-------直行" << endl;
             }else crossingStraight.Session2 = false;
             //直线行驶
             if (IS_IN_AREA(car_pos, goStraight.Area) && car_pos.x == 0) {
                 goStraight.Session = true;
+                std::cout << "直线行驶" << endl;
             }
             else goStraight.Session = false;
             //会车
             if (giveWay.Session1 == false){
                 if (IS_IN_AREA(car_pos, giveWay.Area1) && car.brake == true){
                     giveWay.Session1 = true;
-                    car.brake = false;
-                    cout << car.brake << "\n\n\n" << endl;
-                    cout << "会车环节得分：" << giveWay.Score() << "\n\n\n" << endl;
+                    cout << "会车" << endl;
 
                 }
             }
@@ -766,7 +766,54 @@ int main(int, char**)
                 }
             }
             //掉头
+            if ((uTurn.Session1 == false) && (uTurn.Session2 == false)) {
+                if ((IS_IN_AREA(car_pos, uTurn.Area1) && car.leftLight == true)) {
+                    uTurn.Session1 = true;
+                    cout << "掉头环节一得分" << endl;
+                }
+                if ((IS_IN_AREA(car_pos, uTurn.Area2) &&car.MovementSpeed<10)) {
+                    uTurn.Session2 = true;
+                    cout << "掉头环节二得分" << endl;
+                }
+            }
             //超车
+            if (IS_IN_AREA(car_pos, Area2_3)) {
+                if ((overTake.Session1 == false) && (overTake.Session2 == false) && (overTake.Session3 == false) && (overTake.Session4 == false)) {
+                    if (moveLane.changeNumber == 0) {
+                        moveLane.lane1 = moveLane.detect(car_pos);
+                        //是否在变道前开左转向灯
+                        if (car.leftLight) {
+                            overTake.Session1 = true;
+                            std::cout << "超车--------开左转向灯" << endl;
+                        }
+                    }
+                    if ((moveLane.changeNumber == 0) && (moveLane.lane1 != moveLane.detect(car_pos))) {
+                        moveLane.changeNumber = 1;
+                        moveLane.lane2 = moveLane.detect(car_pos);
+                        //是否向左变道
+                        if (moveLane.lane2 < moveLane.lane1) {
+                            overTake.Session2 = true;
+                            std::cout << "超车--------向左变道" << endl;
+                        }
+                        //是否在变道前开右转向灯
+                        if (car.rightLight) {
+                            overTake.Session3 = true;
+                            std::cout << "超车--------开右转向灯" << endl;
+                        }
+                    }
+                    if ((moveLane.changeNumber == 1) && (moveLane.lane2 != moveLane.detect(car_pos))) {
+                        moveLane.changeNumber = 2;
+                        moveLane.lane3 = moveLane.detect(car_pos);
+                        if (moveLane.lane3 > moveLane.lane2) {
+                            //是否向右变道
+                            overTake.Session4 = true;
+                            std::cout << "超车--------向右变道" << endl;
+                        }
+                    }
+                }
+            }
+            
+
             //右转弯
             if (turnright.Session1 == false && turnright.Session2 == false && turnright.Session3 == false){
                 if (IS_IN_AREA(car_pos, turnright.Area1) && car.rightLight == true){
@@ -786,17 +833,7 @@ int main(int, char**)
             if (IS_IN_AREA(car_pos, Area3_1)) {
                 //还没有变道
                 if (moveLane.changeNumber == 0) {
-                    moveLane.lane1 = moveLane.detect(car_pos);
-                    /*switch (moveLane.detect(car_pos)) {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                    }*/
+                    moveLane.lane1 = moveLane.detect(car_pos);             
                 }
                 if (moveLane.lane1 != moveLane.detect(car_pos)) {
                     moveLane.changeNumber = 1;
