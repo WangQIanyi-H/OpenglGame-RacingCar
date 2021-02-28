@@ -140,7 +140,7 @@ public:
         {
             if (MovementSpeed <= DSpeed && !brake)
             {
-                MovementSpeed += 0.11f;
+                MovementSpeed += 0.09f;
             }
             Position -= Front * MovementSpeed * deltaTime;
         }

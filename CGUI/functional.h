@@ -334,8 +334,8 @@ struct PullOver {
     bool Session = false;
     point_f Area[4] = {
         point_f(2.4f,10.0f),
-        point_f(2.4f,-2.2f),
-        point_f(3.8f,-2.2f),
+        point_f(2.4f,-4.4f),
+        point_f(3.8f,-4.4f),
         point_f(3.8f,10.0f),
     };
 	int Score() {
@@ -346,20 +346,21 @@ struct PullOver {
 PullOver pullOver;
 
 //===============记录总分=================
-//int ScoreSum()
-//{
-//	int sum = 100;//总分设为100，扣的分数超过100了就设为0，按项目扣
-//	sum = 100-(start.Score() + crossingStraight.Score() + goStraight.Score() + giveWay.Score() + turnleft.Score() + passingSchool.Score() +
-//		uTurn.Score() + overTake.Score() + moveLane.Score() + turnright.Score() + passingBusStop.Score() + pullOver.Score());
-//	//if (sum < 0) return 0;
-//	return sum;
-//}
+int ScoreSum()
+{
+	int sum = 100;//总分设为100，扣的分数超过100了就设为0，按项目扣
+	sum = 100-(start.Score() + crossingStraight.Score() + goStraight.Score() + giveWay.Score() + turnleft.Score() + passingSchool.Score() +
+		uTurn.Score() + overTake.Score() + moveLane.Score() + turnright.Score() + passingBusStop.Score() + pullOver.Score());
+	//if (sum < 0) return 0;
+	return sum;
+}
 
 
 //===============记录每个具体操作=================
 
 bool isMoving = false;            //--------默认车没有在行驶
 int automatic = 1;                //--------自动挡挡位
+bool Map = false;                 //--------地图默认不显示
 
 
 //===============记录每个环节的完成与否==============
@@ -405,15 +406,15 @@ point_f Area1_4[4] = {
     point_f(1.2f, 48.0f),
     point_f(1.2f, 56.0f),
 };
-point_f Area2_1[4] = {
-    point_f(6.4f, 66.9f),
-    point_f(6.4f, 65.1f),
-    point_f(9.0f, 65.1f),
-    point_f(9.0f, 66.9f),
+point_f Area2_1[4] = {//路过学校
+    point_f(5.8f, 66.9f),
+    point_f(5.8f, 65.1f),
+    point_f(11.0f, 65.1f),
+    point_f(11.0f, 66.9f),
 };
-point_f Area2_2[4] = {
-    point_f(19.0f, 66.9f),
-    point_f(19.0f, 65.1f),
+point_f Area2_2[4] = {//掉头
+    point_f(17.0f, 66.9f),
+    point_f(17.0f, 65.1f),
     point_f(25.0f, 65.1f),
     point_f(25.0f, 66.9f),
 };
@@ -441,19 +442,29 @@ point_f Area3_2[4] = {
     point_f(3.6f, 30.0f),
     point_f(3.6f, 35.0f),
 };
-point_f Area3_3[4] = {
-    point_f(1.8f, 6.0f),
+point_f Area3_3[4] = {//靠边停车
+    point_f(1.8f, 10.0f),
     point_f(1.8f, 0.0f),
     point_f(3.6f, 0.0f),
-    point_f(3.6f, 6.0f),
+    point_f(3.6f, 10.0f),
 };
-//游戏结束
-point_f Area3_4[4] = {
-    point_f(2.4f,-2.2f),
-    point_f(2.4f,-0.0f),
-    point_f(3.65f,-0.0f),
-    point_f(3.65f,-2.2f),
+
+//横向总矩形
+point_f Area_W[4] = {
+    point_f(36.0f, 67.2f),
+    point_f(4.2f, 67.2f),
+    point_f(4.2f, 62.4f),
+    point_f(36.0f, 62.4f),
 };
+//纵向总矩形
+point_f Area_H[4] = {
+    point_f(4.2f,67.2f),
+    point_f(-0.9f,67.2f),
+    point_f(-0.9f,-4.4f),
+    point_f(4.2f,-4.4f),
+};
+
+
 
 //全局变量
 //窗口分辨率
@@ -804,10 +815,10 @@ unsigned int* mainBackgroundLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/main/background_menu.png", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("asset/image/menu/背景24.png", &width, &height, &nrChannels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     stbi_image_free(data);
@@ -876,8 +887,7 @@ unsigned int* ruleBackgroundLoader()
     unsigned int param[] = { VAO, VBO, EBO, texture1 };
     return param;
 }
-
-unsigned int* scoreBackgroundLoader()
+unsigned int* pauseBackgroundLoader()
 {
     //背景视图不使用坐标变换
     float vertices[] = {
@@ -924,7 +934,7 @@ unsigned int* scoreBackgroundLoader()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("asset/image/rule/rule.png", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("asset/image/pause/pause.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -935,6 +945,247 @@ unsigned int* scoreBackgroundLoader()
     unsigned int param[] = { VAO, VBO, EBO, texture1 };
     return param;
 }
+unsigned int* setBackgroundLoader()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("asset/image/set/设置.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
+
+//超出给定区域结束
+unsigned int* scoreBackgroundLoader1()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("asset/image/score/超出给定区域.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
+//未通过
+unsigned int* scoreBackgroundLoader2()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("asset/image/score/未通过.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
+//通过
+unsigned int* scoreBackgroundLoader3()
+{
+    //背景视图不使用坐标变换
+    float vertices[] = {
+        //     ---- 位置 ----   -------color------   - 纹理坐标 -
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+            1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 1.0f, 1.0f,
+           -1.0f,  1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 1.0f,
+           -1.0f, -1.0f, 0.0f,  0.0f,0.0f,0.0f, 0.0f, 0.0f,
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("asset/image/score/通过.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    stbi_image_free(data);
+
+    unsigned int param[] = { VAO, VBO, EBO, texture1 };
+    return param;
+}
+
+
+
+
+
 unsigned int* main_icon_Loader(int index)
 {
     float vertices1[] = {
@@ -1073,10 +1324,17 @@ unsigned int* rule_icon_Loader(int index)
     case 1:
         data = stbi_load("asset/image/rule/back.png", &width, &height, &nrChannels, 0);
         break;
-    case 2:
-        data = stbi_load("asset/image/rule/rule.png", &width, &height, &nrChannels, 0);
+    case 2://成绩单的返回主菜单按钮
+        data = stbi_load("asset/image/score/主菜单.png", &width, &height, &nrChannels, 0);
+        break;
+    case 3://暂停界面的返回主菜单
+        data = stbi_load("asset/image/pause/back.png", &width, &height, &nrChannels, 0);
+        break;
+    case 4://设置界面的返回主菜单
+        data = stbi_load("asset/image/set/返回.png", &width, &height, &nrChannels, 0);
         break;
     }
+
     if (data){
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
@@ -1196,6 +1454,9 @@ unsigned int* game_icon_Loader(int index)
         break;
     case 18:
         data = stbi_load("asset/image/game/手刹1.png", &width, &height, &nrChannels, 0);
+        break;
+    case 19:
+        data = stbi_load("asset/image/game/地图背景.png", &width, &height, &nrChannels, 0);
         break;
    
     }
