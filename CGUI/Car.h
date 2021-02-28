@@ -15,7 +15,8 @@ enum Direction {
     CAR_BACKWARD,
     CAR_LEFT,
     CAR_RIGHT,
-    CAR_BRAKE
+    CAR_BRAKE,
+    CAR_ACCELERATION
 };
 
 class Car {
@@ -152,6 +153,7 @@ public:
         {
             if (direction == CAR_FORWARD)
             {
+                acceleration = true;
                 MovementSpeed += 0.11f;
             }
             if (direction == CAR_BACKWARD)
@@ -172,19 +174,9 @@ public:
             }
             if(direction == CAR_BRAKE)
                 brake = false;
+            if (direction == CAR_ACCELERATION)
+                acceleration = false;
         }
-        if (R == true)
-        {
-            if (direction == CAR_FORWARD)
-            {
-                MovementSpeed += 0.09;
-            }
-            if (direction == CAR_BACKWARD)
-            {
-                Position += Front * MovementSpeed * deltaTime;
-            }
-        }
-
         if (direction == CAR_LEFT && (MovementSpeed < -0.05f || MovementSpeed > 0.05f))
         {
             Yaw += TurningSpeed * deltaTime;

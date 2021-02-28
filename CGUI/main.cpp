@@ -630,14 +630,32 @@ int main(int, char**)
             //cout << "(" << car.Position.x << "," << car.Position.y << "," << car.Position.z << ")"<< endl;
             //摄像机跟随
             car.updateFront();
-            float r = 1.93f;
-            float angle = glm::radians(-car.getYaw()-90.0f);
-            float s = sinf(angle);
-            float c = cosf(angle);
-            camera.Position.x = r * c + car.Position.x;
-            camera.Position.z = r * s + car.Position.z;
-            camera.updateCameraVectors();
-            camera.Yaw = car.Yaw + 180.0f;
+            if (switchView == 0)
+            {
+                camera.Pitch = 5.0f;
+                camera.Position.y = 0.6f;
+                float r = 1.93f;
+                float angle = glm::radians(-car.getYaw() - 90.0f);
+                float s = sinf(angle);
+                float c = cosf(angle);
+                camera.Position.x = r * c + car.Position.x;
+                camera.Position.z = r * s + car.Position.z;
+                camera.updateCameraVectors();
+                camera.Yaw = car.Yaw + 180.0f;
+            }
+            else if (switchView == 1)
+            {
+                camera.Pitch = 5.0f;
+                camera.Position.y = 0.1f;
+                float r = -1.93f;
+                float angle = glm::radians(-car.getYaw() - 90.0f);
+                float s = sinf(angle);
+                float c = cosf(angle);
+                camera.Position.x = r * c + car.Position.x;
+                camera.Position.z = r * s + car.Position.z;
+                camera.updateCameraVectors();
+                camera.Yaw = car.Yaw + 180.0f;
+            }
 
             //车的加减速
             car.run(deltaTime);

@@ -254,7 +254,7 @@ PassingBusStop passingBusStop;
 
 bool isMoving = false;            //--------默认车没有在行驶
 int automatic = 1;                //--------自动挡挡位
-
+int switchView = 0;               //--------切换视角，0为第三视角，1为第一视角
 
 //===============记录每个环节的完成与否==============
 
@@ -505,6 +505,25 @@ void renderSkyBox(Shader& shader)
 }
 
 
+// 按键回调函数，使得一次按键只触发一次事件
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_C && action == GLFW_PRESS) {
+        switchView = abs(switchView - 1);
+    }
+    if (key == GLFW_KEY_X && action == GLFW_PRESS) {
+        isPolygonMode = !isPolygonMode;
+        if (isPolygonMode) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        }
+        else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+        string info = isPolygonMode ? "切换为线框图渲染模式" : "切换为正常渲染模式";
+        std::cout << "[POLYGON_MODE]" << info << std::endl;
+    }
+}
+
 void handleKeyInput(GLFWwindow* window)
 {
     // esc退出
@@ -524,9 +543,12 @@ void handleKeyInput(GLFWwindow* window)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
 
-    //加油
+    //踩油门
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_FORWARD, deltaTime);
+    //松开油门
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
+        car.ProcessKeyboard(CAR_ACCELERATION, deltaTime);
     //刹车
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
@@ -538,7 +560,11 @@ void handleKeyInput(GLFWwindow* window)
         car.ProcessKeyboard(CAR_LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS )//&& (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS))
         car.ProcessKeyboard(CAR_RIGHT, deltaTime);
+
+    glfwSetKeyCallback(window, key_callback);
 }
+
+
 
 
 //转换鼠标点击时的二维坐标系
