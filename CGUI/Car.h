@@ -177,18 +177,6 @@ public:
             if (direction == CAR_ACCELERATION)
                 acceleration = false;
         }
-        if (R == true)
-        {
-            if (direction == CAR_FORWARD)
-            {
-                MovementSpeed += 0.09;
-            }
-            if (direction == CAR_BACKWARD)
-            {
-                Position += Front * MovementSpeed * deltaTime;
-            }
-        }
-
         if (direction == CAR_LEFT && (MovementSpeed < -0.05f || MovementSpeed > 0.05f))
         {
             Yaw += TurningSpeed * deltaTime;
