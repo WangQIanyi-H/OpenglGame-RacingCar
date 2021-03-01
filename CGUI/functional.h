@@ -333,10 +333,10 @@ struct PullOver {
     bool Session4 = false;//手刹
     bool Session = false;
     point_f Area[4] = {
-        point_f(2.4f,10.0f),
-        point_f(2.4f,-4.4f),
-        point_f(3.8f,-4.4f),
-        point_f(3.8f,10.0f),
+        point_f(2.4f, 10.0f),
+        point_f(2.4f, -4.4f),
+        point_f(3.6f, -4.4f),
+        point_f(3.6f, 10.0f),
     };
 	int Score() {
 		return (int)Session4 * 100;
@@ -1325,7 +1325,7 @@ unsigned int* rule_icon_Loader(int index)
         data = stbi_load("asset/image/rule/back.png", &width, &height, &nrChannels, 0);
         break;
     case 2://成绩单的返回主菜单按钮
-        data = stbi_load("asset/image/score/主菜单.png", &width, &height, &nrChannels, 0);
+        data = stbi_load("asset/image/main/quit.png", &width, &height, &nrChannels, 0);
         break;
     case 3://暂停界面的返回主菜单
         data = stbi_load("asset/image/pause/back.png", &width, &height, &nrChannels, 0);

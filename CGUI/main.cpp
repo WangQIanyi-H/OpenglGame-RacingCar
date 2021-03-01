@@ -42,26 +42,26 @@ int endSituation = 2;//1表示走完全程；2表示开出了跑道之外；
 
 
 //imgui窗口参数预设
-static bool no_titlebar = false;
-static bool no_scrollbar = false;
-static bool no_menu = false;
-static bool no_move = false;
-static bool no_resize = false;
-static bool no_collapse = false;
-static bool no_close = false;
-static bool no_nav = false;
-static bool no_background = false;
-static bool no_bring_to_front = false;
-//static bool no_titlebar = true;
-//static bool no_scrollbar = true;
-//static bool no_menu = true;
-//static bool no_move = true;
-//static bool no_resize = true;
-//static bool no_collapse = true;
-//static bool no_close = true;
-//static bool no_nav = true;
-//static bool no_background = true;
+//static bool no_titlebar = false;
+//static bool no_scrollbar = false;
+//static bool no_menu = false;
+//static bool no_move = false;
+//static bool no_resize = false;
+//static bool no_collapse = false;
+//static bool no_close = false;
+//static bool no_nav = false;
+//static bool no_background = false;
 //static bool no_bring_to_front = false;
+static bool no_titlebar = true;
+static bool no_scrollbar = true;
+static bool no_menu = true;
+static bool no_move = true;
+static bool no_resize = true;
+static bool no_collapse = true;
+static bool no_close = true;
+static bool no_nav = true;
+static bool no_background = true;
+static bool no_bring_to_front = false;
 ImGuiWindowFlags window_flags = 0;
 
 
@@ -520,10 +520,9 @@ int main(int, char**)
                 ImGui::End();
 
                 ImGui::Begin("score_back_1", &score_window, window_flags);
-                if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
-                    std::cout << "规则";
-                    show_window = true;
-                    score_window = false;
+                if (ImGui::InvisibleButton("确认", ImVec2(menu_icon_width, menu_icon_height))) {
+                    std::cout << "确认";
+                    exit(0);
                 };
                 ImGui::End();
 
@@ -540,12 +539,10 @@ int main(int, char**)
                 ImGui::Begin("score_back", &score_window, window_flags);
                 ImGui::ImageButton((ImTextureID*)texture_score_icon1, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1));
                 ImGui::End();
-
                 ImGui::Begin("score_back_1", &score_window, window_flags);
-                if (ImGui::InvisibleButton("规则", ImVec2(menu_icon_width, menu_icon_height))) {
-                    std::cout << "规则";
-                    show_window = true;
-                    score_window = false;
+                if (ImGui::InvisibleButton("确认", ImVec2(menu_icon_width, menu_icon_height))) {
+                    std::cout << "确认";
+                    exit(0);
                 };
                 ImGui::End();
 
@@ -580,9 +577,9 @@ int main(int, char**)
             ImGui::Image((ImTextureID*)texture_pause_icon1, ImVec2(menu_icon_width, menu_icon_height), ImVec2(0, 0), ImVec2(1, 1));
             ImGui::End();
             ImGui::Begin("pause_button_1", &pause_window, window_flags);
-            if (ImGui::InvisibleButton("返回主菜单", ImVec2(menu_icon_width, menu_icon_height))) {
-                std::cout << "返回主菜单";
-                show_window = true;
+            if (ImGui::InvisibleButton("继续游戏", ImVec2(menu_icon_width, menu_icon_height))) {
+                std::cout << "继续游戏";
+                game_window = true;
                 pause_window = false;
             };
             ImGui::End();
@@ -1191,7 +1188,7 @@ int main(int, char**)
 
                 //游戏结束
                 if (IS_IN_AREA(car_pos, pullOver.Area)) {
-                    if (car.DSpeed == 0 && car.parkBrake == true && automatic == 1) {
+                    if (car.MovementSpeed < 0.01 && car.parkBrake == true && automatic == 1) {
                         endSituation = 1;
                         game_window = false;
                         score_window = true;
