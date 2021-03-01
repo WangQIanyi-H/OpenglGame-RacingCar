@@ -672,7 +672,7 @@ void handleKeyInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
         car.ProcessKeyboard(CAR_ACCELERATION, deltaTime);
     //É²³µ
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         car.ProcessKeyboard(CAR_BACKWARD, deltaTime);
     //ËÉ¿ªÉ²³µ
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE)
