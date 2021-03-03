@@ -701,6 +701,7 @@ int main(int, char**)
             
             if (ImGui::InvisibleButton("йс╫г", ImVec2(50, 50))) {
 				SoundEngine->play2D("asset/music/4.wav", GL_FALSE);
+                switchView = abs(switchView - 1);
                 std::cout << "йс╫г";
             };
             ImGui::Text("\n");
